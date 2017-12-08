@@ -16,9 +16,7 @@ public class ConsultaResponse {
         this.users = users;
     }
 
-    public int getSuccess() {
-        return success;
-    }
+    public int getSuccess() {return success;}
 
     public void setSuccess(int success) {
         this.success = success;
@@ -31,4 +29,5 @@ public class ConsultaResponse {
                 ", success=" + success +
                 '}';
     }
+
 }

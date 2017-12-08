@@ -42,13 +42,16 @@ public class MainActivity extends AppCompatActivity {
         Button top = (Button) findViewById(R.id.top_videos);
         Button vid = (Button) findViewById(R.id.videos);
 
-        View rectangle = (View) findViewById(R.id.rectangle);
+        /*View rectangle = (View) findViewById(R.id.rectangle);
         ImageView search = (ImageView) findViewById(R.id.search);
         ImageView message = (ImageView) findViewById(R.id.mensajes);
         linia_top = (View) findViewById(R.id.linia_top);
         linia_vid = (View) findViewById(R.id.linia_vid);
-        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);*/
+
         textView = (TextView)findViewById(R.id.editText);
+
+        //c_video(textView);
     }
 
 
@@ -61,6 +64,10 @@ public class MainActivity extends AppCompatActivity {
     }
     public void c_topvideo(View view){ //Consulta top videos
         makeJsonRequest("https://unguled-flash.000webhostapp.com/Consultas/topvideos.php");
+    }
+
+    public void c_canciones(View view){ //Consulta canciones
+        makeJsonRequest("https://unguled-flash.000webhostapp.com/Consultas/canciones.php");
     }
 
     private void makeJsonRequest(String url) {
@@ -79,13 +86,16 @@ public class MainActivity extends AppCompatActivity {
                         ConsultaResponse c = gson.fromJson(json,ConsultaResponse.class);
                         Log.i("app","makeJsonRequest: onResponse - gson.fromJson");
 
-                        textView.setText("Response: " + response.toString());
+                        String respuesta = response.toString();
+                        //String parts[] = respuesta.split("success");
+
+                        textView.setText(respuesta);
                     }
                 }, new Response.ErrorListener() {
 
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                         textView.setText("Error: " + error.toString());
+                        textView.setText("Error: " + error.toString());
                         Log.i("app","makeJsonObj: onErrorResponse");
                     }
                 });
