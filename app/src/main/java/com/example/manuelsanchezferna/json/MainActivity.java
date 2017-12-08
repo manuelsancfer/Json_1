@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.io.IOException;
@@ -29,6 +30,9 @@ import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
     private TextView textView;
+    private View linia_top;
+    private View linia_vid;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,11 +42,17 @@ public class MainActivity extends AppCompatActivity {
         Button top = (Button) findViewById(R.id.top_videos);
         Button vid = (Button) findViewById(R.id.videos);
 
+        View rectangle = (View) findViewById(R.id.rectangle);
+        ImageView search = (ImageView) findViewById(R.id.search);
+        ImageView message = (ImageView) findViewById(R.id.mensajes);
+        linia_top = (View) findViewById(R.id.linia_top);
+        linia_vid = (View) findViewById(R.id.linia_vid);
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
         textView = (TextView)findViewById(R.id.editText);
     }
 
 
-    /**public void consulta(View view) {
+    public void consulta(View view) {
         makeJsonRequest("https://unguled-flash.000webhostapp.com/Consultas/consulta.php");
     }
 
@@ -80,5 +90,5 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
         Volley.newRequestQueue(this).add(jsObjRequest);
-    }**/
+    }
 }
