@@ -84,12 +84,21 @@ public class MainActivity extends AppCompatActivity {
 
                         String json = gson.toJson(response);
                         ConsultaResponse c = gson.fromJson(json,ConsultaResponse.class);
+                        //he probado con un array (ConsultaResponde[]) pero no lo he conseguido
+
                         Log.i("app","makeJsonRequest: onResponse - gson.fromJson");
 
                         String respuesta = response.toString();
+
+                        c.setUsers(respuesta);
+                        String  nombre=c.getUsers();
                         //String parts[] = respuesta.split("success");
 
-                        textView.setText(respuesta);
+                        textView.setText(nombre);
+
+                        User u = gson.fromJson(json, User.class);
+                        u.setName(respuesta);   //algo así habría que hacer diría, pero separando...
+                        //textView.setText(u.getName());
                     }
                 }, new Response.ErrorListener() {
 
