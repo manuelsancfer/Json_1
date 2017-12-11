@@ -10,9 +10,10 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.List;
+import java.util.ArrayList;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -25,6 +26,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
 
 import com.android.volley.toolbox.Volley;
+import com.google.gson.stream.JsonReader;
 
 import org.json.JSONObject;
 
@@ -82,24 +84,19 @@ public class MainActivity extends AppCompatActivity {
                         Gson gson = new Gson();
                         Log.i("app","makeJsonRequest: onResponse - newGson");
 
-                        String json = gson.toJson(response);
-                        ConsultaResponse c = gson.fromJson(json,ConsultaResponse.class);
-                        //he probado con un array (ConsultaResponde[]) pero no lo he conseguido
+                        ConsultaUsers c = gson.fromJson(response.toString(),ConsultaUsers.class);
 
-                        Log.i("app","makeJsonRequest: onResponse - gson.fromJson");
+                        if(c.getSuccess()==1) {
+                            textView.setText(c.getUsers().get(0).getName());
+                            Toast.makeText(getApplicationContext(),
+                                    "funciona", Toast.LENGTH_LONG).show();
+                        }
+                        else {
+                            Toast.makeText(getApplicationContext(),
+                                    response.toString(), Toast.LENGTH_LONG).show();
 
-                        String respuesta = response.toString();
-
-                        c.setUsers(respuesta);
-                        String  nombre=c.getUsers();
-                        //String parts[] = respuesta.split("success");
-
-                        textView.setText(nombre);
-
-                        User u = gson.fromJson(json, User.class);
-                        u.setName(respuesta);   //algo así habría que hacer diría, pero separando...
-                        //textView.setText(u.getName());
-                    }
+                        }
+                   }
                 }, new Response.ErrorListener() {
 
                     @Override
