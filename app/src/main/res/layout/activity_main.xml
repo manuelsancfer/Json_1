@@ -141,4 +141,33 @@
         android:tint="@android:color/background_light"
         app:srcCompat="@android:drawable/stat_notify_chat" />
 
+    <VideoView
+        android:id="@+id/vid1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linia_vid"
+        android:layout_alignLeft="@+id/editText"
+        android:layout_alignStart="@+id/editText"
+        android:layout_above="@+id/editText"
+        android:layout_toLeftOf="@+id/button"
+        android:layout_toStartOf="@+id/button" />
+
+    <TextView
+        android:id="@+id/vid1_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editText"
+        android:layout_alignStart="@+id/editText"
+        android:layout_below="@+id/progressBar"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/vid1_art"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editText"
+        android:layout_alignStart="@+id/editText"
+        android:layout_below="@+id/vid1_name"
+        android:text="TextView" />
+
 </RelativeLayout>
