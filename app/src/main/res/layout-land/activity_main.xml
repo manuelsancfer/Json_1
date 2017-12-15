@@ -64,7 +64,7 @@
         android:layout_alignLeft="@+id/editText"
         android:layout_alignStart="@+id/editText" />
     <View
-        android:id="@+id/linia_top"
+        android:id="@+id/linia_amigos"
         android:layout_marginLeft="65dp"
         android:layout_height="3sp"
         android:layout_width="280sp"

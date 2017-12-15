@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Json.iml" filepath="$PROJECT_DIR$/Json.iml" />
       <module fileurl="file://$PROJECT_DIR$/Json-master.iml" filepath="$PROJECT_DIR$/Json-master.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Json_2.iml" filepath="$PROJECT_DIR$/Json_2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
