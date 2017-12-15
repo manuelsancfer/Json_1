@@ -131,7 +131,7 @@
         app:srcCompat="@android:drawable/stat_notify_chat" />
 
     <TextView
-        android:id="@+id/vid1_name"
+        android:id="@+id/vid0_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/editText"
@@ -140,12 +140,12 @@
         android:text="TextView" />
 
     <TextView
-        android:id="@+id/vid1_art"
+        android:id="@+id/vid0_art"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/editText"
         android:layout_alignStart="@+id/editText"
-        android:layout_below="@+id/vid1_name"
+        android:layout_below="@+id/vid0_name"
         android:text="TextView" />
 
     <HorizontalScrollView
@@ -172,7 +172,7 @@
             android:id="@+id/linearLayout">
 
             <VideoView
-                android:id="@+id/vid1"
+                android:id="@+id/vid0"
                 android:layout_width="124dp"
                 android:layout_height="match_parent"
                 android:layout_above="@+id/linia_vid"
@@ -182,6 +182,13 @@
                 android:layout_toEndOf="@+id/top_videos"
                 android:layout_toRightOf="@+id/top_videos" />
 
+
+            <VideoView
+                android:id="@+id/vid1"
+                android:layout_width="124dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="22dp"
+                />
             <VideoView
                 android:id="@+id/vid2"
                 android:layout_width="124dp"
@@ -207,6 +214,12 @@
                 android:layout_marginLeft="22dp"
                 />
             <VideoView
+                android:id="@+id/vid6"
+                android:layout_width="124dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="22dp"
+                />
+            <VideoView
                 android:id="@+id/vid7"
                 android:layout_width="124dp"
                 android:layout_height="match_parent"
@@ -220,12 +233,6 @@
                 />
             <VideoView
                 android:id="@+id/vid9"
-                android:layout_width="124dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="22dp"
-                />
-            <VideoView
-                android:id="@+id/vid10"
                 android:layout_width="124dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="22dp"

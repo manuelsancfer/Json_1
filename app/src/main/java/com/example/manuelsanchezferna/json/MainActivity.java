@@ -65,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
                 videoView.start();
             }
         });*/
+
         makeJsonVideo("https://unguled-flash.000webhostapp.com/Consultas/consultavideos.php");
     }
 
@@ -135,49 +136,163 @@ public class MainActivity extends AppCompatActivity {
                         ConsultaVideos c = gson.fromJson(response.toString(),ConsultaVideos.class);
 
                         if(c.getSuccess()==1) {
-                            /*for (int i=1; i<11; i++) {
-       //TODO estas variables se deberan reutilizar, textView hay que cambiar ese nombre
-                                textView.setText(c.getVideos().get(i).getTittle());
-                                textView.setText(c.getVideos().get(i).getName());
-                                textView.setText(c.getVideos().get(i).getUrl());
 
-                                String score = Float.toString(
-                                        c.getVideos().get(i).getScore());
-                                textView.setText(score);
 
-                                TextView vidi_name = (TextView) findViewById(R.id.vidi_name);
-                                TextView vidi_art = (TextView) findViewById(R.id.vidi_art);
+                            //LISTA DE 10 VIDEOS
 
-                                vidi_name.setText(c.getVideos().get(i).getTittle());
-                                vidi_art.setText(c.getVideos().get(i).getName());
 
-                                videoView = (VideoView) findViewById(R.id.vidi);
-                                Uri uri = Uri.parse(c.getVideos().get(i).getUrl());
+                            videoView = (VideoView) findViewById(R.id.vid0);
+                            Uri v0 = Uri.parse(c.getVideos().get(0).getUrl());
+                            String score0 = Float.toString(
+                                        c.getVideos().get(0).getScore());
+                                textView.setText(score0);   //para meter el score
 
-                                videoView.setVideoURI(uri);
-                                videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-                                    @Override
-                                    public void onPrepared(MediaPlayer mp) {
-                                        mp.setLooping(true);
-                                        videoView.start();
-                                }
-                            });
-                            }*/
+                            TextView vid0_name = (TextView) findViewById(R.id.vid0_name);
+                            TextView vid0_art = (TextView) findViewById(R.id.vid0_art);
+
+                            vid0_name.setText(c.getVideos().get(0).getTittle());
+                            vid0_art.setText(c.getVideos().get(0).getName());
+
+                            videoView.setVideoURI(v0);
 
 
                             videoView = (VideoView) findViewById(R.id.vid1);
-                            Uri prueba = Uri.parse(c.getVideos().get(0).getUrl());
+                            Uri v1 = Uri.parse(c.getVideos().get(1).getUrl());
+                            String score1 = Float.toString(
+                                    c.getVideos().get(1).getScore());
+                            textView.setText(score1);
 
-                            TextView vid1_name = (TextView) findViewById(R.id.vid1_name);
+                            /*TextView vid1_name = (TextView) findViewById(R.id.vid1_name);
                             TextView vid1_art = (TextView) findViewById(R.id.vid1_art);
 
-                            vid1_name.setText(c.getVideos().get(0).getTittle());
-                            vid1_art.setText(c.getVideos().get(0).getName());
+                            vid_name.setText(c.getVideos().get(1).getTittle());
+                            vid1_art.setText(c.getVideos().get(1).getName());*/
 
 
-                            videoView.setVideoURI(prueba);
+                            videoView.setVideoURI(v1);
 
-                                videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                            videoView = (VideoView) findViewById(R.id.vid2);
+                            Uri v2 = Uri.parse(c.getVideos().get(2).getUrl());
+                            String score2 = Float.toString(
+                                    c.getVideos().get(2).getScore());
+                            textView.setText(score2);
+
+                            /*TextView vid2_name = (TextView) findViewById(R.id.vid2_name);
+                            TextView vid2_art = (TextView) findViewById(R.id.vid2_art);
+
+                            vid1_name.setText(c.getVideos().get(2).getTittle());
+                            vid1_art.setText(c.getVideos().get(2).getName());*/
+
+                            videoView.setVideoURI(v2);
+
+
+                            videoView = (VideoView) findViewById(R.id.vid3);
+                            Uri v3 = Uri.parse(c.getVideos().get(3).getUrl());
+                            String score3 = Float.toString(
+                                    c.getVideos().get(3).getScore());
+                            textView.setText(score3);
+
+                            /*TextView vid3_name = (TextView) findViewById(R.id.vid3_name);
+                            TextView vid3_art = (TextView) findViewById(R.id.vid3_art);
+
+                            vid3_name.setText(c.getVideos().get(3).getTittle());
+                            vid3_art.setText(c.getVideos().get(3).getName());*/
+
+                            videoView.setVideoURI(v3);
+
+
+                            videoView = (VideoView) findViewById(R.id.vid4);
+                            Uri v4 = Uri.parse(c.getVideos().get(4).getUrl());
+                            String score4 = Float.toString(
+                                    c.getVideos().get(4).getScore());
+                            textView.setText(score4);
+
+                            /*TextView vid4_name = (TextView) findViewById(R.id.vid4_name);
+                            TextView vid4_art = (TextView) findViewById(R.id.vid4_art);
+
+                            vid3_name.setText(c.getVideos().get(4).getTittle());
+                            vid3_art.setText(c.getVideos().get(4).getName());*/
+
+                            videoView.setVideoURI(v4);
+
+
+                            videoView = (VideoView) findViewById(R.id.vid5);
+                            Uri v5 = Uri.parse(c.getVideos().get(5).getUrl());
+                            String score5 = Float.toString(
+                                    c.getVideos().get(5).getScore());
+                            textView.setText(score5);
+
+                            /*TextView vid5_name = (TextView) findViewById(R.id.vid5_name);
+                            TextView vid5_art = (TextView) findViewById(R.id.vid5_art);
+
+                            vid3_name.setText(c.getVideos().get(5).getTittle());
+                            vid3_art.setText(c.getVideos().get(5).getName());*/
+
+                            videoView.setVideoURI(v5);
+
+
+                            videoView = (VideoView) findViewById(R.id.vid6);
+                            Uri v6 = Uri.parse(c.getVideos().get(6).getUrl());
+                            String score6 = Float.toString(
+                                    c.getVideos().get(6).getScore());
+                            textView.setText(score6);
+
+                            /*TextView vid6_name = (TextView) findViewById(R.id.vid6_name);
+                            TextView vid6_art = (TextView) findViewById(R.id.vid6_art);
+
+                            vid6_name.setText(c.getVideos().get(6).getTittle());
+                            vid6_art.setText(c.getVideos().get(6).getName());*/
+
+                            videoView.setVideoURI(v6);
+
+
+                            videoView = (VideoView) findViewById(R.id.vid7);
+                            Uri v7 = Uri.parse(c.getVideos().get(7).getUrl());
+                            String score7 = Float.toString(
+                                    c.getVideos().get(7).getScore());
+                            textView.setText(score7);
+
+                            /*TextView vid7_name = (TextView) findViewById(R.id.vid7_name);
+                            TextView vid7_art = (TextView) findViewById(R.id.vid7_art);
+
+                            vid7_name.setText(c.getVideos().get(7).getTittle());
+                            vid7_art.setText(c.getVideos().get(7).getName());*/
+
+                            videoView.setVideoURI(v7);
+
+
+                            videoView = (VideoView) findViewById(R.id.vid8);
+                            Uri v8 = Uri.parse(c.getVideos().get(8).getUrl());
+                            String score8 = Float.toString(
+                                    c.getVideos().get(8).getScore());
+                            textView.setText(score8);
+
+                            /*TextView vid8_name = (TextView) findViewById(R.id.vid8_name);
+                            TextView vid8_art = (TextView) findViewById(R.id.vid8_art);
+
+                            vid8_name.setText(c.getVideos().get(8).getTittle());
+                            vid8_art.setText(c.getVideos().get(8).getName());*/
+
+                            videoView.setVideoURI(v8);
+
+
+                            videoView = (VideoView) findViewById(R.id.vid9);
+                            Uri v9 = Uri.parse(c.getVideos().get(9).getUrl());
+                            String score9 = Float.toString(
+                                    c.getVideos().get(9).getScore());
+                            textView.setText(score9);
+
+                            /*TextView vid9_name = (TextView) findViewById(R.id.vid9_name);
+                            TextView vid9_art = (TextView) findViewById(R.id.vid9_art);
+
+                            vid9_name.setText(c.getVideos().get(9).getTittle());
+                            vid9_art.setText(c.getVideos().get(9).getName());*/
+
+                            videoView.setVideoURI(v9);
+
+
+
+                            videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
                                 @Override
                                 public void onPrepared(MediaPlayer mp) {
                                     mp.setLooping(true);
