@@ -105,17 +105,6 @@
         tools:layout_editor_absoluteX="60dp"
         tools:layout_editor_absoluteY="231dp" />
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="@android:style/Widget.Holo.Light.ProgressBar.Horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/editText"
-        android:layout_alignLeft="@+id/linia_vid"
-        android:layout_alignStart="@+id/linia_vid"
-        android:layout_marginBottom="36dp"
-        android:indeterminate="false" />
-
     <ImageButton
         android:id="@+id/search"
         style="@android:style/Widget.Holo.Light.ImageButton"
@@ -141,17 +130,6 @@
         android:tint="@android:color/background_light"
         app:srcCompat="@android:drawable/stat_notify_chat" />
 
-    <VideoView
-        android:id="@+id/vid1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/linia_vid"
-        android:layout_alignLeft="@+id/editText"
-        android:layout_alignStart="@+id/editText"
-        android:layout_above="@+id/editText"
-        android:layout_toLeftOf="@+id/button"
-        android:layout_toStartOf="@+id/button" />
-
     <TextView
         android:id="@+id/vid1_name"
         android:layout_width="wrap_content"
@@ -169,5 +147,95 @@
         android:layout_alignStart="@+id/editText"
         android:layout_below="@+id/vid1_name"
         android:text="TextView" />
+
+    <HorizontalScrollView
+        android:layout_width="477dp"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/linia_vid"
+        android:layout_alignRight="@+id/linia_vid"
+        android:layout_alignEnd="@+id/linia_vid"
+        android:layout_above="@+id/editText"
+        android:layout_alignLeft="@+id/editText"
+        android:layout_alignStart="@+id/editText">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/editText"
+            android:orientation="horizontal"
+            android:layout_below="@+id/linia_vid"
+            android:layout_alignRight="@+id/linia_vid"
+            android:layout_alignEnd="@+id/linia_vid"
+            android:layout_alignLeft="@+id/videos"
+            android:layout_alignStart="@+id/videos"
+            android:weightSum="1"
+            android:id="@+id/linearLayout">
+
+            <VideoView
+                android:id="@+id/vid1"
+                android:layout_width="124dp"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/linia_vid"
+                android:layout_alignEnd="@+id/mensajes"
+                android:layout_alignRight="@+id/mensajes"
+                android:layout_below="@+id/linia_top"
+                android:layout_toEndOf="@+id/top_videos"
+                android:layout_toRightOf="@+id/top_videos" />
+
+            <VideoView
+                android:id="@+id/vid2"
+                android:layout_width="124dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="22dp"
+                />
+            <VideoView
+                android:id="@+id/vid3"
+                android:layout_width="124dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="22dp"
+                />
+            <VideoView
+                android:id="@+id/vid4"
+                android:layout_width="124dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="22dp"
+                />
+            <VideoView
+                android:id="@+id/vid5"
+                android:layout_width="124dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="22dp"
+                />
+            <VideoView
+                android:id="@+id/vid7"
+                android:layout_width="124dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="22dp"
+                />
+            <VideoView
+                android:id="@+id/vid8"
+                android:layout_width="124dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="22dp"
+                />
+            <VideoView
+                android:id="@+id/vid9"
+                android:layout_width="124dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="22dp"
+                />
+            <VideoView
+                android:id="@+id/vid10"
+                android:layout_width="124dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="22dp"
+                />
+
+        </LinearLayout>
+
+
+    </HorizontalScrollView>
+
+
 
 </RelativeLayout>
