@@ -1,5 +1,6 @@
 package com.example.manuelsanchezferna.json;
 
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
@@ -40,34 +41,29 @@ public class MainActivity extends AppCompatActivity {
 
         Button top = (Button) findViewById(R.id.top_videos);
         Button vid = (Button) findViewById(R.id.videos);
+        Button button = (Button) findViewById(R.id.button);
 
-
-        /*View rectangle = (View) findViewById(R.id.rectangle);
-        ImageView search = (ImageView) findViewById(R.id.search);
-        ImageView message = (ImageView) findViewById(R.id.mensajes);
-        linia_top = (View) findViewById(R.id.linia_top);
-        linia_vid = (View) findViewById(R.id.linia_vid);
-        progressBar = (ProgressBar) findViewById(R.id.progressBar);*/
 
         textView = (TextView)findViewById(R.id.editText);
 
-        //c_video(textView);
-
-
-        /*videoView = (VideoView) findViewById(R.id.vid1);
-        Uri prueba = Uri.parse("https://unguled-flash.000webhostapp.com/Videos/Ricky_freedom.mp4");
-
-        videoView.setVideoURI(prueba);
-        videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+        //el boto serà el de la llista desplegable
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onPrepared(MediaPlayer mp) {
-                mp.setLooping(true);
-                videoView.start();
+            public void onClick(View view) {
+                //makeJsonRequest();
+                Perfil(view);
             }
-        });*/
+        });
 
         makeJsonVideo("https://unguled-flash.000webhostapp.com/Consultas/consultavideos.php");
     }
+
+
+    public void Perfil(View view){
+        Intent intent = new Intent(this,Perfil.class);
+        startActivity(intent);
+    }
+
 
 
     public void consulta(View view) {
@@ -137,9 +133,7 @@ public class MainActivity extends AppCompatActivity {
 
                         if(c.getSuccess()==1) {
 
-
                             //LISTA DE 10 VIDEOS
-
 
                             videoView = (VideoView) findViewById(R.id.vid0);
                             Uri v0 = Uri.parse(c.getVideos().get(0).getUrl());
