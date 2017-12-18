@@ -7,10 +7,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.MediaController;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import android.widget.Toast;
@@ -34,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
     private ProgressBar progressBar;
     private VideoView videoView;
 
+    int videosid[] = {R.id.vid0, R.id.vid1, R.id.vid2};  //rellenar
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +61,35 @@ public class MainActivity extends AppCompatActivity {
         });
 
         makeJsonVideo("https://unguled-flash.000webhostapp.com/Consultas/consultavideos.php");
+
+
+        Spinner spinner = (Spinner) findViewById(R.id.spinner);
+// Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.desplegable,android.R.layout.simple_spinner_item);
+// Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+// Apply the adapter to the spinner
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                Seleccio(i);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+    }
+
+    private void Seleccio(int pos) {
+        if (pos == 2){
+            Toast.makeText(getApplicationContext(),
+                    "fhola", Toast.LENGTH_LONG).show();
+        }
     }
 
 
@@ -63,8 +97,6 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this,Perfil.class);
         startActivity(intent);
     }
-
-
 
     public void consulta(View view) {
         makeJsonRequest("https://unguled-flash.000webhostapp.com/Consultas/consulta.php");
@@ -132,6 +164,22 @@ public class MainActivity extends AppCompatActivity {
                         ConsultaVideos c = gson.fromJson(response.toString(),ConsultaVideos.class);
 
                         if(c.getSuccess()==1) {
+
+//                            for (int i=0; i<videosid.length;i++){
+//                                videoView = (VideoView) findViewById(videosid[i]);
+//                                Uri v = Uri.parse(c.getVideos().get(i).getUrl());
+//                                String score = Float.toString(
+//                                        c.getVideos().get(i).getScore());
+//                                textView.setText(score);   //para meter el score
+//
+//                                TextView vid0_name = (TextView) findViewById(R.id.vid0_name);
+//                                TextView vid0_art = (TextView) findViewById(R.id.vid0_art);
+//
+//                                vid0_name.setText(c.getVideos().get(0).getTittle());
+//                                vid0_art.setText(c.getVideos().get(0).getName());
+//
+//                                videoView.setVideoURI(v);
+//                            }
 
                             //LISTA DE 10 VIDEOS
 

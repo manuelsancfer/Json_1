@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="desplegable">
+        <item>Username</item>
+        <item>Perfil</item>
+        <item>Listas de reproducción</item>
+        <item>Categorías</item>
+        <item>Agenda</item>
+        <item>Configuración</item>
+    </string-array>
+
+
+
+</resources>

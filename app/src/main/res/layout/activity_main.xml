@@ -7,6 +7,18 @@
     tools:context="com.example.manuelsanchezferna.json.MainActivity">
 
 
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/rectangle"
+        android:layout_alignEnd="@+id/vid0_name"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/vid0_name"
+        android:background="@android:drawable/btn_default_small"
+        android:elevation="14dp"
+        android:visibility="visible" />
+
     <EditText
         android:id="@+id/editText"
         android:layout_width="match_parent"
@@ -53,7 +65,6 @@
         android:fontFamily="monospace"
         android:lineSpacingExtra="8sp"
         android:text="TOP VÍDEOS"
-        android:textAlignment="viewStart"
         android:textColor="?android:attr/colorMultiSelectHighlight"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -74,11 +85,13 @@
         android:id="@+id/rectangle"
         android:layout_width="wrap_content"
         android:layout_height="90sp"
-        android:background="#f1f1f1"
+        android:layout_alignBottom="@+id/search"
+        android:layout_alignEnd="@+id/spinner"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignBottom="@+id/search"
-        android:layout_alignTop="@+id/search" />
+        android:layout_alignRight="@+id/spinner"
+        android:layout_alignTop="@+id/search"
+        android:background="#f1f1f1" />
 
     <View
         android:id="@+id/linia_vid"
@@ -98,7 +111,6 @@
         android:fontFamily="monospace"
         android:lineSpacingExtra="8sp"
         android:text="VÍDEOS"
-        android:textAlignment="viewStart"
         android:textColor="?android:attr/colorMultiSelectHighlight"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -134,19 +146,20 @@
         android:id="@+id/vid0_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editText"
-        android:layout_alignStart="@+id/editText"
-        android:layout_below="@+id/progressBar"
-        android:text="TextView" />
+        android:text="TextView"
+        android:layout_above="@+id/vid0_art"
+        android:layout_alignLeft="@+id/horizontalScrollView"
+        android:layout_alignStart="@+id/horizontalScrollView" />
 
     <TextView
         android:id="@+id/vid0_art"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editText"
-        android:layout_alignStart="@+id/editText"
-        android:layout_below="@+id/vid0_name"
-        android:text="TextView" />
+        android:text="TextView"
+        android:layout_above="@+id/linia_amigos"
+        android:layout_alignLeft="@+id/vid0_name"
+        android:layout_alignStart="@+id/vid0_name"
+        android:layout_marginBottom="50dp" />
 
     <HorizontalScrollView
         android:layout_width="477dp"
@@ -156,7 +169,8 @@
         android:layout_alignEnd="@+id/linia_vid"
         android:layout_above="@+id/editText"
         android:layout_alignLeft="@+id/editText"
-        android:layout_alignStart="@+id/editText">
+        android:layout_alignStart="@+id/editText"
+        android:id="@+id/horizontalScrollView">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -242,6 +256,7 @@
 
 
     </HorizontalScrollView>
+
 
 
 
