@@ -52,13 +52,13 @@ public class MainActivity extends AppCompatActivity {
         textView = (TextView)findViewById(R.id.editText);
 
         //el boto serà el de la llista desplegable
-        button.setOnClickListener(new View.OnClickListener() {
+        /*button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //makeJsonRequest();
                 Perfil(view);
             }
-        });
+        });*/
 
         makeJsonVideo("https://unguled-flash.000webhostapp.com/Consultas/consultavideos.php");
 
@@ -79,21 +79,39 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-
+                Log.i("app","onNothing");
             }
         });
 
     }
 
     private void Seleccio(int pos) {
-        if (pos == 2){
+        if (pos == 1){
+            Perfil();
+
             Toast.makeText(getApplicationContext(),
                     "fhola", Toast.LENGTH_LONG).show();
+        }
+
+        if(pos == 2){
+            //Lista rep
+        }
+
+        if(pos == 3){
+            //Categorías
+        }
+
+        if (pos == 4){
+            //Agenda
+        }
+
+        if (pos == 5){
+            //Configuración
         }
     }
 
 
-    public void Perfil(View view){
+    public void Perfil(){
         Intent intent = new Intent(this,Perfil.class);
         startActivity(intent);
     }
@@ -118,7 +136,7 @@ public class MainActivity extends AppCompatActivity {
                 (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        Log.i("app","makeJsonRequest: onResponse");
+                        Log.i("app","makeJsonRequest: onResponse main");
 
                         Gson gson = new Gson();
                         Log.i("app","makeJsonRequest: onResponse - newGson");
@@ -141,7 +159,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         textView.setText("Error: " + error.toString());
-                        Log.i("app","makeJsonObj: onErrorResponse");
+                        Log.i("app","makeJsonObj: onErrorResponse List");
                     }
                 });
 
@@ -195,7 +213,7 @@ public class MainActivity extends AppCompatActivity {
                             vid0_name.setText(c.getVideos().get(0).getTittle());
                             vid0_art.setText(c.getVideos().get(0).getName());
 
-                            videoView.setVideoURI(v0);
+          //                  videoView.setVideoURI(v0);
 
 
                             videoView = (VideoView) findViewById(R.id.vid1);
@@ -211,7 +229,7 @@ public class MainActivity extends AppCompatActivity {
                             vid1_art.setText(c.getVideos().get(1).getName());*/
 
 
-                            videoView.setVideoURI(v1);
+        //                    videoView.setVideoURI(v1);
 
                             videoView = (VideoView) findViewById(R.id.vid2);
                             Uri v2 = Uri.parse(c.getVideos().get(2).getUrl());
@@ -225,7 +243,7 @@ public class MainActivity extends AppCompatActivity {
                             vid1_name.setText(c.getVideos().get(2).getTittle());
                             vid1_art.setText(c.getVideos().get(2).getName());*/
 
-                            videoView.setVideoURI(v2);
+      //                      videoView.setVideoURI(v2);
 
 
                             videoView = (VideoView) findViewById(R.id.vid3);
@@ -240,7 +258,7 @@ public class MainActivity extends AppCompatActivity {
                             vid3_name.setText(c.getVideos().get(3).getTittle());
                             vid3_art.setText(c.getVideos().get(3).getName());*/
 
-                            videoView.setVideoURI(v3);
+        //                    videoView.setVideoURI(v3);
 
 
                             videoView = (VideoView) findViewById(R.id.vid4);
@@ -255,7 +273,7 @@ public class MainActivity extends AppCompatActivity {
                             vid3_name.setText(c.getVideos().get(4).getTittle());
                             vid3_art.setText(c.getVideos().get(4).getName());*/
 
-                            videoView.setVideoURI(v4);
+         //                   videoView.setVideoURI(v4);
 
 
                             videoView = (VideoView) findViewById(R.id.vid5);
@@ -270,14 +288,14 @@ public class MainActivity extends AppCompatActivity {
                             vid3_name.setText(c.getVideos().get(5).getTittle());
                             vid3_art.setText(c.getVideos().get(5).getName());*/
 
-                            videoView.setVideoURI(v5);
+   //                         videoView.setVideoURI(v5);
 
 
                             videoView = (VideoView) findViewById(R.id.vid6);
                             Uri v6 = Uri.parse(c.getVideos().get(6).getUrl());
                             String score6 = Float.toString(
                                     c.getVideos().get(6).getScore());
-                            textView.setText(score6);
+    //                        textView.setText(score6);
 
                             /*TextView vid6_name = (TextView) findViewById(R.id.vid6_name);
                             TextView vid6_art = (TextView) findViewById(R.id.vid6_art);
@@ -285,7 +303,7 @@ public class MainActivity extends AppCompatActivity {
                             vid6_name.setText(c.getVideos().get(6).getTittle());
                             vid6_art.setText(c.getVideos().get(6).getName());*/
 
-                            videoView.setVideoURI(v6);
+//                            videoView.setVideoURI(v6);
 
 
                             videoView = (VideoView) findViewById(R.id.vid7);
@@ -300,7 +318,7 @@ public class MainActivity extends AppCompatActivity {
                             vid7_name.setText(c.getVideos().get(7).getTittle());
                             vid7_art.setText(c.getVideos().get(7).getName());*/
 
-                            videoView.setVideoURI(v7);
+       //                     videoView.setVideoURI(v7);
 
 
                             videoView = (VideoView) findViewById(R.id.vid8);
@@ -315,14 +333,14 @@ public class MainActivity extends AppCompatActivity {
                             vid8_name.setText(c.getVideos().get(8).getTittle());
                             vid8_art.setText(c.getVideos().get(8).getName());*/
 
-                            videoView.setVideoURI(v8);
+        //                   videoView.setVideoURI(v8);
 
 
                             videoView = (VideoView) findViewById(R.id.vid9);
                             Uri v9 = Uri.parse(c.getVideos().get(9).getUrl());
                             String score9 = Float.toString(
                                     c.getVideos().get(9).getScore());
-                            textView.setText(score9);
+         //                   textView.setText(score9);
 
                             /*TextView vid9_name = (TextView) findViewById(R.id.vid9_name);
                             TextView vid9_art = (TextView) findViewById(R.id.vid9_art);
@@ -330,7 +348,13 @@ public class MainActivity extends AppCompatActivity {
                             vid9_name.setText(c.getVideos().get(9).getTittle());
                             vid9_art.setText(c.getVideos().get(9).getName());*/
 
+         //                   videoView.setVideoURI(v9);
                             videoView.setVideoURI(v9);
+                            MediaController controller = new MediaController(this);
+                            v9.setMediaController(controller);
+                            player.requestFocus();
+                            player.start();
+                            controller.show(10000);
 
 
 
@@ -354,11 +378,15 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         textView.setText("Error: " + error.toString());
-                        Log.i("app","makeJsonObj: onErrorResponse");
+                        Log.i("app","makeJsonObj: onErrorResponse List2");
                     }
                 });
 
         Volley.newRequestQueue(this).add(jsObjRequest);
 
     }
+
+
+
+
 }

@@ -20,6 +20,9 @@ import com.google.gson.Gson;
 import org.json.JSONObject;
 
 public class Perfil extends AppCompatActivity {
+    public static String  KEY_NAME = "KEY_NAME";
+    public static int REQUEST_NAME = 1;
+
     private String url = "https://unguled-flash.000webhostapp.com/Consultas/consultavideos.php";
     private ImageView fotoperfil;
     private TextView username, email, gustos, amigos, siguiendo;
@@ -37,15 +40,15 @@ public class Perfil extends AppCompatActivity {
 
     private void makeJsonVideo(String url){
 
-        Log.i("app","makeJsonVideo");
+        //Log.i("app","makeJsonVideo");
         JsonObjectRequest jsObjRequest = new JsonObjectRequest
                 (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        Log.i("app","makeJsonRequest: onResponse");
+                        //Log.i("app","makeJsonRequest: onResponse");
 
                         Gson gson = new Gson();
-                        Log.i("app","makeJsonRequest: onResponse - video video");
+                        //Log.i("app","makeJsonRequest: onResponse - video video");
 
                         ConsultaVideos c = gson.fromJson(response.toString(),ConsultaVideos.class);
                         Toast.makeText(getApplicationContext(),
@@ -114,7 +117,7 @@ public class Perfil extends AppCompatActivity {
                         else {
                             Toast.makeText(getApplicationContext(),
                                     response.toString(), Toast.LENGTH_LONG).show();
-                            Log.i("app","makeJsonRequest: onResponse - no vaaaaaaaaa");
+                            //Log.i("app","makeJsonRequest: onResponse - no vaaaaaaaaa");
 
                         }
                     }
@@ -122,7 +125,7 @@ public class Perfil extends AppCompatActivity {
 
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Log.i("app","makeJsonObj: onErrorResponse");
+                        //Log.i("app","makeJsonObj: onErrorResponse");
                     }
                 });
 
