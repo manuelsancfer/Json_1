@@ -24,6 +24,9 @@ public class Perfil extends AppCompatActivity {
     public static int REQUEST_NAME = 1;
 
     private String url = "https://unguled-flash.000webhostapp.com/Consultas/consultavideos.php";
+    private String url2 = "https://unguled-flash.000webhostapp.com/Consultas/consultaperfilpropio.php";
+    private String url3 = "https://unguled-flash.000webhostapp.com/Consultas/ConsultaSeguidoresU.php";
+    private String url4 = "https://unguled-flash.000webhostapp.com/Consultas/ConsultaAmigos.php";
     private ImageView fotoperfil;
     private TextView username, email, gustos, amigos, siguiendo;
     private VideoView favoritos;
@@ -34,7 +37,45 @@ public class Perfil extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.perfil_usuari);
         //makeJsonVideo(url);
+        
+        makeJsonUser(url2);
 
+        //makeJsonFollowers(url3);
+        //makeJsonFriends(url4);
+
+    }
+
+    private void makeJsonFriends(String url4) {
+    }
+
+    private void makeJsonFollowers(String url3) {
+    }
+
+    private void makeJsonUser(String url2) {
+        JsonObjectRequest jsObjRequest = new JsonObjectRequest(Request.Method.GET, url2, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Gson gson = new Gson();
+                Log.i("app","makeJsonRequest: onResponse - new Gson");
+                ConsultaUsers c = gson.fromJson(response.toString(),ConsultaUsers.class);
+
+                if(c.getSuccess()==1){
+                    Log.i("app","makeJsonRequest: onResponse - get Success");
+                    username.setText(c.getUsers().get(0).getName());
+                    Toast.makeText(getApplicationContext(),
+                            c.getUsers().get(0).getName().toString(), Toast.LENGTH_LONG).show();
+                }
+                else{
+                    Toast.makeText(getApplicationContext(),
+                                    response.toString(), Toast.LENGTH_LONG).show();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.i("app","makeJsonObj: onErrorResponse - no vaaa");
+            }
+        });
     }
 
 
@@ -45,17 +86,17 @@ public class Perfil extends AppCompatActivity {
                 (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        //Log.i("app","makeJsonRequest: onResponse");
+                        Log.i("app","makeJsonRequest: onResponse");
 
                         Gson gson = new Gson();
-                        //Log.i("app","makeJsonRequest: onResponse - video video");
+                        Log.i("app","makeJsonRequest: onResponse - video");
 
                         ConsultaVideos c = gson.fromJson(response.toString(),ConsultaVideos.class);
-                        Toast.makeText(getApplicationContext(),
-                                response.toString(), Toast.LENGTH_LONG).show();
+                        /*Toast.makeText(getApplicationContext(),
+                                response.toString(), Toast.LENGTH_LONG).show();*/
 
                         if(c.getSuccess()==1) {
-
+                            Log.i("app","makeJsonRequest: onResponse - getSuccess");
                             //LISTA DE 4 VIDEOS
 
                             favoritos = (VideoView) findViewById(R.id.vid0);
@@ -109,15 +150,16 @@ public class Perfil extends AppCompatActivity {
                             favoritos.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
                                 @Override
                                 public void onPrepared(MediaPlayer mp) {
+                                    Log.i("app","makeJsonRequest: onPrepared");
                                     mp.setLooping(true);
                                     favoritos.start();
                                 }
                             });
                         }
                         else {
-                            Toast.makeText(getApplicationContext(),
-                                    response.toString(), Toast.LENGTH_LONG).show();
-                            //Log.i("app","makeJsonRequest: onResponse - no vaaaaaaaaa");
+                            /*Toast.makeText(getApplicationContext(),
+                                    response.toString(), Toast.LENGTH_LONG).show();*/
+                            Log.i("app","makeJsonRequest: onResponse - no vaaaaaaaaa");
 
                         }
                     }
@@ -125,7 +167,7 @@ public class Perfil extends AppCompatActivity {
 
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        //Log.i("app","makeJsonObj: onErrorResponse");
+                        Log.i("app","makeJsonObj: onErrorResponse");
                     }
                 });
 

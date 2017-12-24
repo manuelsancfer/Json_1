@@ -18,7 +18,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Perfil"></activity>
+        <activity android:name=".Perfil" />
+        <activity android:name=".ConfigUsuario"></activity>
     </application>
 
 </manifest>

@@ -51,25 +51,19 @@ public class MainActivity extends AppCompatActivity {
 
         textView = (TextView)findViewById(R.id.editText);
 
-        //el boto serà el de la llista desplegable
-        /*button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //makeJsonRequest();
-                Perfil(view);
-            }
-        });*/
-
         makeJsonVideo("https://unguled-flash.000webhostapp.com/Consultas/consultavideos.php");
 
 
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
-// Create an ArrayAdapter using the string array and a default spinner layout
+
+        // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.desplegable,android.R.layout.simple_spinner_item);
-// Specify the layout to use when the list of choices appears
+
+        // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-// Apply the adapter to the spinner
+
+        // Apply the adapter to the spinner
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -87,10 +81,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void Seleccio(int pos) {
         if (pos == 1){
-            Perfil();
-
-            Toast.makeText(getApplicationContext(),
-                    "fhola", Toast.LENGTH_LONG).show();
+            //Perfil propio usuario
+            Intent intent = new Intent(this,Perfil.class);
+            startActivity(intent);
         }
 
         if(pos == 2){
@@ -107,13 +100,9 @@ public class MainActivity extends AppCompatActivity {
 
         if (pos == 5){
             //Configuración
+            Intent intent = new Intent(this,ConfigUsuario.class);
+            startActivity(intent);
         }
-    }
-
-
-    public void Perfil(){
-        Intent intent = new Intent(this,Perfil.class);
-        startActivity(intent);
     }
 
     public void consulta(View view) {
@@ -149,8 +138,8 @@ public class MainActivity extends AppCompatActivity {
                                     "funciona", Toast.LENGTH_LONG).show();
                         }
                         else {
-                            Toast.makeText(getApplicationContext(),
-                                    response.toString(), Toast.LENGTH_LONG).show();
+                            /*Toast.makeText(getApplicationContext(),
+                                    response.toString(), Toast.LENGTH_LONG).show();*/
 
                         }
                    }
@@ -350,11 +339,11 @@ public class MainActivity extends AppCompatActivity {
 
          //                   videoView.setVideoURI(v9);
                             videoView.setVideoURI(v9);
-                            MediaController controller = new MediaController(this);
+                            /*MediaController controller = new MediaController(this);
                             v9.setMediaController(controller);
                             player.requestFocus();
                             player.start();
-                            controller.show(10000);
+                            controller.show(10000);*/
 
 
 
@@ -367,8 +356,8 @@ public class MainActivity extends AppCompatActivity {
                            });
                         }
                         else {
-                            Toast.makeText(getApplicationContext(),
-                                    response.toString(), Toast.LENGTH_LONG).show();
+                            /*Toast.makeText(getApplicationContext(),
+                                    response.toString(), Toast.LENGTH_LONG).show();*/
                             Log.i("app","makeJsonRequest: onResponse - no vaaaaaaaaa");
 
                         }

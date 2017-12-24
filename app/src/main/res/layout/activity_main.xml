@@ -15,7 +15,7 @@
         android:layout_alignEnd="@+id/vid0_name"
         android:layout_alignParentTop="true"
         android:layout_alignRight="@+id/vid0_name"
-        android:background="@android:drawable/btn_default_small"
+        android:background="@android:drawable/btn_default"
         android:elevation="14dp"
         android:visibility="visible" />
 
@@ -59,27 +59,16 @@
         style="@android:style/Widget.Material.Button.Borderless.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="27dp"
-        android:layout_marginStart="27dp"
-        android:layout_marginTop="110dp"
-        android:fontFamily="monospace"
-        android:lineSpacingExtra="8sp"
+        android:layout_alignLeft="@+id/vid0_art"
+        android:layout_alignStart="@+id/vid0_art"
+        android:layout_below="@+id/vid0_art"
+        android:fontFamily="sans-serif-condensed"
         android:text="TOP VÍDEOS"
-        android:textColor="?android:attr/colorMultiSelectHighlight"
-        android:textSize="18sp"
-        android:textStyle="bold"
+        android:textAppearance="@android:style/TextAppearance.Material.Small"
+        android:textSize="30sp"
         tools:layout_editor_absoluteX="60dp"
-        tools:layout_editor_absoluteY="49dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignLeft="@+id/editText"
-        android:layout_alignStart="@+id/editText" />
-    <View
-        android:id="@+id/linia_amigos"
-        android:layout_marginLeft="65dp"
-        android:layout_height="3sp"
-        android:layout_width="280sp"
-        android:background="#f16c33"
-        android:layout_below="@+id/top_videos" />
+        tools:layout_editor_absoluteY="49dp" />
+
 
     <View
         android:id="@+id/rectangle"
@@ -94,26 +83,32 @@
         android:background="#f1f1f1" />
 
     <View
+        android:id="@+id/linia_topvideos"
+        android:layout_marginLeft="37dp"
+        android:layout_height="5sp"
+        android:layout_width="310sp"
+        android:background="#ce009688"
+        android:layout_below="@+id/top_videos" />
+    <View
         android:id="@+id/linia_vid"
-        android:layout_marginLeft="65dp"
-        android:layout_height="3sp"
-        android:layout_width="280sp"
-        android:background="#f16c33"
+        android:layout_marginLeft="37dp"
+        android:layout_height="5sp"
+        android:layout_width="310sp"
+        android:background="#ce009688"
         android:layout_below="@+id/videos" />
+
     <Button
         android:id="@+id/videos"
         style="@android:style/Widget.Material.Button.Borderless.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/top_videos"
-        android:layout_alignStart="@+id/top_videos"
+        android:layout_alignLeft="@+id/linia_vid"
+        android:layout_alignStart="@+id/linia_vid"
         android:layout_centerVertical="true"
-        android:fontFamily="monospace"
-        android:lineSpacingExtra="8sp"
+        android:fontFamily="sans-serif-condensed"
         android:text="VÍDEOS"
-        android:textColor="?android:attr/colorMultiSelectHighlight"
-        android:textSize="18sp"
-        android:textStyle="bold"
+        android:textAppearance="@android:style/TextAppearance.Material.Small"
+        android:textSize="30sp"
         tools:layout_editor_absoluteX="60dp"
         tools:layout_editor_absoluteY="231dp" />
 
@@ -168,8 +163,8 @@
         android:layout_alignRight="@+id/linia_vid"
         android:layout_alignEnd="@+id/linia_vid"
         android:layout_above="@+id/editText"
-        android:layout_alignLeft="@+id/editText"
-        android:layout_alignStart="@+id/editText"
+        android:layout_alignLeft="@+id/linia_vid"
+        android:layout_alignStart="@+id/linia_vid"
         android:id="@+id/horizontalScrollView">
 
         <LinearLayout
@@ -178,6 +173,7 @@
             android:layout_above="@+id/editText"
             android:orientation="horizontal"
             android:layout_below="@+id/linia_vid"
+            android:layout_marginTop="20dp"
             android:layout_alignRight="@+id/linia_vid"
             android:layout_alignEnd="@+id/linia_vid"
             android:layout_alignLeft="@+id/videos"
@@ -193,8 +189,8 @@
                 android:layout_alignEnd="@+id/mensajes"
                 android:layout_alignRight="@+id/mensajes"
                 android:layout_below="@+id/linia_top"
-                android:layout_toEndOf="@+id/top_videos"
-                android:layout_toRightOf="@+id/top_videos" />
+                android:layout_toEndOf="@+id/linia_vid"
+                android:layout_toRightOf="@+id/linia_vid" />
 
 
             <VideoView
@@ -245,12 +241,12 @@
                 android:layout_height="match_parent"
                 android:layout_marginLeft="22dp"
                 />
+
             <VideoView
                 android:id="@+id/vid9"
                 android:layout_width="124dp"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="22dp"
-                />
+                android:layout_marginLeft="22dp" />
 
         </LinearLayout>
 

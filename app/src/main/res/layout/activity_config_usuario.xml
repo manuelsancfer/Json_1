@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.manuelsanchezferna.json.ConfigUsuario">
+
+    <TextView
+        android:id="@+id/text_config"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/linia_config"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/linia_config"
+        android:layout_marginTop="26dp"
+        android:text="Configuración perfil"
+        android:textSize="19sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/text_foto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="29dp"
+        android:text="Foto perfill:"
+        android:textSize="16sp"
+        android:layout_below="@+id/linia_config"
+        android:layout_alignLeft="@+id/linia_config"
+        android:layout_alignStart="@+id/linia_config" />
+
+    <TextView
+        android:id="@+id/text_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="Username:"
+        android:textSize="16sp"
+        android:layout_below="@+id/text_foto"
+        android:layout_alignLeft="@+id/text_foto"
+        android:layout_alignStart="@+id/text_foto" />
+
+    <TextView
+        android:id="@+id/text_contrasenya"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/text_username"
+        android:layout_alignStart="@+id/text_username"
+        android:layout_below="@+id/text_username"
+        android:layout_marginTop="25dp"
+        android:text="Contrasenya:"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/text_mail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/text_contrasenya"
+        android:layout_alignStart="@+id/text_contrasenya"
+        android:layout_below="@+id/text_contrasenya"
+        android:layout_marginTop="27dp"
+        android:text="Email:"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/text_gustos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/text_mail"
+        android:layout_alignStart="@+id/text_mail"
+        android:layout_below="@+id/text_mail"
+        android:layout_marginTop="26dp"
+        android:text="Gustos musicales:"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/text_favoritos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/text_gustos"
+        android:layout_alignStart="@+id/text_gustos"
+        android:layout_below="@+id/text_gustos"
+        android:layout_marginTop="28dp"
+        android:text="Favoritos:"
+        android:textSize="16sp" />
+
+    <View
+        android:id="@+id/linia_config"
+        android:layout_height="5sp"
+        android:layout_width="300sp"
+        android:background="#ce009688"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="25dp"
+        android:layout_below="@id/text_config" />
+
+    <HorizontalScrollView
+        android:layout_width="350dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="17dp"
+        android:layout_below="@+id/text_favoritos"
+        android:layout_alignLeft="@+id/text_favoritos"
+        android:layout_alignStart="@+id/text_favoritos"
+        android:id="@+id/horizontalScrollView2">
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/editText"
+            android:orientation="horizontal"
+            android:layout_below="@+id/favoritos"
+            android:layout_alignRight="@+id/opciones"
+            android:layout_alignEnd="@+id/opciones"
+            android:layout_alignLeft="@+id/favoritos"
+            android:layout_alignStart="@+id/favoritos"
+            android:weightSum="1">
+
+            <VideoView
+                android:id="@+id/vid0"
+                android:layout_width="124dp"
+                android:layout_height="match_parent"
+                />
+
+
+            <VideoView
+                android:id="@+id/vid1"
+                android:layout_width="124dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="22dp"
+                />
+
+            <VideoView
+                android:id="@+id/vid2"
+                android:layout_width="124dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="22dp"
+                />
+            <VideoView
+                android:id="@+id/vid3"
+                android:layout_width="124dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="22dp"
+                />
+
+        </LinearLayout>
+
+
+    </HorizontalScrollView>
+
+    <ToggleButton
+        android:id="@+id/btn_public"
+        style="@style/Base.Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/horizontalScrollView2"
+        android:layout_alignStart="@+id/horizontalScrollView2"
+        android:layout_below="@+id/horizontalScrollView2"
+        android:layout_marginTop="30dp"
+        android:textAllCaps="false"
+        android:textOff="Privado"
+        android:textOn="Público" />
+
+    <Button
+        android:id="@+id/btn_subirfoto"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="80sp"
+        android:layout_height="35sp"
+        android:elevation="3dp"
+        android:text="Subir foto"
+        android:textAllCaps="false"
+        android:textSize="12sp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginStart="25dp"
+        android:layout_alignBaseline="@+id/text_foto"
+        android:layout_alignBottom="@+id/text_foto"
+        android:layout_toRightOf="@+id/text_contrasenya"
+        android:layout_toEndOf="@+id/text_contrasenya" />
+
+    <Button
+        android:id="@+id/btn_contrasenya"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="120sp"
+        android:layout_height="35sp"
+        android:elevation="3dp"
+        android:text="Cambiar contraseña"
+        android:textAllCaps="false"
+        android:textSize="10sp"
+        android:layout_alignBaseline="@+id/text_contrasenya"
+        android:layout_alignBottom="@+id/text_contrasenya"
+        android:layout_alignLeft="@+id/btn_subirfoto"
+        android:layout_alignStart="@+id/btn_subirfoto" />
+
+    <TextView
+        android:id="@+id/username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="140sp"
+        android:layout_alignTop="@+id/text_username"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="110sp"
+        android:layout_alignTop="@+id/text_mail"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/gustos_musicales"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="190sp"
+        android:layout_alignTop="@+id/text_gustos"
+        android:textSize="16sp" />
+</RelativeLayout>
