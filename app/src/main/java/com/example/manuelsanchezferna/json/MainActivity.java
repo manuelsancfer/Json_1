@@ -37,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
     private View linia_top;
     private View linia_vid;
     private ProgressBar progressBar;
-    private VideoView videoView;
     private MediaPlayer mediaPlayer;
 
     int videosid[] = {R.id.vid0, R.id.vid1, R.id.vid2, R.id.vid3, R.id.vid4, R.id.vid5, R.id.vid6,
@@ -45,6 +44,10 @@ public class MainActivity extends AppCompatActivity {
     int scoreid[] = {};
     int tituloid[] = {};
     int artistaid[] = {};
+
+
+        VideoView videoView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -182,8 +185,11 @@ public class MainActivity extends AppCompatActivity {
                             final Uri va = Uri.parse(c.getVideos().get(9).getUrl()); //Prueba!
 
                             for (int i=0; i<videosid.length;i++){
+
                                 videoView = (VideoView) findViewById(videosid[i]);  //Falta Videoview1,2...
                                 Uri v = Uri.parse(c.getVideos().get(i).getUrl());
+                                Log.i("app","makeJsonRequest: onResponse - queme");
+
 
 
 //                                TextView score = (TextView) findViewById(scoreid[i]);
@@ -200,7 +206,7 @@ public class MainActivity extends AppCompatActivity {
                                 //videoView.setVideoURI(v);
                             }
 
-
+                            //for (int i=0; i<videosid.length;i++){
                             videoView.setOnTouchListener(new View.OnTouchListener()
                             {
                                 @Override
@@ -233,15 +239,15 @@ public class MainActivity extends AppCompatActivity {
 
                                     }
 
-                                }});
+                                }});// }
 
 
 
                             //TODO conseguir que funcionen estas 4 lineas:
-                            MediaController mediaController = new MediaController(this);
-                            VideoView simpleVideoView = (VideoView) findViewById(R.id.vid9);
-                            simpleVideoView.setMediaController(mediaController);
-                            videoView.setVideoURI(va);
+//                            MediaController mediaController = new MediaController(this);
+//                            VideoView simpleVideoView = (VideoView) findViewById(R.id.vid9);
+//                            simpleVideoView.setMediaController(mediaController);
+//                            videoView.setVideoURI(va);
 
 
                             videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
