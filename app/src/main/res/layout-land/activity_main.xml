@@ -106,4 +106,12 @@
         android:layout_alignLeft="@+id/linia_vid"
         android:layout_alignStart="@+id/linia_vid" />
 
+    <SurfaceView
+        android:id="@+id/surfaceView"
+        android:layout_width="200dip"
+        android:layout_height="100dip"
+        android:layout_above="@+id/linia_vid"
+        android:layout_alignLeft="@+id/linia_vid"
+        android:layout_alignStart="@+id/linia_vid" />
+
 </RelativeLayout>
