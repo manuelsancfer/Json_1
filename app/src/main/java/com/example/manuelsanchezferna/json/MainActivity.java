@@ -167,7 +167,7 @@ public class MainActivity extends AppCompatActivity {
         Volley.newRequestQueue(this).add(jsObjRequest);
     }
 
-    private void makeJsonVideo(String url){
+    public void makeJsonVideo(String url){
 
         Log.i("app","makeJsonVideo");
         JsonObjectRequest jsObjRequest = new JsonObjectRequest

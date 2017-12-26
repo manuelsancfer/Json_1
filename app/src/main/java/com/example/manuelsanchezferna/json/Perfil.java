@@ -5,6 +5,8 @@ import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,6 +25,9 @@ public class Perfil extends AppCompatActivity {
     public static String  KEY_NAME = "KEY_NAME";
     public static int REQUEST_NAME = 1;
 
+    int videosid[] = {R.id.vid0, R.id.vid1, R.id.vid2, R.id.vid3, R.id.vid4, R.id.vid5, R.id.vid6,
+            R.id.vid7, R.id.vid8, R.id.vid9};  //rellenar
+
     private String url = "https://unguled-flash.000webhostapp.com/Consultas/consultavideos.php";
     private String url2 = "https://unguled-flash.000webhostapp.com/Consultas/consultaperfilpropio.php";
     private String url3 = "https://unguled-flash.000webhostapp.com/Consultas/ConsultaSeguidoresU.php";
@@ -31,6 +36,9 @@ public class Perfil extends AppCompatActivity {
     private TextView username, email, gustos, amigos, siguiendo;
     private VideoView favoritos;
     private int[] videos = {R.id.vid0, R.id.vid1, R.id.vid2, R.id.vid3};
+
+    VideoView videoView;
+    TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +50,9 @@ public class Perfil extends AppCompatActivity {
 
         //makeJsonFollowers(url3);
         //makeJsonFriends(url4);
+
+        makeJsonVideo("https://unguled-flash.000webhostapp.com/Consultas/consultavideos.php");
+
 
     }
 
@@ -79,9 +90,9 @@ public class Perfil extends AppCompatActivity {
     }
 
 
-    private void makeJsonVideo(String url){
+    public void makeJsonVideo(String url){
 
-        //Log.i("app","makeJsonVideo");
+        Log.i("app","makeJsonVideo");
         JsonObjectRequest jsObjRequest = new JsonObjectRequest
                 (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
                     @Override
@@ -89,72 +100,91 @@ public class Perfil extends AppCompatActivity {
                         Log.i("app","makeJsonRequest: onResponse");
 
                         Gson gson = new Gson();
-                        Log.i("app","makeJsonRequest: onResponse - video");
+                        Log.i("app","makeJsonRequest: onResponse - video video");
 
                         ConsultaVideos c = gson.fromJson(response.toString(),ConsultaVideos.class);
-                        /*Toast.makeText(getApplicationContext(),
-                                response.toString(), Toast.LENGTH_LONG).show();*/
 
                         if(c.getSuccess()==1) {
-                            Log.i("app","makeJsonRequest: onResponse - getSuccess");
-                            //LISTA DE 4 VIDEOS
+                            final Uri va = Uri.parse(c.getVideos().get(9).getUrl()); //Prueba!
 
-                            favoritos = (VideoView) findViewById(R.id.vid0);
-                            Uri v0 = Uri.parse(c.getVideos().get(0).getUrl());
-                            String score0 = Float.toString(
-                                    c.getVideos().get(0).getScore());
+                            for (int i=0; i<videosid.length;i++){
 
-                            /*TextView vid0_name = (TextView) findViewById(R.id.vid0_name);
-                            TextView vid0_art = (TextView) findViewById(R.id.vid0_art);
-
-                            vid0_name.setText(c.getVideos().get(0).getTittle());
-                            vid0_art.setText(c.getVideos().get(0).getName());*/
-
-                            favoritos.setVideoURI(v0);
+                                videoView = (VideoView) findViewById(videosid[i]);  //Falta Videoview1,2...
+                                Uri v = Uri.parse(c.getVideos().get(i).getUrl());
+                                Log.i("app","makeJsonRequest: onResponse - queme");
 
 
-                            favoritos = (VideoView) findViewById(R.id.vid1);
-                            Uri v1 = Uri.parse(c.getVideos().get(1).getUrl());
-                            String score1 = Float.toString(
-                                    c.getVideos().get(1).getScore());
 
-                            /*TextView vid1_name = (TextView) findViewById(R.id.vid1_name);
-                            TextView vid1_art = (TextView) findViewById(R.id.vid1_art);
+//                                TextView score = (TextView) findViewById(scoreid[i]);
+//                                String scoret = Float.toString(
+//                                        c.getVideos().get(i).getScore());
+//                                score.setText(scoret);   //Falta R.id...
 
-                            vid_name.setText(c.getVideos().get(1).getTittle());
-                            vid1_art.setText(c.getVideos().get(1).getName());*/
+                                //TextView vid0_name = (TextView) findViewById(tituloid[i]);Faltan R.id..
+                                //TextView vid0_art = (TextView) findViewById(artistaid[i]);Faltan R.id..
+
+                                //vid0_name.setText(c.getVideos().get(0).getTittle()); idem
+                                //vid0_art.setText(c.getVideos().get(0).getName());
+
+                                //videoView.setVideoURI(v);
+                            }
+
+                            //for (int i=0; i<videosid.length;i++){
+                            videoView.setOnTouchListener(new View.OnTouchListener()
+                            {
+                                @Override
+                                public boolean onTouch(View v, MotionEvent motionEvent)
+                                {
+                                    if (videoView.isPlaying())
+                                    {
+                                        Toast.makeText(getApplicationContext(),
+                                                "touch", Toast.LENGTH_LONG).show();
+                                        videoView.pause();
+//                    if (!getActivity().getActionBar().isShowing())
+//                    {
+//                        getActivity().getActionBar().show();
+//                        mMediaController.show(0);
+//                    }
+//                    position = mVideoView.getCurrentPosition();
+                                        return false;
+                                    }
+                                    else
+                                    { Toast.makeText(getApplicationContext(),
+                                            "touchi", Toast.LENGTH_LONG).show();
+//                    if (getActivity().getActionBar().isShowing())
+//                    {
+//                        getActivity().getActionBar().hide();
+//                        mMediaController.hide();
+//                    }
+//                    videoView.seekTo(position);
+                                        videoView.setVideoURI(va);  //prueba
+                                        return false;
+
+                                    }
+
+                                }});// }
 
 
-                            favoritos.setVideoURI(v1);
 
-                            favoritos = (VideoView) findViewById(R.id.vid2);
-                            Uri v2 = Uri.parse(c.getVideos().get(2).getUrl());
-                            String score2 = Float.toString(
-                                    c.getVideos().get(2).getScore());
-
-                            /*TextView vid2_name = (TextView) findViewById(R.id.vid2_name);
-                            TextView vid2_art = (TextView) findViewById(R.id.vid2_art);
-
-                            vid1_name.setText(c.getVideos().get(2).getTittle());
-                            vid1_art.setText(c.getVideos().get(2).getName());*/
-
-                            favoritos.setVideoURI(v2);
+                            //TODO conseguir que funcionen estas 4 lineas:
+//                            MediaController mediaController = new MediaController(this);
+//                            VideoView simpleVideoView = (VideoView) findViewById(R.id.vid9);
+//                            simpleVideoView.setMediaController(mediaController);
+//                            videoView.setVideoURI(va);
 
 
-                            favoritos = (VideoView) findViewById(R.id.vid3);
-                            Uri v3 = Uri.parse(c.getVideos().get(3).getUrl());
-                            String score3 = Float.toString(
-                                    c.getVideos().get(3).getScore());
-
-
-                            favoritos.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                            videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
                                 @Override
                                 public void onPrepared(MediaPlayer mp) {
-                                    Log.i("app","makeJsonRequest: onPrepared");
-                                    mp.setLooping(true);
-                                    favoritos.start();
+                                    videoView.start();
+                                    //videoView.stopPlayback();
                                 }
                             });
+
+
+
+
+
                         }
                         else {
                             /*Toast.makeText(getApplicationContext(),
@@ -167,7 +197,8 @@ public class Perfil extends AppCompatActivity {
 
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Log.i("app","makeJsonObj: onErrorResponse");
+                        textView.setText("Error: " + error.toString());
+                        Log.i("app","makeJsonObj: onErrorResponse List2");
                     }
                 });
 

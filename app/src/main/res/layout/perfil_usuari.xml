@@ -168,6 +168,44 @@
                 android:layout_height="match_parent"
                 android:layout_marginLeft="22dp"
                 />
+            <VideoView
+                android:id="@+id/vid4"
+                android:layout_width="124dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="22dp"
+                />
+
+            <VideoView
+                android:id="@+id/vid5"
+                android:layout_width="124dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="22dp"
+                />
+            <VideoView
+                android:id="@+id/vid6"
+                android:layout_width="124dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="22dp"
+                />
+            <VideoView
+                android:id="@+id/vid7"
+                android:layout_width="124dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="22dp"
+                />
+
+            <VideoView
+                android:id="@+id/vid8"
+                android:layout_width="124dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="22dp"
+                />
+            <VideoView
+                android:id="@+id/vid9"
+                android:layout_width="124dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="22dp"
+                />
 
         </LinearLayout>
 
