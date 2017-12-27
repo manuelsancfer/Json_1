@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
     int artistaid[] = {};
 
 
-        VideoView videoView;
+    VideoView[] videoView;
 
 
     @Override
@@ -117,55 +117,55 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void consulta(View view) {
-        makeJsonRequest("https://unguled-flash.000webhostapp.com/Consultas/consulta.php");
+        //makeJsonRequest("https://unguled-flash.000webhostapp.com/Consultas/consulta.php");
     }
 
     public void c_topvideo(View view){ //Consulta top videos
-        makeJsonRequest("https://unguled-flash.000webhostapp.com/Consultas/topvideos.php");
+        //makeJsonRequest("https://unguled-flash.000webhostapp.com/Consultas/topvideos.php");
     }
 
     public void c_canciones(View view){ //Consulta canciones
-        makeJsonRequest("https://unguled-flash.000webhostapp.com/Consultas/canciones.php");
+        //makeJsonRequest("https://unguled-flash.000webhostapp.com/Consultas/canciones.php");
     }
 
-    private void makeJsonRequest(String url) {
-        Log.i("app","makeJsonRequest");
-
-
-        JsonObjectRequest jsObjRequest = new JsonObjectRequest
-                (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        Log.i("app","makeJsonRequest: onResponse main");
-
-                        Gson gson = new Gson();
-                        Log.i("app","makeJsonRequest: onResponse - newGson");
-
-                        ConsultaUsers c = gson.fromJson(response.toString(),ConsultaUsers.class);
-
-                        if(c.getSuccess()==1) {
-                            textView.setText(c.getUsers().get(0).getName());
-                            Toast.makeText(getApplicationContext(),
-                                    "funciona", Toast.LENGTH_LONG).show();
-                        }
-                        else {
-                            /*Toast.makeText(getApplicationContext(),
-                                    response.toString(), Toast.LENGTH_LONG).show();*/
-
-                        }
-                   }
-                }, new Response.ErrorListener() {
-
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        textView.setText("Error: " + error.toString());
-                        Log.i("app","makeJsonObj: onErrorResponse List");
-                    }
-                });
-
-
-        Volley.newRequestQueue(this).add(jsObjRequest);
-    }
+//    private void makeJsonRequest(String url) {
+//        Log.i("app","makeJsonRequest");
+//
+//
+//        JsonObjectRequest jsObjRequest = new JsonObjectRequest
+//                (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+//                    @Override
+//                    public void onResponse(JSONObject response) {
+//                        Log.i("app","makeJsonRequest: onResponse main");
+//
+//                        Gson gson = new Gson();
+//                        Log.i("app","makeJsonRequest: onResponse - newGson");
+//
+//                        ConsultaUsers c = gson.fromJson(response.toString(),ConsultaUsers.class);
+//
+//                        if(c.getSuccess()==1) {
+//                            textView.setText(c.getUsers().get(0).getUser());
+//                            Toast.makeText(getApplicationContext(),
+//                                    "funciona", Toast.LENGTH_LONG).show();
+//                        }
+//                        else {
+//                            /*Toast.makeText(getApplicationContext(),
+//                                    response.toString(), Toast.LENGTH_LONG).show();*/
+//
+//                        }
+//                   }
+//                }, new Response.ErrorListener() {
+//
+//                    @Override
+//                    public void onErrorResponse(VolleyError error) {
+//                        textView.setText("Error: " + error.toString());
+//                        Log.i("app","makeJsonObj: onErrorResponse List");
+//                    }
+//                });
+//
+//
+//        Volley.newRequestQueue(this).add(jsObjRequest);
+//    }
 
     public void makeJsonVideo(String url){
 
@@ -183,10 +183,11 @@ public class MainActivity extends AppCompatActivity {
 
                         if(c.getSuccess()==1) {
                             final Uri va = Uri.parse(c.getVideos().get(9).getUrl()); //Prueba!
+                            videoView = new VideoView[10];
 
                             for (int i=0; i<videosid.length;i++){
 
-                                videoView = (VideoView) findViewById(videosid[i]);  //Falta Videoview1,2...
+                                videoView[i] = (VideoView) findViewById(videosid[i]);  //Falta Videoview1,2...
                                 Uri v = Uri.parse(c.getVideos().get(i).getUrl());
                                 Log.i("app","makeJsonRequest: onResponse - queme");
 
@@ -207,16 +208,16 @@ public class MainActivity extends AppCompatActivity {
                             }
 
                             //for (int i=0; i<videosid.length;i++){
-                            videoView.setOnTouchListener(new View.OnTouchListener()
+                            videoView[9].setOnTouchListener(new View.OnTouchListener()
                             {
                                 @Override
                                 public boolean onTouch(View v, MotionEvent motionEvent)
                                 {
-                                    if (videoView.isPlaying())
+                                    if (videoView[9].isPlaying())
                                     {
                                         Toast.makeText(getApplicationContext(),
                                                 "touch", Toast.LENGTH_LONG).show();
-                                        videoView.pause();
+                                        videoView[9].pause();
 //                    if (!getActivity().getActionBar().isShowing())
 //                    {
 //                        getActivity().getActionBar().show();
@@ -234,7 +235,7 @@ public class MainActivity extends AppCompatActivity {
 //                        mMediaController.hide();
 //                    }
 //                    videoView.seekTo(position);
-                                        videoView.setVideoURI(va);  //prueba
+                                        videoView[9].setVideoURI(va);  //prueba
                                         return false;
 
                                     }
@@ -250,12 +251,14 @@ public class MainActivity extends AppCompatActivity {
 //                            videoView.setVideoURI(va);
 
 
-                            videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                            videoView[9].setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
                                 @Override
                                 public void onPrepared(MediaPlayer mp) {
-                                    videoView.start();
+                                    videoView[9].start();
                                     //videoView.stopPlayback();
+
                                 }
+
                            });
 
 

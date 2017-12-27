@@ -25,17 +25,16 @@ public class Perfil extends AppCompatActivity {
     public static String  KEY_NAME = "KEY_NAME";
     public static int REQUEST_NAME = 1;
 
-    int videosid[] = {R.id.vid0, R.id.vid1, R.id.vid2, R.id.vid3, R.id.vid4, R.id.vid5, R.id.vid6,
-            R.id.vid7, R.id.vid8, R.id.vid9};  //rellenar
 
-    private String url = "https://unguled-flash.000webhostapp.com/Consultas/consultavideos.php";
+
+   /* private String url = "https://unguled-flash.000webhostapp.com/Consultas/consultavideos.php";
     private String url2 = "https://unguled-flash.000webhostapp.com/Consultas/consultaperfilpropio.php";
     private String url3 = "https://unguled-flash.000webhostapp.com/Consultas/ConsultaSeguidoresU.php";
-    private String url4 = "https://unguled-flash.000webhostapp.com/Consultas/ConsultaAmigos.php";
+    private String url4 = "https://unguled-flash.000webhostapp.com/Consultas/ConsultaAmigos.php";*/
     private ImageView fotoperfil;
-    private TextView username, email, gustos, amigos, siguiendo;
+    private TextView user, email, gustos, amigos, siguiendo;
     private VideoView favoritos;
-    private int[] videos = {R.id.vid0, R.id.vid1, R.id.vid2, R.id.vid3};
+    private int[] videosid = {R.id.vid0, R.id.vid1, R.id.vid2, R.id.vid3};
 
     VideoView videoView;
     TextView textView;
@@ -45,8 +44,14 @@ public class Perfil extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.perfil_usuari);
         //makeJsonVideo(url);
-        
-        makeJsonUser(url2);
+
+        user = (TextView) findViewById(R.id.usernamee);
+
+        String usuario = "cristina";
+        //makeJsonUser("https://unguled-flash.000webhostapp.com/Consultas/consultaperfilpropio.php?user=cristina");
+        makeJsonUser("https://unguled-flash.000webhostapp.com/Consultas/consultaperfilpropio.php?user=cristina");
+
+
 
         //makeJsonFollowers(url3);
         //makeJsonFriends(url4);
@@ -63,20 +68,28 @@ public class Perfil extends AppCompatActivity {
     }
 
     private void makeJsonUser(String url2) {
-        JsonObjectRequest jsObjRequest = new JsonObjectRequest(Request.Method.GET, url2, null, new Response.Listener<JSONObject>() {
+        Log.i("Perfil","makeJsonUser");
+
+        JsonObjectRequest jsObjRequest = new JsonObjectRequest
+                (Request.Method.GET, url2, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
+                Log.i("Perfil","onResponse");
+
                 Gson gson = new Gson();
-                Log.i("app","makeJsonRequest: onResponse - new Gson");
-                ConsultaUsers c = gson.fromJson(response.toString(),ConsultaUsers.class);
+
+                ConsultaUserPropi c = gson.fromJson(response.toString(),ConsultaUserPropi.class);
 
                 if(c.getSuccess()==1){
-                    Log.i("app","makeJsonRequest: onResponse - get Success");
-                    username.setText(c.getUsers().get(0).getName());
-                    Toast.makeText(getApplicationContext(),
-                            c.getUsers().get(0).getName().toString(), Toast.LENGTH_LONG).show();
+                    Log.i("Perfil","makeJsonRequest: onResponse - get Success");
+
+                    //TODO conseguir que funcione el settext de user
+                    // user.setText(c.getUsers().get(0).getUser());
+
+                    Log.i("Perfil","toaster");
                 }
                 else{
+                    Log.i("Perfil","makeJsonRequest: onResponse - NOT Success");
                     Toast.makeText(getApplicationContext(),
                                     response.toString(), Toast.LENGTH_LONG).show();
                 }
@@ -84,9 +97,12 @@ public class Perfil extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.i("app","makeJsonObj: onErrorResponse - no vaaa");
+                Log.i("Perfil","makeJsonObj: onErrorResponse - no funciona volley");
             }
         });
+
+        Volley.newRequestQueue(this).add(jsObjRequest);
+        Log.i("Perfil","volley");
     }
 
 
@@ -114,22 +130,7 @@ public class Perfil extends AppCompatActivity {
                                 Log.i("app","makeJsonRequest: onResponse - queme");
 
 
-
-//                                TextView score = (TextView) findViewById(scoreid[i]);
-//                                String scoret = Float.toString(
-//                                        c.getVideos().get(i).getScore());
-//                                score.setText(scoret);   //Falta R.id...
-
-                                //TextView vid0_name = (TextView) findViewById(tituloid[i]);Faltan R.id..
-                                //TextView vid0_art = (TextView) findViewById(artistaid[i]);Faltan R.id..
-
-                                //vid0_name.setText(c.getVideos().get(0).getTittle()); idem
-                                //vid0_art.setText(c.getVideos().get(0).getName());
-
-                                //videoView.setVideoURI(v);
                             }
-
-                            //for (int i=0; i<videosid.length;i++){
                             videoView.setOnTouchListener(new View.OnTouchListener()
                             {
                                 @Override
@@ -140,37 +141,19 @@ public class Perfil extends AppCompatActivity {
                                         Toast.makeText(getApplicationContext(),
                                                 "touch", Toast.LENGTH_LONG).show();
                                         videoView.pause();
-//                    if (!getActivity().getActionBar().isShowing())
-//                    {
-//                        getActivity().getActionBar().show();
-//                        mMediaController.show(0);
-//                    }
-//                    position = mVideoView.getCurrentPosition();
+
                                         return false;
                                     }
                                     else
                                     { Toast.makeText(getApplicationContext(),
                                             "touchi", Toast.LENGTH_LONG).show();
-//                    if (getActivity().getActionBar().isShowing())
-//                    {
-//                        getActivity().getActionBar().hide();
-//                        mMediaController.hide();
-//                    }
-//                    videoView.seekTo(position);
+
                                         videoView.setVideoURI(va);  //prueba
                                         return false;
 
                                     }
 
-                                }});// }
-
-
-
-                            //TODO conseguir que funcionen estas 4 lineas:
-//                            MediaController mediaController = new MediaController(this);
-//                            VideoView simpleVideoView = (VideoView) findViewById(R.id.vid9);
-//                            simpleVideoView.setMediaController(mediaController);
-//                            videoView.setVideoURI(va);
+                                }});
 
 
                             videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
@@ -180,9 +163,6 @@ public class Perfil extends AppCompatActivity {
                                     //videoView.stopPlayback();
                                 }
                             });
-
-
-
 
 
                         }
