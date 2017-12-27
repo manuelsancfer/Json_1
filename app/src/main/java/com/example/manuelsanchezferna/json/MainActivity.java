@@ -5,6 +5,9 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -32,15 +35,20 @@ import com.google.gson.stream.JsonReader;
 
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
     private TextView textView;
-    private View linia_top;
-    private View linia_vid;
     private ProgressBar progressBar;
     private MediaPlayer mediaPlayer;
 
-    int videosid[] = {R.id.vid0, R.id.vid1, R.id.vid2, R.id.vid3, R.id.vid4, R.id.vid5, R.id.vid6,
-            R.id.vid7, R.id.vid8, R.id.vid9};  //rellenar
+    private RecyclerView recyclerView;
+    private VideoInfoAdapter adapter;
+    private List<VideoInfo> videoList; //lo que li volem passar al RecyclerView
+    private String[] videosURLs = {"http://www.sample-videos.com/video/mp4/720/big_buck_bunny_720p_20mb.mp4","http://www.sample-videos.com/video/mp4/720/big_buck_bunny_720p_30mb.mp4"};
+
+    //int videosid[] = {R.id.vid0, R.id.vid1, R.id.vid2, R.id.vid3, R.id.vid4, R.id.vid5, R.id.vid6,R.id.vid7, R.id.vid8, R.id.vid9}; //rellenar
     int scoreid[] = {};
     int tituloid[] = {};
     int artistaid[] = {};
@@ -61,8 +69,14 @@ public class MainActivity extends AppCompatActivity {
 
         textView = (TextView)findViewById(R.id.editText);
 
-        makeJsonVideo("https://unguled-flash.000webhostapp.com/Consultas/consultavideos.php");
+        //makeJsonVideo("https://unguled-flash.000webhostapp.com/Consultas/consultavideos.php");
 
+        videosRecycler();
+
+        createSpinner();
+    }
+
+    private void createSpinner() {
 
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
 
@@ -86,9 +100,25 @@ public class MainActivity extends AppCompatActivity {
                 Log.i("app","onNothing");
             }
         });
+    }
 
+    private void videosRecycler() {
+        videoList = new ArrayList<VideoInfo>();
+        for (int i = 0; i < 10; i++) {
+            videoList.add(new VideoInfo("Video " + i + ": " + videosURLs[i%videosURLs.length],Uri.parse(videosURLs[i%videosURLs.length])));
+        }
+
+        recyclerView = (RecyclerView) findViewById(R.id.RecylerView);
+        adapter = new VideoInfoAdapter(this,videoList);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.HORIZONTAL,false);
+        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(adapter);
 
     }
+
+
+
 
     private void Seleccio(int pos) {
         if (pos == 1){
@@ -166,30 +196,30 @@ public class MainActivity extends AppCompatActivity {
 //
 //        Volley.newRequestQueue(this).add(jsObjRequest);
 //    }
+/*
+public void makeJsonVideo(String url){
 
-    public void makeJsonVideo(String url){
+    Log.i("app","makeJsonVideo");
+    JsonObjectRequest jsObjRequest = new JsonObjectRequest
+            (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    Log.i("app","makeJsonRequest: onResponse");
 
-        Log.i("app","makeJsonVideo");
-        JsonObjectRequest jsObjRequest = new JsonObjectRequest
-                (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        Log.i("app","makeJsonRequest: onResponse");
+                    Gson gson = new Gson();
+                    Log.i("app","makeJsonRequest: onResponse - video video");
 
-                        Gson gson = new Gson();
-                        Log.i("app","makeJsonRequest: onResponse - video video");
+                    ConsultaVideos c = gson.fromJson(response.toString(),ConsultaVideos.class);
 
-                        ConsultaVideos c = gson.fromJson(response.toString(),ConsultaVideos.class);
+                    if(c.getSuccess()==1) {
+                        final Uri va = Uri.parse(c.getVideos().get(9).getUrl()); //Prueba!
+                        videoView = new VideoView[10];
 
-                        if(c.getSuccess()==1) {
-                            final Uri va = Uri.parse(c.getVideos().get(9).getUrl()); //Prueba!
-                            videoView = new VideoView[10];
+                        for (int i=0; i<videosid.length;i++){
 
-                            for (int i=0; i<videosid.length;i++){
-
-                                videoView[i] = (VideoView) findViewById(videosid[i]);  //Falta Videoview1,2...
-                                Uri v = Uri.parse(c.getVideos().get(i).getUrl());
-                                Log.i("app","makeJsonRequest: onResponse - queme");
+                            videoView[i] = (VideoView) findViewById(videosid[i]);  //Falta Videoview1,2...
+                            Uri v = Uri.parse(c.getVideos().get(i).getUrl());
+                            Log.i("app","makeJsonRequest: onResponse - queme");
 
 
 
@@ -198,93 +228,99 @@ public class MainActivity extends AppCompatActivity {
 //                                        c.getVideos().get(i).getScore());
 //                                score.setText(scoret);   //Falta R.id...
 
-                                //TextView vid0_name = (TextView) findViewById(tituloid[i]);Faltan R.id..
-                                //TextView vid0_art = (TextView) findViewById(artistaid[i]);Faltan R.id..
+                            //TextView vid0_name = (TextView) findViewById(tituloid[i]);Faltan R.id..
+                            //TextView vid0_art = (TextView) findViewById(artistaid[i]);Faltan R.id..
 
-                                //vid0_name.setText(c.getVideos().get(0).getTittle()); idem
-                                //vid0_art.setText(c.getVideos().get(0).getName());
+                            //vid0_name.setText(c.getVideos().get(0).getTittle()); idem
+                            //vid0_art.setText(c.getVideos().get(0).getName());
 
-                                //videoView.setVideoURI(v);
-                            }
+                            //videoView.setVideoURI(v);
+                        }
 
-                            //for (int i=0; i<videosid.length;i++){
-                            videoView[9].setOnTouchListener(new View.OnTouchListener()
+                        //for (int i=0; i<videosid.length;i++){
+                        videoView[9].setOnTouchListener(new View.OnTouchListener()
+                        {
+                            @Override
+                            public boolean onTouch(View v, MotionEvent motionEvent)
                             {
-                                @Override
-                                public boolean onTouch(View v, MotionEvent motionEvent)
+                                if (videoView[9].isPlaying())
                                 {
-                                    if (videoView[9].isPlaying())
-                                    {
-                                        Toast.makeText(getApplicationContext(),
-                                                "touch", Toast.LENGTH_LONG).show();
-                                        videoView[9].pause();
+                                    Toast.makeText(getApplicationContext(),
+                                            "touch", Toast.LENGTH_LONG).show();
+                                    videoView[9].pause();
 //                    if (!getActivity().getActionBar().isShowing())
 //                    {
 //                        getActivity().getActionBar().show();
 //                        mMediaController.show(0);
 //                    }
 //                    position = mVideoView.getCurrentPosition();
-                                        return false;
-                                    }
-                                    else
-                                    { Toast.makeText(getApplicationContext(),
-                                            "touchi", Toast.LENGTH_LONG).show();
+                                    return false;
+                                }
+                                else
+                                { Toast.makeText(getApplicationContext(),
+                                        "touchi", Toast.LENGTH_LONG).show();
 //                    if (getActivity().getActionBar().isShowing())
 //                    {
 //                        getActivity().getActionBar().hide();
 //                        mMediaController.hide();
 //                    }
 //                    videoView.seekTo(position);
-                                        videoView[9].setVideoURI(va);  //prueba
-                                        return false;
+                                    videoView[9].setVideoURI(va);  //prueba
+                                    return false;
 
-                                    }
+                                }
 
-                                }});// }
+                            }});// }
 
 
 
-                            //TODO conseguir que funcionen estas 4 lineas:
+                        //TODO conseguir que funcionen estas 4 lineas:
 //                            MediaController mediaController = new MediaController(this);
 //                            VideoView simpleVideoView = (VideoView) findViewById(R.id.vid9);
 //                            simpleVideoView.setMediaController(mediaController);
 //                            videoView.setVideoURI(va);
 
 
-                            videoView[9].setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-                                @Override
-                                public void onPrepared(MediaPlayer mp) {
-                                    videoView[9].start();
-                                    //videoView.stopPlayback();
+                        videoView[9].setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                            @Override
+                            public void onPrepared(MediaPlayer mp) {
+                                videoView[9].start();
+                                //videoView.stopPlayback();
 
-                                }
+                            }
 
-                           });
-
-
+                        });
 
 
 
-                        }
-                        else {
-                            /*Toast.makeText(getApplicationContext(),
-                                    response.toString(), Toast.LENGTH_LONG).show();*/
-                            Log.i("app","makeJsonRequest: onResponse - no vaaaaaaaaa");
 
-                        }
+
                     }
-                }, new Response.ErrorListener() {
+                    else {
+                            */
+/*Toast.makeText(getApplicationContext(),
+                                    response.toString(), Toast.LENGTH_LONG).show();*//*
 
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        textView.setText("Error: " + error.toString());
-                        Log.i("app","makeJsonObj: onErrorResponse List2");
+                        Log.i("app","makeJsonRequest: onResponse - no vaaaaaaaaa");
+
                     }
-                });
+                }
+            }, new Response.ErrorListener() {
 
-        Volley.newRequestQueue(this).add(jsObjRequest);
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    textView.setText("Error: " + error.toString());
+                    Log.i("app","makeJsonObj: onErrorResponse List2");
+                }
+            });
 
-    }
+    Volley.newRequestQueue(this).add(jsObjRequest);
+
+}
+*/
+
+
+
 
 
 
