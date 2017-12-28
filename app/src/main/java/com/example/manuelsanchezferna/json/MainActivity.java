@@ -18,23 +18,16 @@ import android.widget.MediaController;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
-
 import android.widget.Toast;
 import android.widget.VideoView;
-
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
-
 import com.android.volley.toolbox.Volley;
 import com.google.gson.stream.JsonReader;
-
-
-
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
     int scoreid[] = {};
     int tituloid[] = {};
     int artistaid[] = {};
-
 
     VideoView[] videoView;
 
@@ -107,7 +99,9 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < 10; i++) {
             videoList.add(new VideoInfo("Video " + i + ": " + videosURLs[i%videosURLs.length],Uri.parse(videosURLs[i%videosURLs.length])));
         }
+        Toast.makeText(getApplicationContext(), "Video " + 1 + ": " + videosURLs[1%videosURLs.length].toString(), Toast.LENGTH_LONG).show();
 
+ 
         recyclerView = (RecyclerView) findViewById(R.id.RecylerView);
         adapter = new VideoInfoAdapter(this,videoList);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.HORIZONTAL,false);
@@ -116,9 +110,6 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
     }
-
-
-
 
     private void Seleccio(int pos) {
         if (pos == 1){

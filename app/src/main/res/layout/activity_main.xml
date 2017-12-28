@@ -13,7 +13,7 @@
         android:layout_below="@+id/linia_vid"
         android:layout_marginTop="10dp"
         android:layout_alignLeft="@+id/linia_vid"
-        android:layout_alignRight="@+id/linia_vid"/>
+        android:layout_alignRight="@+id/linia_vid" />
 
     <Spinner
         android:id="@+id/spinner"
@@ -33,35 +33,10 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.835"
-        android:layout_alignBaseline="@+id/button"
-        android:layout_alignBottom="@+id/button"
-        android:layout_toLeftOf="@+id/button"
-        android:layout_toStartOf="@+id/button"
-        android:layout_marginRight="16dp"
-        android:layout_marginEnd="16dp" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="consulta"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.965"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="15dp"
-        android:layout_marginEnd="15dp" />
+        android:layout_centerHorizontal="true" />
+
+
 
     <Button
         android:id="@+id/top_videos"
@@ -126,23 +101,19 @@
         style="@android:style/Widget.Holo.Light.ImageButton"
         android:layout_width="37sp"
         android:layout_height="40sp"
-        android:layout_marginEnd="11dp"
-        android:layout_marginRight="11dp"
-        android:elevation="0dp"
+        android:layout_marginLeft="260dp"
+        android:layout_marginRight="30dp"
         android:tint="@android:color/white"
         app:srcCompat="@android:drawable/ic_menu_search"
-        android:layout_alignParentTop="true"
-        android:layout_toLeftOf="@+id/mensajes"
-        android:layout_toStartOf="@+id/mensajes" />
+        android:layout_alignParentTop="true" />
 
     <ImageButton
         android:id="@+id/mensajes"
         style="@android:style/Widget.Holo.Light.ImageButton"
+        android:layout_marginLeft="310dp"
+        android:layout_marginRight="30dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/rectangle"
-        android:layout_toEndOf="@+id/button"
-        android:layout_toRightOf="@+id/button"
         android:tint="@android:color/background_light"
         app:srcCompat="@android:drawable/stat_notify_chat" />
 

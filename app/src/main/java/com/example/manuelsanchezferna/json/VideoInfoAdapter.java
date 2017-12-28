@@ -1,7 +1,7 @@
 package com.example.manuelsanchezferna.json;
 
 import android.content.Context;
-import android.media.session.MediaController;
+import android.widget.MediaController;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -39,7 +39,7 @@ class VideoInfoAdapter extends RecyclerView.Adapter<VideoInfoAdapter.ViewHolder>
         try {
             // Start the MediaController
             MediaController mediacontroller = new MediaController(context);
-            //mediacontroller.setAnchorView(holder.videoview);
+            mediacontroller.setAnchorView(holder.videoview);
             holder.videoview.setMediaController(mediacontroller);
             holder.videoview.setVideoURI(videoInfoList.get(position).getVideoUri());
 
