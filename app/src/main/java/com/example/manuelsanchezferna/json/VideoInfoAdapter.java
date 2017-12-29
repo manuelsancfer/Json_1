@@ -67,4 +67,6 @@ class VideoInfoAdapter extends RecyclerView.Adapter<VideoInfoAdapter.ViewHolder>
         }
     }
 
+
+
 }

@@ -1,5 +1,6 @@
 package com.example.manuelsanchezferna.json;
 
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
@@ -7,7 +8,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
@@ -38,6 +42,7 @@ public class Perfil extends AppCompatActivity {
 
     VideoView videoView;
     TextView textView;
+    int count = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +62,8 @@ public class Perfil extends AppCompatActivity {
         //makeJsonFriends(url4);
 
         makeJsonVideo("https://unguled-flash.000webhostapp.com/Consultas/consultavideos.php");
+
+        createSpinner();
 
 
     }
@@ -187,6 +194,64 @@ public class Perfil extends AppCompatActivity {
     }
 
 
+    private void createSpinner() {
+
+        Spinner spinner = (Spinner) findViewById(R.id.spinner);
+
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.desplegable,android.R.layout.simple_spinner_item);
+
+        // Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        // Apply the adapter to the spinner
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                Seleccio(i);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                Log.i("app","onNothing");
+            }
+        });
+    }
+
+    private void Seleccio(int pos) {
+
+        if (pos == 0){
+
+            count++;
+            if (count == 2) {
+                Intent intent = new Intent(this,MainActivity.class);
+                startActivity(intent);
+                count = 0;
+            }
+
+        }
+
+
+        if(pos == 2){
+            //Lista rep
+        }
+
+        if(pos == 3){
+            //Categorías
+        }
+
+        if (pos == 4){
+            //Agenda
+        }
+
+        if (pos == 5){
+            //Configuración
+            Intent intent = new Intent(this,ConfigUsuario.class);
+            startActivity(intent);
+        }
+    }
 }
 
 
