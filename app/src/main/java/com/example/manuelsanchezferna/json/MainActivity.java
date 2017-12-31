@@ -101,8 +101,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
-
     private void videosRecyclerVid(String url) {
 
 
@@ -113,7 +111,6 @@ public class MainActivity extends AppCompatActivity {
                         Gson gson = new Gson();
 
                         ConsultaVideos c = gson.fromJson(response.toString(),ConsultaVideos.class);
-
 
                         if(c.getSuccess()==1) {
 
@@ -204,8 +201,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void Seleccio(int pos) {
 
-
-
         if (pos == 1){
             //Perfil propio usuario
             Intent intent = new Intent(this,Perfil.class);
@@ -242,7 +237,6 @@ public class MainActivity extends AppCompatActivity {
     public void c_canciones(View view){ //Consulta canciones
         //makeJsonRequest("https://unguled-flash.000webhostapp.com/Consultas/canciones.php");
     }
-
 
 
     private void makeJsonRequest(String url) {
@@ -283,16 +277,6 @@ public class MainActivity extends AppCompatActivity {
 
         Volley.newRequestQueue(this).add(jsObjRequest);
     }
-
-
-
-
-
-
-
-
-
-
 
 
 

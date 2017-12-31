@@ -16,6 +16,24 @@ public class User {
     private int f3;
     private int f4;
 
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "user='" + user + '\'' +
+                ", gustos_musicales='" + gustos_musicales + '\'' +
+                ", publico=" + publico +
+                ", email='" + email + '\'' +
+                ", foto_perfil='" + foto_perfil + '\'' +
+                ", f1=" + f1 +
+                ", f2=" + f2 +
+                ", f3=" + f3 +
+                ", f4=" + f4 +
+                '}';
+    }
+
+
+
     public String getUser() {
         return user;
     }
@@ -90,20 +108,6 @@ public class User {
 
 
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "user='" + user + '\'' +
-                ", gustos_musicales='" + gustos_musicales + '\'' +
-                ", publico=" + publico +
-                ", email='" + email + '\'' +
-                ", foto_perfil='" + foto_perfil + '\'' +
-                ", f1=" + f1 +
-                ", f2=" + f2 +
-                ", f3=" + f3 +
-                ", f4=" + f4 +
-                '}';
-    }
 
 
 
