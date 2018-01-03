@@ -28,12 +28,10 @@
 
     <Spinner
         android:id="@+id/spinner"
-        android:layout_width="90dp"
+        android:layout_width="130dp"
         android:layout_height="40dp"
         android:layout_alignBottom="@+id/rectangle"
-        android:layout_alignEnd="@+id/vid0_name"
         android:layout_alignParentTop="true"
-        android:layout_alignRight="@+id/vid0_name"
         android:background="@android:drawable/btn_default"
         android:elevation="14dp"
         android:visibility="visible" />
@@ -131,21 +129,7 @@
         android:tint="@android:color/background_light"
         app:srcCompat="@android:drawable/stat_notify_chat" />
 
-    <TextView
-        android:id="@+id/vid0_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:layout_above="@+id/vid0_art"
- />
 
-    <TextView
-        android:id="@+id/vid0_art"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:layout_above="@+id/linia_amigos"
-        android:layout_marginBottom="50dp" />
 
 
 

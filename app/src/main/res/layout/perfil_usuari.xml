@@ -4,21 +4,7 @@
     android:layout_width="match_parent" android:layout_height="match_parent">
 
 
-    <!--eliminar -->
-    <ImageView
-        android:id="@+id/imatge_perfil"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="49dp"
-        android:layout_marginStart="49dp"
-        android:layout_marginTop="84dp"
-        android:adjustViewBounds="false"
-        android:scaleType="centerInside"
-        android:theme="@style/Base.AlertDialog.AppCompat.Light"
-        app:srcCompat="@android:color/background_dark" />
+
 
     <ImageView
         android:id="@+id/imagen_perfil"
@@ -35,11 +21,10 @@
 
     <Spinner
         android:id="@+id/spinner"
-        android:layout_width="58dp"
+        android:layout_width="130dp"
         android:layout_height="40dp"
         android:layout_alignParentTop="true"
         android:background="@android:drawable/btn_default"
-        android:elevation="14dp"
         android:visibility="visible"
  />
 
@@ -101,15 +86,11 @@
         android:id="@+id/amigos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/linia_amigos2"
-        android:layout_marginBottom="21dp"
-        android:layout_marginLeft="17dp"
-        android:layout_marginStart="17dp"
-        android:layout_toEndOf="@+id/imatge_perfil"
-        android:layout_toRightOf="@+id/imagen_perfil"
         android:text="AMIGOS"
         android:textSize="18sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_marginTop="223dp"
+        android:layout_marginLeft="60dp" />
 
     <TextView
         android:id="@+id/siguiendo"
@@ -118,10 +99,9 @@
         android:text="SIGUIENDO"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:layout_alignBaseline="@+id/amigos"
-        android:layout_alignBottom="@+id/amigos"
-        android:layout_toRightOf="@+id/usernamee"
-        android:layout_toEndOf="@+id/usernamee" />
+        android:layout_marginTop="223dp"
+        android:layout_marginLeft="215dp"
+  />
 
     <TextView
         android:id="@+id/favoritos"
