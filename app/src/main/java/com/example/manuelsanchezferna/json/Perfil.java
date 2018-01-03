@@ -1,12 +1,18 @@
 package com.example.manuelsanchezferna.json;
 
+import android.app.DownloadManager;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.Environment;
+import android.provider.MediaStore;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
@@ -21,25 +27,30 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
+import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.Hashtable;
+import java.util.Map;
+
 public class Perfil extends AppCompatActivity {
     public static String  KEY_NAME = "KEY_NAME";
     public static int REQUEST_NAME = 1;
 
-
-
-   /* private String url = "https://unguled-flash.000webhostapp.com/Consultas/consultavideos.php";
-    private String url2 = "https://unguled-flash.000webhostapp.com/Consultas/consultaperfilpropio.php";
-    private String url3 = "https://unguled-flash.000webhostapp.com/Consultas/ConsultaSeguidoresU.php";
-    private String url4 = "https://unguled-flash.000webhostapp.com/Consultas/ConsultaAmigos.php";*/
     private ImageView fotoperfil;
     private TextView user, email, gustos, amigos, siguiendo;
     private VideoView favoritos;
@@ -48,6 +59,7 @@ public class Perfil extends AppCompatActivity {
     VideoView videoView;
     TextView textView;
     int count = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,13 +75,10 @@ public class Perfil extends AppCompatActivity {
         String usuario = "cristina";
         makeJsonUser("https://unguled-flash.000webhostapp.com/Consultas/consultaperfilpropio.php?user="+usuario);
 
-
         //makeJsonFollowers(url3);
         //makeJsonFriends(url4);
 
         createSpinner();
-
-
     }
 
     private void makeJsonFriends(String url4) {
@@ -99,14 +108,17 @@ public class Perfil extends AppCompatActivity {
                     email.setText(c.getUsers().get(0).getEmail());
                     gustos.setText(c.getUsers().get(0).getGustos_musicales());
 
-
                     //TODO conseguir ver la imagen
 
-                    byte[] decodedString = Base64.decode(c.getUsers().get(0).getFoto_perfil(), Base64.DEFAULT);
+
+                    fotoperfil.setImageBitmap(c.getUsers().get(0).getFoto_perfil());
+
+                    /*byte[] decodedString = Base64.decode(c.getUsers().get(0).getFoto_perfil(), Base64.DEFAULT);
                     Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
 
+                    fotoperfil.setImageBitmap(decodedByte);*/
 
-                    fotoperfil.setImageBitmap(decodedByte);
+
 
 
                     makeJsonVideo(c.getUsers().get(0).getF1(), c.getUsers().get(0).getF2(),
@@ -130,7 +142,6 @@ public class Perfil extends AppCompatActivity {
         Volley.newRequestQueue(this).add(jsObjRequest);
         Log.i("Perfil","volley");
     }
-
 
     public void makeJsonVideo(int f1, int f2, int f3, int f4){
         //Toast.makeText(getApplicationContext(),

@@ -1,5 +1,9 @@
 package com.example.manuelsanchezferna.json;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
+
 /**
  * Created by manuel.sanchez.ferna on 01/12/2017.
  */
@@ -10,7 +14,8 @@ public class User {
     private String gustos_musicales;
     private boolean publico;
     private String email;
-    private String foto_perfil;
+    private String dato;
+    private Bitmap foto_perfil;
     private int f1;
     private int f2;
     private int f3;
@@ -25,6 +30,7 @@ public class User {
                 ", publico=" + publico +
                 ", email='" + email + '\'' +
                 ", foto_perfil='" + foto_perfil + '\'' +
+                ", dato='" + dato + '\'' +
                 ", f1=" + f1 +
                 ", f2=" + f2 +
                 ", f3=" + f3 +
@@ -66,13 +72,23 @@ public class User {
         this.email = email;
     }
 
-    public String getFoto_perfil() {
+    public String getDato() {return dato;}
+
+    public void setDato(String dato) {
+        this.dato = dato;
+        try{
+            byte[] byteCode = Base64.decode(dato,Base64.DEFAULT);
+            this.foto_perfil = BitmapFactory.decodeByteArray(byteCode,0,byteCode.length);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public Bitmap getFoto_perfil() {
         return foto_perfil;
     }
 
-    public void setFoto_perfil(String foto_perfil) {
-        this.foto_perfil = foto_perfil;
-    }
+    public void setFoto_perfil(Bitmap foto_perfil) {this.foto_perfil = foto_perfil;}
 
     public int getF1() {
         return f1;

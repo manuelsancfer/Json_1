@@ -28,6 +28,7 @@
         android:scaleType="centerInside"
         android:theme="@style/Base.AlertDialog.AppCompat.Light"
         app:srcCompat="@android:color/background_dark"
+        android:layout_marginTop="16dp"
         android:layout_below="@+id/spinner"
         android:layout_alignLeft="@+id/favoritos"
         android:layout_alignStart="@+id/favoritos" />
@@ -49,11 +50,12 @@
         android:text="Username"
         android:textSize="16sp"
         android:textStyle="bold|italic"
-        android:layout_marginLeft="40dp"
-        android:layout_marginStart="40dp"
-        android:layout_below="@+id/imagen_perfil"
-        android:layout_toRightOf="@+id/amigos"
-        android:layout_toEndOf="@+id/amigos" />
+        android:layout_marginLeft="67dp"
+        android:layout_marginStart="67dp"
+        android:layout_marginTop="11dp"
+        android:layout_alignTop="@+id/imagen_perfil"
+        android:layout_toRightOf="@+id/imagen_perfil"
+        android:layout_toEndOf="@+id/imagen_perfil" />
 
     <TextView
         android:id="@+id/email"
