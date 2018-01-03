@@ -145,9 +145,9 @@ public class Perfil extends AppCompatActivity {
         Log.i("Perfil","volley");
     }
 
-    public void makeJsonVideo(int f1, int f2, int f3, int f4){
-        //Toast.makeText(getApplicationContext(),
-          //      f1, Toast.LENGTH_LONG).show();
+    public void makeJsonVideo(String f1, String f2, String f3, String f4){
+        Toast.makeText(getApplicationContext(),
+                f1, Toast.LENGTH_LONG).show();
 
     }
 

@@ -10,32 +10,16 @@ import android.util.Base64;
 
 public class User {
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "user='" + user + '\'' +
-                ", gustos_musicales='" + gustos_musicales + '\'' +
-                ", publico=" + publico +
-                ", email='" + email + '\'' +
-                ", dato='" + dato + '\'' +
-                ", foto_perfil='" + foto_perfil + '\'' +
-                ", f1=" + f1 +
-                ", f2=" + f2 +
-                ", f3=" + f3 +
-                ", f4=" + f4 +
-                '}';
-    }
-
     private String user;
     private String gustos_musicales;
     private boolean publico;
     private String email;
     private String dato;
     private String foto_perfil;
-    private int f1;
-    private int f2;
-    private int f3;
-    private int f4;
+    private String f1;
+    private String f2;
+    private String f3;
+    private String f4;
 
     public String getUser() {
         return user;
@@ -85,39 +69,54 @@ public class User {
         this.foto_perfil = foto_perfil;
     }
 
-    public int getF1() {
+    public String getF1() {
         return f1;
     }
 
-    public void setF1(int f1) {
+    public void setF1(String f1) {
         this.f1 = f1;
     }
 
-    public int getF2() {
+    public String getF2() {
         return f2;
     }
 
-    public void setF2(int f2) {
+    public void setF2(String f2) {
         this.f2 = f2;
     }
 
-    public int getF3() {
+    public String getF3() {
         return f3;
     }
 
-    public void setF3(int f3) {
+    public void setF3(String f3) {
         this.f3 = f3;
     }
 
-    public int getF4() {
+    public String getF4() {
         return f4;
     }
 
-    public void setF4(int f4) {
+    public void setF4(String f4) {
         this.f4 = f4;
     }
 
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "user='" + user + '\'' +
+                ", gustos_musicales='" + gustos_musicales + '\'' +
+                ", publico=" + publico +
+                ", email='" + email + '\'' +
+                ", dato='" + dato + '\'' +
+                ", foto_perfil='" + foto_perfil + '\'' +
+                ", f1='" + f1 + '\'' +
+                ", f2='" + f2 + '\'' +
+                ", f3='" + f3 + '\'' +
+                ", f4='" + f4 + '\'' +
+                '}';
+    }
 
 
 }
