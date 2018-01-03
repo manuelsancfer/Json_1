@@ -35,6 +35,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.ImageRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
@@ -120,12 +121,7 @@ public class Perfil extends AppCompatActivity {
 
                     //TODO conseguir ver la imagen
 
-                    byte[] decodedString = Base64.decode(c.getUsers().get(0).getFoto_perfil(), Base64.DEFAULT);
-                    Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
-
-
-                    fotoperfil.setImageBitmap(decodedByte);
-
+                    makeImageRequest(c.getUsers().get(0).getFoto_perfil());
 
                     makeJsonVideo(c.getUsers().get(0).getF1(), c.getUsers().get(0).getF2(),
                             c.getUsers().get(0).getF3(), c.getUsers().get(0).getF4());
@@ -213,6 +209,46 @@ public class Perfil extends AppCompatActivity {
             Intent intent = new Intent(this,ConfigUsuario.class);
             startActivity(intent);
         }
+    }
+
+    private ProgressDialog pDialogImage; // Lo tenéis que declarar como atributo de la clase
+
+
+    private void makeImageRequest(String url2) {
+        pDialogImage = new ProgressDialog(this);
+        pDialogImage.setMessage("Loading...");
+        pDialogImage.show();
+        String url = "https://unguled-flash.000webhostapp.com//images//cristina.jpg";
+
+        final ImageRequest imageReq = new ImageRequest(url,
+                new Response.Listener<Bitmap>() {
+                    @Override
+                    public void onResponse(Bitmap response) {
+                        //fotoperfil.setImageResource(response);
+
+                        Toast.makeText(getApplicationContext(),
+                                response.toString(), Toast.LENGTH_LONG).show();
+
+                        Log.i("Perfil","errorisimo "+response);
+
+
+                        pDialogImage.hide();
+                    }
+                },
+                0,0,
+                Bitmap.Config.RGB_565,
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.i("Perfil","Error imagen imagen");
+                        //imageView.setImageResource(R.mipmap.ic_launcher);
+                        fotoperfil.setImageResource(R.mipmap.ic_launcher);
+                        pDialogImage.hide();
+                    }
+                }
+        );
+        Volley.newRequestQueue(this).add(imageReq);
+        Log.i("Perfil","Error imagen imagen bien");
     }
 }
 
