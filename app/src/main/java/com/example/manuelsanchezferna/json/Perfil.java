@@ -214,11 +214,10 @@ public class Perfil extends AppCompatActivity {
     private ProgressDialog pDialogImage; // Lo tenéis que declarar como atributo de la clase
 
 
-    private void makeImageRequest(String url2) {
+    private void makeImageRequest(String url) {
         pDialogImage = new ProgressDialog(this);
         pDialogImage.setMessage("Loading...");
         pDialogImage.show();
-        String url = "https://unguled-flash.000webhostapp.com//images//cristina.jpg";
 
         final ImageRequest imageReq = new ImageRequest(url,
                 new Response.Listener<Bitmap>() {
