@@ -99,7 +99,6 @@ public class Perfil extends AppCompatActivity {
                             c.getUsers().get(0).getF3(), c.getUsers().get(0).getF4());
 
 
-                    Log.i("Perfil","toaster");
                 }
                 else{
                     Log.i("Perfil","makeJsonRequest: onResponse - NOT Success");
@@ -120,8 +119,8 @@ public class Perfil extends AppCompatActivity {
 
 
     public void makeJsonVideo(int f1, int f2, int f3, int f4){
-        Toast.makeText(getApplicationContext(),
-                f1, Toast.LENGTH_LONG).show();
+        //Toast.makeText(getApplicationContext(),
+          //      f1, Toast.LENGTH_LONG).show();
 
     }
 
