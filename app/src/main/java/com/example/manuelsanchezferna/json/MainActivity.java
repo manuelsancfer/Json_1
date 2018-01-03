@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private MediaPlayer mediaPlayer;
 
     private RecyclerView recyclerViewVid, recyclerViewTop;
-    private VideoInfoAdapter adapter, adapter2;
+    private VideoInfoAdapter adapter1, adapter2;
     private List<VideoInfo> videoList = new ArrayList<VideoInfo>();; //lo que li volem passar al RecyclerView
     private List<VideoInfo> videoList2 = new ArrayList<VideoInfo>();; //lo que li volem passar al RecyclerView
 
@@ -68,10 +68,97 @@ public class MainActivity extends AppCompatActivity {
 
         videosRecyclerVid("https://unguled-flash.000webhostapp.com/Consultas/consultavideos.php");
         videosRecyclerTop("https://unguled-flash.000webhostapp.com/Consultas/topvideos.php");
-
+        Toast.makeText(this,"HEEEELLOOOOOOOO", Toast.LENGTH_LONG).show();
 
 
         createSpinner();
+    }
+
+    private void videosRecyclerVid(String url) {
+
+        JsonObjectRequest jsObjRequest = new JsonObjectRequest
+                (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Gson gson = new Gson();
+
+                        ConsultaVideos c = gson.fromJson(response.toString(),ConsultaVideos.class);
+
+                        if(c.getSuccess()==1) {
+                            for (int i = 0; i < 10; i++) {
+                                videosURLs[i] = c.getVideos().get(i).getUrl();
+                                videoList.add(new VideoInfo("Video " + i + ": " + videosURLs[i%videosURLs.length],Uri.parse(videosURLs[i%videosURLs.length]))); //he
+                            }
+                        }
+                        else {
+
+                            Toast.makeText(getApplicationContext(),
+                                    response.toString(), Toast.LENGTH_LONG).show();
+                            Log.i("app","makeJsonRequest: onResponse - no vaaaaaaaaa");
+
+                        }
+                    }
+                }, new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        textView.setText("Error: " + error.toString());
+                        Log.i("app","makeJsonObj: onErrorResponse List2");
+                    }
+                });
+        Volley.newRequestQueue(this).add(jsObjRequest);
+
+
+        recyclerViewVid = (RecyclerView) findViewById(R.id.RecylerViewVid);
+        adapter1 = new VideoInfoAdapter(this,videoList);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.HORIZONTAL,false);
+        recyclerViewVid.setLayoutManager(mLayoutManager);
+        recyclerViewVid.setItemAnimator(new DefaultItemAnimator());
+        recyclerViewVid.setAdapter(adapter1);
+
+    }
+
+    private void videosRecyclerTop(String url) {
+
+
+        JsonObjectRequest jsObjRequest = new JsonObjectRequest
+                (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Gson gson = new Gson();
+
+                        ConsultaVideos c = gson.fromJson(response.toString(),ConsultaVideos.class);
+
+                        if(c.getSuccess()==1) {
+                            for (int i = 0; i < 3; i++) {
+                                videosURLsTop[i] = c.getVideos().get(i).getUrl();
+                                videoList2.add(new VideoInfo("Video " + i + ": " + videosURLsTop[i%videosURLsTop.length],Uri.parse(videosURLsTop[i%videosURLsTop.length]))); //he
+                            }
+                        }
+                        else {
+                            Toast.makeText(getApplicationContext(),
+                                    response.toString(), Toast.LENGTH_LONG).show();
+                            Log.i("app","makeJsonRequest: onResponse - no vaaaaaaaaa");
+                        }
+                    }
+                }, new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        textView.setText("Error: " + error.toString());
+                        Log.i("app","makeJsonObj: onErrorResponse List2");
+                    }
+                });
+        Volley.newRequestQueue(this).add(jsObjRequest);
+
+
+        recyclerViewTop = (RecyclerView) findViewById(R.id.RecylerViewTop);
+        adapter2 = new VideoInfoAdapter(this,videoList2);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.HORIZONTAL,false);
+        recyclerViewTop.setLayoutManager(mLayoutManager);
+        recyclerViewTop.setItemAnimator(new DefaultItemAnimator());
+        recyclerViewTop.setAdapter(adapter2);
+
     }
 
     private void createSpinner() {
@@ -94,110 +181,9 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-                Log.i("app","onNothing");
-            }
+            public void onNothingSelected(AdapterView<?> adapterView) {Log.i("app","onNothing");}
         });
     }
-
-
-    private void videosRecyclerVid(String url) {
-
-
-        JsonObjectRequest jsObjRequest = new JsonObjectRequest
-                (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        Gson gson = new Gson();
-
-                        ConsultaVideos c = gson.fromJson(response.toString(),ConsultaVideos.class);
-
-                        if(c.getSuccess()==1) {
-
-
-                            for (int i = 0; i < 10; i++) {
-                                videosURLs[i] = c.getVideos().get(i).getUrl();
-                                videoList.add(new VideoInfo("Video " + i + ": " + videosURLs[i%videosURLs.length],Uri.parse(videosURLs[i%videosURLs.length]))); //he
-                            }
-
-                        }
-                        else {
-
-                            Toast.makeText(getApplicationContext(),
-                                    response.toString(), Toast.LENGTH_LONG).show();
-                            Log.i("app","makeJsonRequest: onResponse - no vaaaaaaaaa");
-
-                        }
-                    }
-                }, new Response.ErrorListener() {
-
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        textView.setText("Error: " + error.toString());
-                        Log.i("app","makeJsonObj: onErrorResponse List2");
-                    }
-                });
-        Volley.newRequestQueue(this).add(jsObjRequest);
-
-
-        recyclerViewVid = (RecyclerView) findViewById(R.id.RecylerViewVid);
-        adapter = new VideoInfoAdapter(this,videoList);
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.HORIZONTAL,false);
-        recyclerViewVid.setLayoutManager(mLayoutManager);
-        recyclerViewVid.setItemAnimator(new DefaultItemAnimator());
-        recyclerViewVid.setAdapter(adapter);
-
-    }
-
-    private void videosRecyclerTop(String url) {
-
-
-        JsonObjectRequest jsObjRequest = new JsonObjectRequest
-                (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        Gson gson = new Gson();
-
-                        ConsultaVideos c = gson.fromJson(response.toString(),ConsultaVideos.class);
-
-
-                        if(c.getSuccess()==1) {
-
-
-                            for (int i = 0; i < 10; i++) {
-                                videosURLsTop[i] = c.getVideos().get(i).getUrl();
-                                videoList2.add(new VideoInfo("Video " + i + ": " + videosURLsTop[i%videosURLsTop.length],Uri.parse(videosURLsTop[i%videosURLsTop.length]))); //he
-                            }
-
-                        }
-                        else {
-
-                            Toast.makeText(getApplicationContext(),
-                                    response.toString(), Toast.LENGTH_LONG).show();
-                            Log.i("app","makeJsonRequest: onResponse - no vaaaaaaaaa");
-
-                        }
-                    }
-                }, new Response.ErrorListener() {
-
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        textView.setText("Error: " + error.toString());
-                        Log.i("app","makeJsonObj: onErrorResponse List2");
-                    }
-                });
-        Volley.newRequestQueue(this).add(jsObjRequest);
-
-
-        recyclerViewTop = (RecyclerView) findViewById(R.id.RecylerViewTop);
-        adapter2 = new VideoInfoAdapter(this,videoList2);
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.HORIZONTAL,false);
-        recyclerViewTop.setLayoutManager(mLayoutManager);
-        recyclerViewTop.setItemAnimator(new DefaultItemAnimator());
-        recyclerViewTop.setAdapter(adapter);
-
-    }
-
 
     private void Seleccio(int pos) {
 
