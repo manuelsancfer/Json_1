@@ -26,6 +26,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -51,6 +53,12 @@ public class Perfil extends AppCompatActivity {
     public static String  KEY_NAME = "KEY_NAME";
     public static int REQUEST_NAME = 1;
 
+
+
+   /* private String url = "https://unguled-flash.000webhostapp.com/Consultas/consultavideos.php";
+    private String url2 = "https://unguled-flash.000webhostapp.com/Consultas/consultaperfilpropio.php";
+    private String url3 = "https://unguled-flash.000webhostapp.com/Consultas/ConsultaSeguidoresU.php";
+    private String url4 = "https://unguled-flash.000webhostapp.com/Consultas/ConsultaAmigos.php";*/
     private ImageView fotoperfil;
     private TextView user, email, gustos, amigos, siguiendo;
     private VideoView favoritos;
@@ -71,6 +79,7 @@ public class Perfil extends AppCompatActivity {
         email = (TextView) findViewById(R.id.email);
         gustos = (TextView) findViewById(R.id.gustos_musicales);
         fotoperfil = (ImageView) findViewById(R.id.imagen_perfil);
+
 
         String usuario = "cristina";
         makeJsonUser("https://unguled-flash.000webhostapp.com/Consultas/consultaperfilpropio.php?user="+usuario);
@@ -108,15 +117,20 @@ public class Perfil extends AppCompatActivity {
                     email.setText(c.getUsers().get(0).getEmail());
                     gustos.setText(c.getUsers().get(0).getGustos_musicales());
 
+
                     //TODO conseguir ver la imagen
 
+                    //byte[] decodedString = Base64.decode(c.getUsers().get(0).getFoto_perfil(), Base64.DEFAULT);
+                    //Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
 
-                    fotoperfil.setImageBitmap(c.getUsers().get(0).getFoto_perfil());
 
-                    /*byte[] decodedString = Base64.decode(c.getUsers().get(0).getFoto_perfil(), Base64.DEFAULT);
-                    Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+                    //fotoperfil.setImageBitmap(decodedByte);
 
-                    fotoperfil.setImageBitmap(decodedByte);*/
+
+
+
+
+
 
 
 
