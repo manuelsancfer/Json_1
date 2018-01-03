@@ -1,10 +1,15 @@
 package com.example.manuelsanchezferna.json;
 
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -53,6 +58,7 @@ public class Perfil extends AppCompatActivity {
         user = (TextView) findViewById(R.id.usernamee);
         email = (TextView) findViewById(R.id.email);
         gustos = (TextView) findViewById(R.id.gustos_musicales);
+        fotoperfil = (ImageView) findViewById(R.id.imagen_perfil);
 
         String usuario = "cristina";
         makeJsonUser("https://unguled-flash.000webhostapp.com/Consultas/consultaperfilpropio.php?user="+usuario);
@@ -89,10 +95,18 @@ public class Perfil extends AppCompatActivity {
                 if(c.getSuccess()==1){
                     Log.i("Perfil","makeJsonRequest: onResponse - get Success");
 
-                    //TODO conseguir que funcione el settext de user
                     user.setText(c.getUsers().get(0).getUser());
                     email.setText(c.getUsers().get(0).getEmail());
                     gustos.setText(c.getUsers().get(0).getGustos_musicales());
+
+
+                    //TODO conseguir ver la imagen
+
+                    byte[] decodedString = Base64.decode(c.getUsers().get(0).getFoto_perfil(), Base64.DEFAULT);
+                    Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+
+
+                    fotoperfil.setImageBitmap(decodedByte);
 
 
                     makeJsonVideo(c.getUsers().get(0).getF1(), c.getUsers().get(0).getF2(),

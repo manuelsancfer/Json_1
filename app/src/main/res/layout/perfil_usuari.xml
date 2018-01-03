@@ -3,6 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent" android:layout_height="match_parent">
 
+
+    <!--eliminar -->
     <ImageView
         android:id="@+id/imatge_perfil"
         android:layout_width="wrap_content"
@@ -17,6 +19,18 @@
         android:scaleType="centerInside"
         android:theme="@style/Base.AlertDialog.AppCompat.Light"
         app:srcCompat="@android:color/background_dark" />
+
+    <ImageView
+        android:id="@+id/imagen_perfil"
+        android:layout_width="112dp"
+        android:layout_height="100dp"
+        android:adjustViewBounds="false"
+        android:scaleType="centerInside"
+        android:theme="@style/Base.AlertDialog.AppCompat.Light"
+        app:srcCompat="@android:color/background_dark"
+        android:layout_below="@+id/spinner"
+        android:layout_alignLeft="@+id/favoritos"
+        android:layout_alignStart="@+id/favoritos" />
 
     <Spinner
         android:id="@+id/spinner"
@@ -37,7 +51,7 @@
         android:textStyle="bold|italic"
         android:layout_marginLeft="40dp"
         android:layout_marginStart="40dp"
-        android:layout_below="@+id/imatge_perfil"
+        android:layout_below="@+id/imagen_perfil"
         android:layout_toRightOf="@+id/amigos"
         android:layout_toEndOf="@+id/amigos" />
 
@@ -90,7 +104,7 @@
         android:layout_marginLeft="17dp"
         android:layout_marginStart="17dp"
         android:layout_toEndOf="@+id/imatge_perfil"
-        android:layout_toRightOf="@+id/imatge_perfil"
+        android:layout_toRightOf="@+id/imagen_perfil"
         android:text="AMIGOS"
         android:textSize="18sp"
         android:textStyle="bold" />
