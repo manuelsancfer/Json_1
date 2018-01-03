@@ -120,19 +120,11 @@ public class Perfil extends AppCompatActivity {
 
                     //TODO conseguir ver la imagen
 
-                    //byte[] decodedString = Base64.decode(c.getUsers().get(0).getFoto_perfil(), Base64.DEFAULT);
-                    //Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+                    byte[] decodedString = Base64.decode(c.getUsers().get(0).getFoto_perfil(), Base64.DEFAULT);
+                    Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
 
 
-                    //fotoperfil.setImageBitmap(decodedByte);
-
-
-
-
-
-
-
-
+                    fotoperfil.setImageBitmap(decodedByte);
 
 
                     makeJsonVideo(c.getUsers().get(0).getF1(), c.getUsers().get(0).getF2(),

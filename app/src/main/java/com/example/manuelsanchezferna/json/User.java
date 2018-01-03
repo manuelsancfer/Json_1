@@ -10,18 +10,6 @@ import android.util.Base64;
 
 public class User {
 
-    private String user;
-    private String gustos_musicales;
-    private boolean publico;
-    private String email;
-    private String dato;
-    private Bitmap foto_perfil;
-    private int f1;
-    private int f2;
-    private int f3;
-    private int f4;
-
-
     @Override
     public String toString() {
         return "User{" +
@@ -29,8 +17,8 @@ public class User {
                 ", gustos_musicales='" + gustos_musicales + '\'' +
                 ", publico=" + publico +
                 ", email='" + email + '\'' +
-                ", foto_perfil='" + foto_perfil + '\'' +
                 ", dato='" + dato + '\'' +
+                ", foto_perfil='" + foto_perfil + '\'' +
                 ", f1=" + f1 +
                 ", f2=" + f2 +
                 ", f3=" + f3 +
@@ -38,7 +26,16 @@ public class User {
                 '}';
     }
 
-
+    private String user;
+    private String gustos_musicales;
+    private boolean publico;
+    private String email;
+    private String dato;
+    private String foto_perfil;
+    private int f1;
+    private int f2;
+    private int f3;
+    private int f4;
 
     public String getUser() {
         return user;
@@ -72,23 +69,21 @@ public class User {
         this.email = email;
     }
 
-    public String getDato() {return dato;}
+    public String getDato() {
+        return dato;
+    }
 
     public void setDato(String dato) {
         this.dato = dato;
-        try{
-            byte[] byteCode = Base64.decode(dato,Base64.DEFAULT);
-            this.foto_perfil = BitmapFactory.decodeByteArray(byteCode,0,byteCode.length);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
     }
 
-    public Bitmap getFoto_perfil() {
+    public String getFoto_perfil() {
         return foto_perfil;
     }
 
-    public void setFoto_perfil(Bitmap foto_perfil) {this.foto_perfil = foto_perfil;}
+    public void setFoto_perfil(String foto_perfil) {
+        this.foto_perfil = foto_perfil;
+    }
 
     public int getF1() {
         return f1;
@@ -121,9 +116,6 @@ public class User {
     public void setF4(int f4) {
         this.f4 = f4;
     }
-
-
-
 
 
 
