@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
 
         videosRecyclerVid("https://unguled-flash.000webhostapp.com/Consultas/consultavideos.php");
         videosRecyclerTop("https://unguled-flash.000webhostapp.com/Consultas/topvideos.php");
-        Toast.makeText(this,"HEEEELLOOOOOOOO", Toast.LENGTH_LONG).show();
+        //Toast.makeText(this,"HEEEELLOOOOOOOO", Toast.LENGTH_LONG).show();
 
 
         createSpinner();
@@ -87,7 +87,10 @@ public class MainActivity extends AppCompatActivity {
                         if(c.getSuccess()==1) {
                             for (int i = 0; i < 10; i++) {
                                 videosURLs[i] = c.getVideos().get(i).getUrl();
-                                videoList.add(new VideoInfo("Video " + i + ": " + videosURLs[i%videosURLs.length],Uri.parse(videosURLs[i%videosURLs.length]))); //he
+                                videoList.add(new VideoInfo(c.getVideos().get(i).getName().toString()
+                                        + " - " + c.getVideos().get(i).getTittle().toString(),
+                                        Uri.parse(videosURLs[i%videosURLs.length])));
+                                //videoList.add(new VideoInfo("Video " + i + ": " + videosURLs[i%videosURLs.length],Uri.parse(videosURLs[i%videosURLs.length])));
                             }
                         }
                         else {
@@ -132,7 +135,10 @@ public class MainActivity extends AppCompatActivity {
                         if(c.getSuccess()==1) {
                             for (int i = 0; i < 3; i++) {
                                 videosURLsTop[i] = c.getVideos().get(i).getUrl();
-                                videoList2.add(new VideoInfo("Video " + i + ": " + videosURLsTop[i%videosURLsTop.length],Uri.parse(videosURLsTop[i%videosURLsTop.length]))); //he
+                                videoList2.add(new VideoInfo(c.getVideos().get(i).getName().toString()
+                                        + " - " + c.getVideos().get(i).getTittle().toString(),
+                                        Uri.parse(videosURLsTop[i%videosURLsTop.length])));
+                                //videoList2.add(new VideoInfo("Video " + i + ": " + videosURLsTop[i%videosURLsTop.length],Uri.parse(videosURLsTop[i%videosURLsTop.length]))); //he
                             }
                         }
                         else {
