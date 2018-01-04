@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.manuelsanchezferna.json.PerfilArtista">
+
+
+    <ImageView
+        android:id="@+id/imagen_perfilArtista"
+        android:layout_width="112dp"
+        android:layout_height="100dp"
+        android:adjustViewBounds="false"
+        android:scaleType="centerInside"
+        android:theme="@style/Base.AlertDialog.AppCompat.Light"
+        app:srcCompat="@android:color/background_dark"
+        android:layout_marginTop="16dp"
+        android:layout_below="@+id/spinner2"
+        android:layout_alignLeft="@+id/favoritos1"
+        android:layout_alignStart="@+id/favoritos1" />
+
+    <Spinner
+        android:id="@+id/spinner2"
+        android:layout_width="130dp"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:background="@android:drawable/btn_default"
+        android:visibility="visible"
+        />
+
+    <TextView
+        android:id="@+id/username_artista"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Username"
+        android:textSize="16sp"
+        android:textStyle="bold|italic"
+        android:layout_alignTop="@+id/imagen_perfilArtista"
+        android:layout_alignLeft="@+id/siguiendo1"
+        android:layout_alignStart="@+id/siguiendo1"
+        android:layout_marginLeft="27dp"
+        android:layout_marginStart="27dp" />
+
+    <TextView
+        android:id="@+id/emailArtista"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/username_artista"
+        android:layout_alignStart="@+id/username_artista"
+        android:layout_below="@+id/username_artista"
+        android:layout_marginTop="14dp"
+        android:text="Email"
+        android:textSize="16sp"
+        android:textStyle="bold|italic" />
+
+    <TextView
+        android:id="@+id/descripcion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/emailArtista"
+        android:layout_alignStart="@+id/emailArtista"
+        android:layout_below="@+id/emailArtista"
+        android:layout_marginTop="12dp"
+        android:text="Descripción del artista"
+        android:textSize="16sp"
+        android:textStyle="bold|italic" />
+
+    <TextView
+        android:id="@+id/puntuacion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imagen_perfilArtista"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="16dp"
+        android:text="Puntuación"
+        android:textSize="14sp"
+        android:textStyle="italic" />
+
+    <Button
+        android:id="@+id/btn_puntuacion"
+        style="@style/Base.Widget.AppCompat.Button.Colored"
+        android:layout_width="25sp"
+        android:layout_height="35sp"
+        android:layout_below="@id/imagen_perfilArtista"
+        android:layout_marginLeft="117dp"
+        android:layout_marginTop="5dp"/>
+
+    <ToggleButton
+        android:id="@+id/btn_follow"
+        style="@style/Base.Widget.AppCompat.Button.Colored"
+        android:layout_width="80sp"
+        android:layout_height="35sp"
+        android:layout_below="@+id/descripcion"
+        android:textAllCaps="false"
+        android:textOff="Follow"
+        android:textOn="Unfollow"
+        android:layout_alignLeft="@+id/descripcion"
+        android:layout_marginTop="20dp" />
+
+    <Button
+        android:id="@+id/btn_opciones"
+        style="@style/Base.Widget.AppCompat.Button.Colored"
+        android:layout_width="40sp"
+        android:layout_height="35sp"
+        android:layout_alignLeft="@+id/btn_follow"
+        android:layout_below="@+id/descripcion"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="20dp"
+        android:text="..."
+        android:textAllCaps="false"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <View
+        android:id="@+id/linia1"
+        android:layout_height="2sp"
+        android:layout_width="wrap_content"
+        android:background="#9e9b9b"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/btn_follow" />
+
+    <View
+        android:id="@+id/linia2"
+        android:layout_height="2sp"
+        android:layout_width="wrap_content"
+        android:background="#9e9b9b"
+        android:layout_marginTop="60dp"
+        android:layout_below="@id/linia1" />
+
+    <TextView
+        android:id="@+id/seguidores"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SEGUIDORES"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_below="@id/linia1"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp" />
+
+    <TextView
+        android:id="@+id/siguiendo1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SIGUIENDO"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_below="@id/linia1"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="170dp"
+        />
+
+    <TextView
+        android:id="@+id/amigos1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="AMIGOS"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_below="@id/linia1"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="300dp" />
+
+
+    <TextView
+        android:id="@+id/favoritos1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/linia2"
+        android:layout_marginLeft="26dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="25dp"
+        android:text="Favoritos"
+        android:textSize="17sp" />
+
+    <TextView
+        android:id="@+id/mis_videos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/favoritos1"
+        android:layout_alignStart="@+id/favoritos1"
+        android:layout_below="@+id/RecylerFavoritos1"
+        android:layout_marginTop="5dp"
+        android:text="Mis vídeos"
+        android:textSize="17sp" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/RecylerFavoritos1"
+        android:layout_width= "330sp"
+        android:layout_height="180sp"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="35dp"
+        android:layout_below="@+id/favoritos1"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/RecylerMisVideos2"
+        android:layout_width= "330sp"
+        android:layout_height="180sp"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="35dp"
+        android:layout_below="@+id/mis_videos"/>
+
+</RelativeLayout>
