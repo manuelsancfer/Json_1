@@ -262,24 +262,17 @@ public class Perfil extends AppCompatActivity {
                 new Response.Listener<Bitmap>() {
                     @Override
                     public void onResponse(Bitmap response) {
-                        //fotoperfil.setImageResource(response);
 
-                        Toast.makeText(getApplicationContext(),
-                                response.toString(), Toast.LENGTH_LONG).show();
-
-                        Log.i("Perfil","errorisimo "+response);
-
-
+                        fotoperfil.setImageBitmap(response);
                         pDialogImage.hide();
                     }
                 },
-                0,0,
+                400,350,
                 Bitmap.Config.RGB_565,
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Log.i("Perfil","Error imagen imagen");
-                        //imageView.setImageResource(R.mipmap.ic_launcher);
+                        Log.i("Perfil","Error foto perfil");
                         fotoperfil.setImageResource(R.mipmap.ic_launcher);
                         pDialogImage.hide();
                     }
