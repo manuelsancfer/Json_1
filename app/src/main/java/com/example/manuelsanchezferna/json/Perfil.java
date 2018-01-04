@@ -15,6 +15,9 @@ import android.provider.MediaStore;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Base64;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -47,7 +50,9 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Hashtable;
+import java.util.List;
 import java.util.Map;
 
 public class Perfil extends AppCompatActivity {
@@ -55,15 +60,22 @@ public class Perfil extends AppCompatActivity {
     public static int REQUEST_NAME = 1;
 
 
-
-   /* private String url = "https://unguled-flash.000webhostapp.com/Consultas/consultavideos.php";
+    /* private String url = "https://unguled-flash.000webhostapp.com/Consultas/consultavideos.php";
     private String url2 = "https://unguled-flash.000webhostapp.com/Consultas/consultaperfilpropio.php";
     private String url3 = "https://unguled-flash.000webhostapp.com/Consultas/ConsultaSeguidoresU.php";
     private String url4 = "https://unguled-flash.000webhostapp.com/Consultas/ConsultaAmigos.php";*/
     private ImageView fotoperfil;
     private TextView user, email, gustos, amigos, siguiendo;
-    private VideoView favoritos;
-    private int[] videosid = {R.id.vid0, R.id.vid1, R.id.vid2, R.id.vid3};
+
+
+    private RecyclerView recyclerView;
+    private VideoInfoAdapter adapter;
+    private List<VideoInfo> videoList = new ArrayList<VideoInfo>();
+
+    private String[] vidf =  new String[4];
+    private String[] vidt = new String[4];
+    private String[] vidv = new String[4];
+
 
     VideoView videoView;
     TextView textView;
@@ -83,7 +95,8 @@ public class Perfil extends AppCompatActivity {
 
 
         String usuario = "cristina";
-        makeJsonUser("https://unguled-flash.000webhostapp.com/Consultas/consultaperfilpropio.php?user="+usuario);
+        makeJsonUser("https://unguled-flash.000webhostapp.com/Consultas/consultaperfilpropio.php?user="
+                +usuario);
 
         //makeJsonFollowers(url3);
         //makeJsonFriends(url4);
@@ -119,13 +132,26 @@ public class Perfil extends AppCompatActivity {
                     gustos.setText(c.getUsers().get(0).getGustos_musicales());
 
 
+                    vidf[0] = c.getUsers().get(0).getF1();
+                    vidf[1] = c.getUsers().get(0).getF2();
+                    vidf[2] = c.getUsers().get(0).getF3();
+                    vidf[3] = c.getUsers().get(0).getF3();
+
+                    vidv[0] = c.getUsers().get(0).getV1();
+                    vidv[1] = c.getUsers().get(0).getV2();
+                    vidv[2] = c.getUsers().get(0).getV3();
+                    vidv[3] = c.getUsers().get(0).getF4();
+
+                    vidt[0] = c.getUsers().get(0).getT1();
+                    vidt[1] = c.getUsers().get(0).getT2();
+                    vidt[2] = c.getUsers().get(0).getT3();
+                    vidt[3] = c.getUsers().get(0).getT4();
+
+                    videosRecyclerVid();
+
                     //TODO conseguir ver la imagen
 
                     makeImageRequest(c.getUsers().get(0).getFoto_perfil());
-
-                    makeJsonVideo(c.getUsers().get(0).getF1(), c.getUsers().get(0).getF2(),
-                            c.getUsers().get(0).getF3(), c.getUsers().get(0).getF4());
-
 
                 }
                 else{
@@ -145,9 +171,22 @@ public class Perfil extends AppCompatActivity {
         Log.i("Perfil","volley");
     }
 
-    public void makeJsonVideo(String f1, String f2, String f3, String f4){
-        Toast.makeText(getApplicationContext(),
-                f1, Toast.LENGTH_LONG).show();
+
+    private void videosRecyclerVid() {
+
+        videoList.add(new VideoInfo(vidt[0]+"-"+vidv[0], Uri.parse(vidf[0%vidf.length])));
+        videoList.add(new VideoInfo(vidt[1]+"-"+vidv[1], Uri.parse(vidf[1%vidf.length])));
+        videoList.add(new VideoInfo(vidt[2]+"-"+vidv[2], Uri.parse(vidf[2%vidf.length])));
+        videoList.add(new VideoInfo(vidt[3]+"-"+vidv[3], Uri.parse(vidf[3%vidf.length])));
+
+
+        recyclerView = (RecyclerView) findViewById(R.id.RecylerViewFavoritos);
+        adapter = new VideoInfoAdapter(this,videoList);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext(),
+                LinearLayoutManager.HORIZONTAL,false);
+        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(adapter);
 
     }
 

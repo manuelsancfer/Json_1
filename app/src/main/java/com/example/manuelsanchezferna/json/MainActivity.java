@@ -47,12 +47,6 @@ public class MainActivity extends AppCompatActivity {
     private String[] videosURLsTop= new String[10];
 
 
-    int scoreid[] = {};
-    int tituloid[] = {};
-    int artistaid[] = {};
-
-    VideoView[] videoView;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -192,6 +186,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void Seleccio(int pos) {
+
+        if (pos == 0){
+
+        }
 
         if (pos == 1){
             //Perfil propio usuario
