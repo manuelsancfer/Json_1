@@ -6,23 +6,23 @@
         android:id="@+id/videos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="58dp"
+        android:layout_marginLeft="33dp"
+        android:layout_marginStart="33dp"
+        android:layout_marginTop="59dp"
         android:text="VÍDEOS"
         android:textAppearance="@style/TextAppearance.AppCompat.Display3"
         android:textSize="36sp"
         android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignLeft="@+id/RecylerViewTop"
+        android:layout_alignStart="@+id/RecylerViewTop" />
 
-    <GridView
-        android:id="@+id/lista_videos"
-        android:layout_width="match_parent"
-        android:layout_height="473sp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_below="@id/videos"
-        android:layout_marginTop="120dp" />
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/RecylerView1"
+        android:layout_width= "match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="8dp"
+        android:layout_below="@+id/videos"
+        />
+
+
 </RelativeLayout>

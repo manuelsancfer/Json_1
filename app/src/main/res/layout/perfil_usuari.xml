@@ -110,17 +110,6 @@
         android:text="Favoritos"
         android:textSize="17sp" />
 
-    <TextView
-        android:id="@+id/muro"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/favoritos"
-        android:layout_alignStart="@+id/favoritos"
-        android:layout_below="@+id/RecylerViewFavoritos"
-        android:layout_marginTop="5dp"
-        android:text="Muro"
-        android:textSize="17sp" />
-
     <android.support.v7.widget.RecyclerView
         android:id="@+id/RecylerViewFavoritos"
         android:layout_width= "330sp"

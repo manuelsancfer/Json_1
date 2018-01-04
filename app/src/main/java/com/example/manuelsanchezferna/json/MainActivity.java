@@ -42,17 +42,28 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button top = (Button) findViewById(R.id.top_videos);
-        Button vid = (Button) findViewById(R.id.videos);
+        Button top = (Button) findViewById(R.id.btn_topvideos);
+        Button vid = (Button) findViewById(R.id.btn_videos);
         //Button button = (Button) findViewById(R.id.button);
 
+        top.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                topvideosActivity();
+            }
+        });
+
+        vid.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                videosActivity();
+            }
+        });
 
         textView = (TextView)findViewById(R.id.editText);
 
         videosRecyclerVid("https://unguled-flash.000webhostapp.com/Consultas/consultavideos.php");
         videosRecyclerTop("https://unguled-flash.000webhostapp.com/Consultas/topvideos.php");
-        //Toast.makeText(this,"HEEEELLOOOOOOOO", Toast.LENGTH_LONG).show();
-
 
         createSpinner();
     }
@@ -242,6 +253,7 @@ public class MainActivity extends AppCompatActivity {
 
         Volley.newRequestQueue(this).add(jsObjRequest);
     }
+
 
     //onClick del boto topvideos que redirecciona al seu propi Activity
     public void topvideosActivity(){

@@ -14,6 +14,7 @@ import java.util.List;
 
 /**
  * Created by Maria on 27/12/2017.
+ * Adaptador línia de vídeos a la pantalla principal
  */
 
 class VideoInfoAdapter extends RecyclerView.Adapter<VideoInfoAdapter.ViewHolder>{
