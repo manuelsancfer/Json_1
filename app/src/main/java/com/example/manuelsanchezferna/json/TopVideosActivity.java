@@ -85,6 +85,7 @@ public class TopVideosActivity extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.RecylerView2);
         layoutManager = new GridLayoutManager(TopVideosActivity.this,2);
         adapter1 = new VideoInfoAdapter(this,videoList);
+        recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(adapter1);

@@ -108,6 +108,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerViewVid = (RecyclerView) findViewById(R.id.RecylerViewVid);
         adapter1 = new VideoInfoAdapter(this,videoList);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.HORIZONTAL,false);
+        recyclerViewVid.setHasFixedSize(true);
         recyclerViewVid.setLayoutManager(mLayoutManager);
         recyclerViewVid.setItemAnimator(new DefaultItemAnimator());
         recyclerViewVid.setAdapter(adapter1);
@@ -153,6 +154,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerViewTop = (RecyclerView) findViewById(R.id.RecylerViewTop);
         adapter2 = new VideoInfoAdapter(this,videoList2);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.HORIZONTAL,false);
+        recyclerViewVid.setHasFixedSize(true);
         recyclerViewTop.setLayoutManager(mLayoutManager);
         recyclerViewTop.setItemAnimator(new DefaultItemAnimator());
         recyclerViewTop.setAdapter(adapter2);

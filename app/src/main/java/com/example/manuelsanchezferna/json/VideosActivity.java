@@ -90,6 +90,7 @@ public class VideosActivity extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.RecylerView1);
         layoutManager = new GridLayoutManager(VideosActivity.this,2);
         adapter1 = new VideoInfoAdapter(this,videoList);
+        recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(adapter1);

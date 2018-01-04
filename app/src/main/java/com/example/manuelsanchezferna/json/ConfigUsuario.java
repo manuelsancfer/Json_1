@@ -1,5 +1,6 @@
 package com.example.manuelsanchezferna.json;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,8 +9,11 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
@@ -46,6 +50,8 @@ public class ConfigUsuario extends AppCompatActivity {
         f4 = (EditText) findViewById(R.id.editf4);
         priva = (ToggleButton) findViewById(R.id.btn_public);
 
+
+
         //TODO: favoritos
 
         String usuario = "cristina";
@@ -53,6 +59,8 @@ public class ConfigUsuario extends AppCompatActivity {
                 +usuario);
 
     }
+
+
 
     public void cpass(View view) {
 
