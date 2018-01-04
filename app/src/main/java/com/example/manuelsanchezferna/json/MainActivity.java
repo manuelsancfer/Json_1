@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
         Button top = (Button) findViewById(R.id.top_videos);
         Button vid = (Button) findViewById(R.id.videos);
-        Button button = (Button) findViewById(R.id.button);
+        //Button button = (Button) findViewById(R.id.button);
 
 
         textView = (TextView)findViewById(R.id.editText);
@@ -243,6 +243,16 @@ public class MainActivity extends AppCompatActivity {
         Volley.newRequestQueue(this).add(jsObjRequest);
     }
 
+    //onClick del boto topvideos que redirecciona al seu propi Activity
+    public void topvideosActivity(){
+        Intent intent = new Intent(this,TopVideosActivity.class);
+        startActivity(intent);
+    }
 
+    //onClick del boto videos que redirecciona al seu propi Activity
+    public void videosActivity(){
+        Intent intent = new Intent(this,VideosActivity.class);
+        startActivity(intent);
+    }
 
 }

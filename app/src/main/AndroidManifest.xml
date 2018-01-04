@@ -19,7 +19,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".Perfil" />
-        <activity android:name=".ConfigUsuario"></activity>
+        <activity android:name=".ConfigUsuario" />
+        <activity android:name=".PerfilArtista" />
+        <activity android:name=".TopVideosActivity" />
+        <activity android:name=".VideosActivity"></activity>
     </application>
 
 </manifest>
