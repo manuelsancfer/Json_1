@@ -1,7 +1,6 @@
 package com.example.manuelsanchezferna.json;
 
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,43 +8,33 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.MediaController;
-import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.VideoView;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
 import com.android.volley.toolbox.Volley;
-import com.google.gson.stream.JsonReader;
 import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private TextView textView;
-    private ProgressBar progressBar;
-    private MediaPlayer mediaPlayer;
 
     private RecyclerView recyclerViewVid, recyclerViewTop;
     private VideoInfoAdapter adapter1, adapter2;
-    private List<VideoInfo> videoList = new ArrayList<VideoInfo>();; //lo que li volem passar al RecyclerView
-    private List<VideoInfo> videoList2 = new ArrayList<VideoInfo>();; //lo que li volem passar al RecyclerView
-
-
+    private List<VideoInfo> videoList = new ArrayList<VideoInfo>();
+    private List<VideoInfo> videoList2 = new ArrayList<VideoInfo>();
 
     private String[] videosURLs= new String[10];
     private String[] videosURLsTop= new String[10];
-
 
 
     @Override
@@ -84,7 +73,6 @@ public class MainActivity extends AppCompatActivity {
                                 videoList.add(new VideoInfo(c.getVideos().get(i).getName().toString()
                                         + " - " + c.getVideos().get(i).getTittle().toString(),
                                         Uri.parse(videosURLs[i%videosURLs.length])));
-                                //videoList.add(new VideoInfo("Video " + i + ": " + videosURLs[i%videosURLs.length],Uri.parse(videosURLs[i%videosURLs.length])));
                             }
                         }
                         else {
@@ -132,7 +120,6 @@ public class MainActivity extends AppCompatActivity {
                                 videoList2.add(new VideoInfo(c.getVideos().get(i).getName().toString()
                                         + " - " + c.getVideos().get(i).getTittle().toString(),
                                         Uri.parse(videosURLsTop[i%videosURLsTop.length])));
-                                //videoList2.add(new VideoInfo("Video " + i + ": " + videosURLsTop[i%videosURLsTop.length],Uri.parse(videosURLsTop[i%videosURLsTop.length]))); //he
                             }
                         }
                         else {
@@ -158,6 +145,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerViewTop.setLayoutManager(mLayoutManager);
         recyclerViewTop.setItemAnimator(new DefaultItemAnimator());
         recyclerViewTop.setAdapter(adapter2);
+
 
     }
 
@@ -215,19 +203,6 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
     }
-
-    public void consulta(View view) {
-        //makeJsonRequest("https://unguled-flash.000webhostapp.com/Consultas/consulta.php");
-    }
-
-    public void c_topvideo(View view){ //Consulta top videos
-        //makeJsonRequest("https://unguled-flash.000webhostapp.com/Consultas/topvideos.php");
-    }
-
-    public void c_canciones(View view){ //Consulta canciones
-        //makeJsonRequest("https://unguled-flash.000webhostapp.com/Consultas/canciones.php");
-    }
-
 
     private void makeJsonRequest(String url) {
         Log.i("app","makeJsonRequest");

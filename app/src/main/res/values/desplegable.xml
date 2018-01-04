@@ -9,6 +9,14 @@
         <item>Configuración</item>
     </string-array>
 
+    <string-array name="desplegable2">
+        <item>Perfil</item>
+        <item>Principal</item>
+        <item>Listas de reproducción</item>
+        <item>Categorías</item>
+        <item>Agenda</item>
+        <item>Configuración</item>
+    </string-array>
 
 
 </resources>

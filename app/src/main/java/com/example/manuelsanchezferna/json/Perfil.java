@@ -1,26 +1,15 @@
 package com.example.manuelsanchezferna.json;
 
-import android.app.DownloadManager;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.media.MediaPlayer;
 import android.net.Uri;
-import android.os.Environment;
-import android.provider.MediaStore;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Base64;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -29,31 +18,18 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
-import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.ImageRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 
 import org.json.JSONObject;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.Hashtable;
 import java.util.List;
-import java.util.Map;
 
 public class Perfil extends AppCompatActivity {
     public static String  KEY_NAME = "KEY_NAME";
@@ -197,7 +173,7 @@ public class Perfil extends AppCompatActivity {
 
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.desplegable,android.R.layout.simple_spinner_item);
+                R.array.desplegable2,android.R.layout.simple_spinner_item);
 
         // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -219,17 +195,10 @@ public class Perfil extends AppCompatActivity {
 
     private void Seleccio(int pos) {
 
-        if (pos == 0){
-
-            count++;
-            if (count == 2) {
-                Intent intent = new Intent(this,MainActivity.class);
-                startActivity(intent);
-                count = 0;
-            }
-
+        if(pos == 1){
+            Intent intent = new Intent(this,MainActivity.class);
+            startActivity(intent);
         }
-
 
         if(pos == 2){
             //Lista rep

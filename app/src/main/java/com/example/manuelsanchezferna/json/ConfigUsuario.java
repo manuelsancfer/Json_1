@@ -1,7 +1,11 @@
 package com.example.manuelsanchezferna.json;
 
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -9,7 +13,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
-import android.widget.VideoView;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -43,8 +46,12 @@ public class ConfigUsuario extends AppCompatActivity {
         f4 = (EditText) findViewById(R.id.editf4);
         priva = (ToggleButton) findViewById(R.id.btn_public);
 
-        //TODO: obtener la privacidad
         //TODO: favoritos
+
+        String usuario = "cristina";
+        makeJsonPriva("https://unguled-flash.000webhostapp.com/Consultas/consultaperfilpropio.php?user="
+                +usuario);
+
     }
 
     public void cpass(View view) {
@@ -227,5 +234,43 @@ public class ConfigUsuario extends AppCompatActivity {
 
         Volley.newRequestQueue(this).add(jsObjRequest);
         Log.i("Configuración", "volley");
+    }
+
+    private void makeJsonPriva(String url) {
+
+        JsonObjectRequest jsObjRequest = new JsonObjectRequest
+                (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Gson gson = new Gson();
+
+                        ConsultaUserPropi c = gson.fromJson(response.toString(),ConsultaUserPropi.class);
+                        boolean estado = c.getUsers().get(0).isPublico();
+
+                        if(c.getSuccess()==1) {
+                            if(estado == true ){
+                                priva.setChecked(false);
+                            }
+                            else{
+                                priva.setChecked(true);
+                            }
+                        }
+                        else {
+                            Toast.makeText(getApplicationContext(),
+                                    response.toString(), Toast.LENGTH_LONG).show();
+                            Log.i("app","makeJsonRequest: onResponse - no funciona");
+
+                        }
+                    }
+                }, new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.i("app","makeJsonObj: onErrorResponse List2");
+                    }
+                });
+        Volley.newRequestQueue(this).add(jsObjRequest);
+
+
     }
 }
