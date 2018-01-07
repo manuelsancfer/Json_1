@@ -62,13 +62,16 @@ public class MainActivity extends AppCompatActivity {
 
         textView = (TextView)findViewById(R.id.editText);
 
-        videosRecyclerVid("https://unguled-flash.000webhostapp.com/Consultas/consultavideos.php");
-        videosRecyclerTop("https://unguled-flash.000webhostapp.com/Consultas/topvideos.php");
+        JvideosRecyclerVid("https://unguled-flash.000webhostapp.com/Consultas/consultavideos.php");
+        JvideosRecyclerTop("https://unguled-flash.000webhostapp.com/Consultas/topvideos.php");
 
         createSpinner();
+
+        Toast.makeText(this,"Funciona", Toast.LENGTH_LONG).show();
+
     }
 
-    private void videosRecyclerVid(String url) {
+    private void JvideosRecyclerVid(String url) {
 
         JsonObjectRequest jsObjRequest = new JsonObjectRequest
                 (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
@@ -85,6 +88,8 @@ public class MainActivity extends AppCompatActivity {
                                         + " - " + c.getVideos().get(i).getTittle().toString(),
                                         Uri.parse(videosURLs[i%videosURLs.length])));
                             }
+
+                            videosRecyclerVid();
                         }
                         else {
 
@@ -104,6 +109,9 @@ public class MainActivity extends AppCompatActivity {
                 });
         Volley.newRequestQueue(this).add(jsObjRequest);
 
+    }
+
+    private void videosRecyclerVid(){
 
         recyclerViewVid = (RecyclerView) findViewById(R.id.RecylerViewVid);
         adapter1 = new VideoInfoAdapter(this,videoList);
@@ -115,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void videosRecyclerTop(String url) {
+    private void JvideosRecyclerTop(String url) {
 
 
         JsonObjectRequest jsObjRequest = new JsonObjectRequest
@@ -127,12 +135,13 @@ public class MainActivity extends AppCompatActivity {
                         ConsultaVideos c = gson.fromJson(response.toString(),ConsultaVideos.class);
 
                         if(c.getSuccess()==1) {
-                            for (int i = 0; i < 3; i++) {
+                            for (int i = 0; i < 10; i++) {
                                 videosURLsTop[i] = c.getVideos().get(i).getUrl();
                                 videoList2.add(new VideoInfo(c.getVideos().get(i).getName().toString()
                                         + " - " + c.getVideos().get(i).getTittle().toString(),
                                         Uri.parse(videosURLsTop[i%videosURLsTop.length])));
                             }
+                            videosRecyclerVidTop();
                         }
                         else {
                             Toast.makeText(getApplicationContext(),
@@ -148,13 +157,19 @@ public class MainActivity extends AppCompatActivity {
                         Log.i("app","makeJsonObj: onErrorResponse List2");
                     }
                 });
+
+
         Volley.newRequestQueue(this).add(jsObjRequest);
 
+
+    }
+
+    private void videosRecyclerVidTop() {
 
         recyclerViewTop = (RecyclerView) findViewById(R.id.RecylerViewTop);
         adapter2 = new VideoInfoAdapter(this,videoList2);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.HORIZONTAL,false);
-        recyclerViewVid.setHasFixedSize(true);
+        recyclerViewTop.setHasFixedSize(true);
         recyclerViewTop.setLayoutManager(mLayoutManager);
         recyclerViewTop.setItemAnimator(new DefaultItemAnimator());
         recyclerViewTop.setAdapter(adapter2);

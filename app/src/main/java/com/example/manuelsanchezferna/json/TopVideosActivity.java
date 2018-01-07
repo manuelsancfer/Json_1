@@ -31,7 +31,7 @@ public class TopVideosActivity extends AppCompatActivity {
 
     private String[] videosURLs= new String[10];
 
-    private ProgressDialog pDialogImage;
+    private ProgressDialog pDialogImage2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,9 +44,9 @@ public class TopVideosActivity extends AppCompatActivity {
     }
 
     private void videosGridVid(String url) {
-        pDialogImage = new ProgressDialog(this);
-        pDialogImage.setMessage("Loading...");
-        pDialogImage.show();
+        pDialogImage2 = new ProgressDialog(this);
+        pDialogImage2.setMessage("Loading...");
+        pDialogImage2.show();
 
         JsonObjectRequest jsObjRequest = new JsonObjectRequest
                 (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
@@ -63,6 +63,7 @@ public class TopVideosActivity extends AppCompatActivity {
                                         + " - " + c.getVideos().get(i).getTittle().toString(),
                                         Uri.parse(videosURLs[i%videosURLs.length])));
                             }
+                            videos();
                         }
                         else {
 
@@ -82,6 +83,12 @@ public class TopVideosActivity extends AppCompatActivity {
         Volley.newRequestQueue(this).add(jsObjRequest);
 
 
+
+
+    }
+
+    private void videos(){
+
         recyclerView = (RecyclerView) findViewById(R.id.RecylerView2);
         layoutManager = new GridLayoutManager(TopVideosActivity.this,2);
         adapter1 = new VideoInfoAdapter(this,videoList);
@@ -89,7 +96,7 @@ public class TopVideosActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(adapter1);
+        pDialogImage2.hide();
 
-        pDialogImage.hide();
     }
 }

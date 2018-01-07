@@ -125,8 +125,6 @@ public class Perfil extends AppCompatActivity {
 
                     videosRecyclerVid();
 
-                    //TODO conseguir ver la imagen
-
                     makeImageRequest(c.getUsers().get(0).getFoto_perfil());
 
                 }

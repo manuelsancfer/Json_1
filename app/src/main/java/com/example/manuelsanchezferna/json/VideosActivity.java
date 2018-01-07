@@ -45,6 +45,7 @@ public class VideosActivity extends AppCompatActivity {
         Toast.makeText(this,"Funciona", Toast.LENGTH_LONG).show();
 
         videosGridVid("https://unguled-flash.000webhostapp.com/Consultas/consultavideos.php");
+
     }
 
 
@@ -68,6 +69,7 @@ public class VideosActivity extends AppCompatActivity {
                                         + " - " + c.getVideos().get(i).getTittle().toString(),
                                         Uri.parse(videosURLs[i%videosURLs.length])));
                             }
+                            videos();
                         }
                         else {
 
@@ -87,6 +89,10 @@ public class VideosActivity extends AppCompatActivity {
         Volley.newRequestQueue(this).add(jsObjRequest);
 
 
+    }
+
+    private void videos(){
+
         recyclerView = (RecyclerView) findViewById(R.id.RecylerView1);
         layoutManager = new GridLayoutManager(VideosActivity.this,2);
         adapter1 = new VideoInfoAdapter(this,videoList);
@@ -94,7 +100,8 @@ public class VideosActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(adapter1);
-
         pDialogImage.hide();
+
+
     }
 }
