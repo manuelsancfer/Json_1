@@ -18,5 +18,13 @@
         <item>Configuración</item>
     </string-array>
 
+    <string-array name="desplegable6">
+        <item>Configuración</item>
+        <item>Principal</item>
+        <item>Perfil</item>
+        <item>Listas de reproducción</item>
+        <item>Categorías</item>
+        <item>Agenda</item>
+    </string-array>
 
 </resources>

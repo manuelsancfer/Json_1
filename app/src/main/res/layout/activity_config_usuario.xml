@@ -6,6 +6,15 @@
     android:layout_height="match_parent"
     tools:context="com.example.manuelsanchezferna.json.ConfigUsuario">
 
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="130dp"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:background="@android:drawable/btn_default"
+        android:visibility="visible"
+        />
+
     <TextView
         android:id="@+id/text_config"
         android:layout_width="wrap_content"
@@ -38,7 +47,6 @@
         android:layout_alignLeft="@+id/editmail"
         android:layout_alignRight="@+id/edituser"
         android:layout_alignStart="@+id/editmail"
-        android:text="b"
         android:textSize="16sp"
         android:layout_below="@+id/edituser" />
 
@@ -209,7 +217,6 @@
         android:layout_alignLeft="@+id/edituser"
         android:layout_alignRight="@+id/edituser"
         android:layout_alignStart="@+id/edituser"
-        android:text="c"
         android:textSize="16sp"
         android:layout_below="@+id/editcontrasenya" />
 
@@ -218,7 +225,6 @@
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:selectAllOnFocus="false"
-        android:text="d"
         android:textSize="16sp"
         android:layout_alignBaseline="@+id/gustos_musicales"
         android:layout_alignBottom="@+id/gustos_musicales"
@@ -236,7 +242,6 @@
         android:layout_alignRight="@+id/btn_subirfoto"
         android:layout_alignStart="@+id/btn_subirfoto"
         android:selectAllOnFocus="false"
-        android:text="a"
         android:textSize="16sp" />
 
     <EditText

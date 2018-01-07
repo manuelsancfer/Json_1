@@ -51,12 +51,12 @@ public class ConfigUsuario extends AppCompatActivity {
         priva = (ToggleButton) findViewById(R.id.btn_public);
 
 
-
         //TODO: favoritos
 
         String usuario = "cristina";
         makeJsonPriva("https://unguled-flash.000webhostapp.com/Consultas/consultaperfilpropio.php?user="
                 +usuario);
+        createSpinner();
 
     }
 
@@ -280,5 +280,59 @@ public class ConfigUsuario extends AppCompatActivity {
         Volley.newRequestQueue(this).add(jsObjRequest);
 
 
+    }
+
+    private void createSpinner() {
+
+        Spinner spinner = (Spinner) findViewById(R.id.spinner);
+
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter<CharSequence> adapterS = ArrayAdapter.createFromResource(this,
+                R.array.desplegable6,android.R.layout.simple_spinner_item);
+
+        // Specify the layout to use when the list of choices appears
+        adapterS.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        // Apply the adapter to the spinner
+        spinner.setAdapter(adapterS);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                Seleccio(i);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {Log.i("app","onNothing");}
+        });
+    }
+
+    private void Seleccio(int pos) {
+
+        if (pos == 0){
+
+        }
+
+        if (pos == 1){
+            Intent intent = new Intent(this,MainActivity.class);
+            startActivity(intent);
+        }
+
+        if(pos == 2){
+            //Perfil propio usuario
+            Intent intent = new Intent(this,Perfil.class);
+            startActivity(intent);
+        }
+
+        if(pos == 3){
+            //Lista rep
+        }
+
+        if (pos == 4){
+            //Categorías
+        }
+
+        if (pos == 5){
+            //Agenda
+        }
     }
 }

@@ -1,6 +1,7 @@
 package com.example.manuelsanchezferna.json;
 
 import android.content.Context;
+import android.text.method.ScrollingMovementMethod;
 import android.widget.MediaController;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -64,6 +65,7 @@ class VideoInfoAdapter extends RecyclerView.Adapter<VideoInfoAdapter.ViewHolder>
         public ViewHolder(View itemView) {
             super(itemView);
             title = (TextView) itemView.findViewById(R.id.title);
+            title.setMovementMethod(new ScrollingMovementMethod());
             videoview = (VideoView) itemView.findViewById(R.id.videoView);
         }
     }

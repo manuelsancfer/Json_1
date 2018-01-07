@@ -6,6 +6,17 @@
     android:layout_height="match_parent"
     tools:context="com.example.manuelsanchezferna.json.MainActivity">
 
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="130dp"
+        android:layout_height="40dp"
+        android:layout_alignBottom="@+id/rectangle"
+        android:layout_alignParentTop="true"
+        android:background="@android:drawable/btn_default"
+        android:elevation="14dp"
+        android:visibility="visible" />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/RecylerViewTop"
         android:layout_width= "match_parent"
@@ -26,15 +37,6 @@
         android:layout_alignRight="@+id/linia_vid"
         android:layout_above="@+id/editText" />
 
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="130dp"
-        android:layout_height="40dp"
-        android:layout_alignBottom="@+id/rectangle"
-        android:layout_alignParentTop="true"
-        android:background="@android:drawable/btn_default"
-        android:elevation="14dp"
-        android:visibility="visible" />
 
     <EditText
         android:id="@+id/editText"
@@ -128,8 +130,6 @@
         android:layout_height="wrap_content"
         android:tint="@android:color/background_light"
         app:srcCompat="@android:drawable/stat_notify_chat" />
-
-
 
 
 
