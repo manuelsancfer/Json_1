@@ -15,6 +15,27 @@
         android:visibility="visible"
         />
 
+    <ImageButton
+        android:id="@+id/search"
+        style="@android:style/Widget.Holo.Light.ImageButton"
+        android:layout_width="37sp"
+        android:layout_height="40sp"
+        android:layout_marginLeft="260dp"
+        android:layout_marginRight="30dp"
+        android:tint="@android:color/white"
+        app:srcCompat="@android:drawable/ic_menu_search"
+        android:layout_alignParentTop="true" />
+
+    <ImageButton
+        android:id="@+id/mensajes"
+        style="@android:style/Widget.Holo.Light.ImageButton"
+        android:layout_marginLeft="310dp"
+        android:layout_marginRight="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:tint="@android:color/background_light"
+        app:srcCompat="@android:drawable/stat_notify_chat" />
+
     <TextView
         android:id="@+id/text_config"
         android:layout_width="wrap_content"
