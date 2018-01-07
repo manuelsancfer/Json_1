@@ -7,6 +7,7 @@ import java.util.List;
  */
 
 public class ConsultaVideos extends ConsultaResponse {
+
     private List<Videos> videos;
 
     public List<Videos> getVideos() {

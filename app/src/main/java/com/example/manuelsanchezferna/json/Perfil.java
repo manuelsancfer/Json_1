@@ -35,13 +35,8 @@ public class Perfil extends AppCompatActivity {
     public static String  KEY_NAME = "KEY_NAME";
     public static int REQUEST_NAME = 1;
 
-
-    /* private String url = "https://unguled-flash.000webhostapp.com/Consultas/consultavideos.php";
-    private String url2 = "https://unguled-flash.000webhostapp.com/Consultas/consultaperfilpropio.php";
-    private String url3 = "https://unguled-flash.000webhostapp.com/Consultas/ConsultaSeguidoresU.php";
-    private String url4 = "https://unguled-flash.000webhostapp.com/Consultas/ConsultaAmigos.php";*/
     private ImageView fotoperfil;
-    private TextView user, email, gustos, amigos, siguiendo;
+    private TextView user, email, gustos, numamigos, numsiguiendo;
 
 
     private RecyclerView recyclerView;
@@ -62,28 +57,105 @@ public class Perfil extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.perfil_usuari);
-        //makeJsonVideo(url);
 
         user = (TextView) findViewById(R.id.usernamee);
         email = (TextView) findViewById(R.id.email);
         gustos = (TextView) findViewById(R.id.gustos_musicales);
+        numamigos =(TextView) findViewById(R.id.numamigos);
+        numsiguiendo = (TextView) findViewById(R.id.numseguidos);
         fotoperfil = (ImageView) findViewById(R.id.imagen_perfil);
 
 
         String usuario = "cristina";
         makeJsonUser("https://unguled-flash.000webhostapp.com/Consultas/consultaperfilpropio.php?user="
                 +usuario);
-
-        //makeJsonFollowers(url3);
-        //makeJsonFriends(url4);
+        makeJsonNumAmigos("https://unguled-flash.000webhostapp.com/Consultas/ConsultaAmigos.php?user="
+                +usuario);
+        makeJsonNumSeguidos("https://unguled-flash.000webhostapp.com/Consultas/ConsultaSeguidoresU.php?user="
+                +usuario);
 
         createSpinner();
     }
 
-    private void makeJsonFriends(String url4) {
+
+    private void makeJsonNumAmigos(String url){
+
+        Log.i("Perfil","makeJsonUser");
+
+        JsonObjectRequest jsObjRequest = new JsonObjectRequest
+                (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.i("Perfil", "onResponse");
+
+                        Gson gson = new Gson();
+
+                        ConsultaNumAmigos c = gson.fromJson(response.toString(), ConsultaNumAmigos.class);
+
+
+
+                        if (c.getSuccess() == 1) {
+
+                            Log.i("Perfil", "makeJsonRequest: onResponse - get Success");
+                            Log.i("Perfil", "aham"+c.getNumAmigos().get(0).getAmigos());
+                            numamigos.setText(Integer.toString(c.getNumAmigos().get(0).getAmigos()));
+                            int sum = c.getNumAmigos().get(0).getAmigos();
+                            sum = sum+4;
+
+                        }
+                        else{
+
+                            Log.i("Perfil","makeJsonRequest: onResponse - NOT Success");
+                            Toast.makeText(getApplicationContext(),
+                                    response.toString(), Toast.LENGTH_LONG).show();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.i("Perfil","makeJsonObj: onErrorResponse - no funciona volley");
+                    }
+                });
+
+        Volley.newRequestQueue(this).add(jsObjRequest);
+        Log.i("Perfil","volley");
     }
 
-    private void makeJsonFollowers(String url3) {
+    private void makeJsonNumSeguidos(String url){
+        Log.i("Perfil","makeJsonUser");
+
+        JsonObjectRequest jsObjRequest = new JsonObjectRequest
+                (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.i("Perfil", "onResponse");
+
+                        Gson gson = new Gson();
+
+                        ConsultaNumSeguidos c = gson.fromJson(response.toString(), ConsultaNumSeguidos.class);
+
+
+                        if (c.getSuccess() == 1) {
+                            Log.i("Perfil", "makeJsonRequest: onResponse - get Success");
+                            Log.i("Perfil", "aham2 -"+c.getNumSeguidos().get(0).getSeguidos());
+                            numsiguiendo.setText(Integer.toString(c.getNumSeguidos().get(0).getSeguidos()));
+
+                        }
+                        else{
+                            Log.i("Perfil","makeJsonRequest: onResponse - NOT Success");
+                            Toast.makeText(getApplicationContext(),
+                                    response.toString(), Toast.LENGTH_LONG).show();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.i("Perfil","makeJsonObj: onErrorResponse - no funciona volley");
+                    }
+                });
+
+        Volley.newRequestQueue(this).add(jsObjRequest);
+        Log.i("Perfil","volley");
     }
 
     private void makeJsonUser(String url2) {
@@ -98,7 +170,6 @@ public class Perfil extends AppCompatActivity {
                 Gson gson = new Gson();
 
                 ConsultaUserPropi c = gson.fromJson(response.toString(),ConsultaUserPropi.class);
-
 
                 if(c.getSuccess()==1){
                     Log.i("Perfil","makeJsonRequest: onResponse - get Success");

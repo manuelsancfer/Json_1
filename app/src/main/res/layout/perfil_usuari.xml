@@ -104,8 +104,18 @@
         android:text="AMIGOS"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:layout_marginTop="223dp"
+        android:layout_marginTop="215dp"
         android:layout_marginLeft="60dp" />
+
+    <TextView
+        android:id="@+id/numamigos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="90dp"
+        android:layout_marginTop="235dp"
+        android:text="5"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/siguiendo"
@@ -114,9 +124,19 @@
         android:text="SIGUIENDO"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:layout_marginTop="223dp"
+        android:layout_marginTop="215dp"
         android:layout_marginLeft="215dp"
   />
+
+    <TextView
+        android:id="@+id/numseguidos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:text="5"
+        android:layout_marginTop="235dp"
+        android:layout_marginLeft="255dp" />
 
     <TextView
         android:id="@+id/favoritos"

@@ -1,9 +1,5 @@
 package com.example.manuelsanchezferna.json;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.util.Base64;
-
 /**
  * Created by manuel.sanchez.ferna on 01/12/2017.
  */

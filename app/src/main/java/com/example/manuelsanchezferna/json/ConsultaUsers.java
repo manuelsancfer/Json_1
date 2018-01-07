@@ -7,6 +7,7 @@ import java.util.List;
  */
 
 public class ConsultaUsers extends ConsultaResponse {
+
     private List<User> users;
 
     public List<User> getUsers() {
