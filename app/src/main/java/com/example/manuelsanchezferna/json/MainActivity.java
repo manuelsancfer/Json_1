@@ -221,11 +221,12 @@ public class MainActivity extends AppCompatActivity {
 
         if(pos == 2){
             //Lista rep
+
         }
 
         if(pos == 3){
             //Categorías
-            Intent intent = new Intent(this,Categorias.class);
+            Intent intent = new Intent(this,Genero.class);
             startActivity(intent);
         }
 

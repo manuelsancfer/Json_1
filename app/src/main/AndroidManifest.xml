@@ -23,7 +23,7 @@
         <activity android:name=".PerfilArtista" />
         <activity android:name=".TopVideosActivity" />
         <activity android:name=".VideosActivity" />
-        <activity android:name=".Categorias"></activity>
+        <activity android:name=".Genero"></activity>
     </application>
 
 </manifest>

@@ -27,7 +27,7 @@
             android:id="@+id/categorias"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/CATEGORÍAS"
+            android:text="@string/GENEROS"
             android:textSize="30sp"
             android:layout_marginLeft="85dp"
             android:layout_marginTop="60dp"
@@ -41,6 +41,7 @@
             android:layout_marginTop="120dp"
             android:text="@string/ROCK"
             android:textSize="18sp" />
+
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/Cat1"
@@ -125,6 +126,25 @@
             android:layout_width= "match_parent"
             android:layout_height="180sp"
             android:layout_below="@+id/text_cat5"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="26dp"
+            />
+        <TextView
+            android:id="@+id/text_cat6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/Cat5"
+            android:text="@string/BLUES"
+            android:textSize="18sp"
+            android:layout_marginLeft="26dp"
+            android:layout_marginTop="10dp"
+            />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/Cat6"
+            android:layout_width= "match_parent"
+            android:layout_height="180sp"
+            android:layout_below="@+id/text_cat6"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="26dp"
             />
