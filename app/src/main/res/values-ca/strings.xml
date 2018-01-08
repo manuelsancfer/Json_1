@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Json</string>
+    <string name="Contrasenya">Contrasenya:</string>
+    <string name="Cambiar">Canviar</string>
+    <string name="Favoritos">Favorits:</string>
+    <string name="Gustos_musicales">Gustos musicals:</string>
+    <string name="Privado">Privat</string>
+    <string name="Publico">Públic</string>
+    <string name="Subir_foto">Penjar foto</string>
+    <string name="Usuario">Usuari:</string>
+    <string name="configuracion_de_perfil">Configuració de perfil</string>
+    <string name="TOP_VIDEOS">TOP VÍDEOS</string>
+    <string name="VIDEOS">VÍDEOS</string>
+    <string name="Amigos">AMICS</string>
+    <string name="Descripcion_del_artista">Descripció de l\'artista</string>
+    <string name="Email">Email:</string>
+    <string name="FAVORITOS">FAVORITS</string>
+    <string name="Foto_perfil">Foto de perfil:</string>
+    <string name="Puntuacion">Puntuació</string>
+    <string name="Seguidores">SEGUIDORS</string>
+    <string name="Siguiendo">SEGUINT</string>
+    <string name="Mis_videos">Els meus vídeos</string>
+    <string name="VIDEOS_FAVORITOS">VÍDEOS FAVORITS</string>
+
+    <string-array name="desplegable">
+        <item>Principal</item>
+        <item>Perfil</item>
+        <item>Llistes de reproducció</item>
+        <item>Categories</item>
+        <item>Agenda</item>
+        <item>Configuració</item>
+    </string-array>
+
+    <string-array name="desplegable2">
+        <item>Perfil</item>
+        <item>Principal</item>
+        <item>Llistes de reproducció</item>
+        <item>Categories</item>
+        <item>Agenda</item>
+        <item>Configuració</item>
+    </string-array>
+
+    <string-array name="desplegable6">
+        <item>Configuració</item>
+        <item>Principal</item>
+        <item>Perfil</item>
+        <item>Llistes de reproducció</item>
+        <item>Categories</item>
+        <item>Agenda</item>
+    </string-array>
+</resources>

@@ -1,30 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="desplegable">
-        <item>Principal</item>
-        <item>Perfil</item>
-        <item>Listas de reproducción</item>
-        <item>Categorías</item>
-        <item>Agenda</item>
-        <item>Configuración</item>
-    </string-array>
 
-    <string-array name="desplegable2">
-        <item>Perfil</item>
-        <item>Principal</item>
-        <item>Listas de reproducción</item>
-        <item>Categorías</item>
-        <item>Agenda</item>
-        <item>Configuración</item>
-    </string-array>
-
-    <string-array name="desplegable6">
-        <item>Configuración</item>
-        <item>Principal</item>
-        <item>Perfil</item>
-        <item>Listas de reproducción</item>
-        <item>Categorías</item>
-        <item>Agenda</item>
-    </string-array>
 
 </resources>

@@ -1,3 +1,51 @@
 <resources>
     <string name="app_name">Json</string>
+    <string name="configuracion_de_perfil">Configuración perfil</string>
+    <string name="Foto_perfil">Foto de perfil:</string>
+    <string name="Usuario">Usuario:</string>
+    <string name="Contrasenya">Contraseña:</string>
+    <string name="Subir_foto">Subir foto</string>
+    <string name="Cambiar">Cambiar</string>
+    <string name="Email">Email:</string>
+    <string name="Gustos_musicales">Gustos musicales:</string>
+    <string name="Favoritos">Favoritos:</string>
+    <string name="Privado">Privado</string>
+    <string name="Publico">Publico</string>
+    <string name="TOP_VIDEOS">TOP VÍDEOS</string>
+    <string name="VIDEOS">VÍDEOS</string>
+    <string name="Descripcion_del_artista">Descripción del artista</string>
+    <string name="Puntuacion">Puntuación</string>
+    <string name="Seguidores">SEGUIDORES</string>
+    <string name="Siguiendo">SIGUIENDO</string>
+    <string name="Amigos">AMIGOS</string>
+    <string name="FAVORITOS">FAVORITOS</string>
+    <string name="Mis_videos">Mis vídeos</string>
+    <string name="VIDEOS_FAVORITOS">VÍDEOS FAVORITOS</string>
+
+    <string-array name="desplegable">
+        <item>Principal</item>
+        <item>Perfil</item>
+        <item>Listas de reproducción</item>
+        <item>Categorías</item>
+        <item>Agenda</item>
+        <item>Configuración</item>
+    </string-array>
+
+    <string-array name="desplegable2">
+        <item>Perfil</item>
+        <item>Principal</item>
+        <item>Listas de reproducción</item>
+        <item>Categorías</item>
+        <item>Agenda</item>
+        <item>Configuración</item>
+    </string-array>
+
+    <string-array name="desplegable6">
+        <item>Configuración</item>
+        <item>Principal</item>
+        <item>Perfil</item>
+        <item>Listas de reproducción</item>
+        <item>Categorías</item>
+        <item>Agenda</item>
+    </string-array>
 </resources>

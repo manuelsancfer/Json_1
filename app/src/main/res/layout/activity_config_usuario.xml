@@ -40,57 +40,43 @@
         android:id="@+id/text_config"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="41dp"
-        android:text="Configuración perfil"
-        android:textSize="19sp"
-        android:textStyle="bold"
-        android:layout_alignParentTop="true"
         android:layout_alignLeft="@+id/linia_config"
-        android:layout_alignStart="@+id/linia_config" />
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/linia_config"
+        android:layout_marginTop="41dp"
+        android:text="@string/configuracion_de_perfil"
+        android:textSize="19sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/text_foto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:text="Foto perfill:"
+        android:text="@string/Foto_perfil"
         android:textSize="16sp"
-        android:layout_below="@+id/linia_config"
-        android:layout_alignLeft="@+id/linia_config"
-        android:layout_alignStart="@+id/linia_config" />
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="30dp"
+   />
 
     <EditText
         android:id="@+id/editcontrasenya"
-        android:layout_width="wrap_content"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:layout_alignBaseline="@+id/text_contrasenya"
         android:layout_alignBottom="@+id/text_contrasenya"
-        android:layout_alignEnd="@+id/edituser"
-        android:layout_alignLeft="@+id/editmail"
-        android:layout_alignRight="@+id/edituser"
-        android:layout_alignStart="@+id/editmail"
-        android:textSize="16sp"
-        android:layout_below="@+id/edituser" />
+        android:layout_toRightOf="@+id/text_foto"
+        android:layout_toEndOf="@+id/text_foto" />
 
-    <TextView
-        android:id="@+id/text_username"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:text="Username:"
-        android:textSize="16sp"
-        android:layout_below="@+id/text_foto"
-        android:layout_alignLeft="@+id/text_foto"
-        android:layout_alignStart="@+id/text_foto" />
+
 
     <TextView
         android:id="@+id/text_contrasenya"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/text_username"
-        android:layout_alignStart="@+id/text_username"
-        android:layout_below="@+id/text_username"
-        android:layout_marginTop="25dp"
-        android:text="Contrasenya:"
+        android:layout_marginTop="155dp"
+        android:layout_marginLeft="30dp"
+        android:text="@string/Contrasenya"
         android:textSize="16sp" />
 
     <TextView
@@ -101,7 +87,7 @@
         android:layout_alignStart="@+id/text_contrasenya"
         android:layout_below="@+id/text_contrasenya"
         android:layout_marginTop="27dp"
-        android:text="Email:"
+        android:text="@string/Email"
         android:textSize="16sp" />
 
     <TextView
@@ -112,7 +98,7 @@
         android:layout_alignStart="@+id/text_mail"
         android:layout_below="@+id/text_mail"
         android:layout_marginTop="26dp"
-        android:text="Gustos musicales:"
+        android:text="@string/Gustos_musicales"
         android:textSize="16sp" />
 
     <TextView
@@ -123,7 +109,7 @@
         android:layout_alignStart="@+id/text_gustos"
         android:layout_below="@+id/text_gustos"
         android:layout_marginTop="28dp"
-        android:text="Favoritos:"
+        android:text="@string/Favoritos"
         android:textSize="16sp" />
 
     <View
@@ -140,11 +126,11 @@
         style="@style/Base.Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="27dp"
+        android:layout_marginTop="48dp"
         android:onClick="cpriv"
         android:textAllCaps="false"
-        android:textOff="Privado"
-        android:textOn="Público"
+        android:textOff="@string/Privado"
+        android:textOn="@string/Publico"
         android:layout_below="@+id/editf3"
         android:layout_alignLeft="@+id/text_favoritos"
         android:layout_alignStart="@+id/text_favoritos" />
@@ -155,28 +141,25 @@
         android:layout_width="80sp"
         android:layout_height="35sp"
         android:elevation="3dp"
-        android:text="Subir foto"
+        android:text="@string/Subir_foto"
         android:textAllCaps="false"
         android:textSize="12sp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginStart="25dp"
-        android:layout_above="@+id/edituser"
-        android:layout_toRightOf="@+id/text_contrasenya"
-        android:layout_toEndOf="@+id/text_contrasenya" />
+        android:layout_alignBottom="@+id/text_foto"
+        android:layout_alignLeft="@+id/btnpass"
+        android:layout_alignStart="@+id/btnpass" />
 
     <Button
         android:id="@+id/btnpass"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="80sp"
         android:layout_height="35sp"
-        android:layout_above="@+id/editmail"
-        android:layout_alignLeft="@+id/btnuser"
-        android:layout_alignStart="@+id/btnuser"
         android:elevation="3dp"
         android:onClick="cpass"
-        android:text="Cambiar"
+        android:text="@string/Cambiar"
         android:textAllCaps="false"
-        android:textSize="12sp" />
+        android:layout_marginLeft="290dp"
+        android:textSize="12sp"
+        android:layout_alignTop="@+id/editcontrasenya" />
 
     <Button
         android:id="@+id/btnemail"
@@ -185,41 +168,27 @@
         android:layout_height="35sp"
         android:elevation="3dp"
         android:onClick="cemail"
-        android:text="Cambiar"
+        android:text="@string/Cambiar"
         android:textAllCaps="false"
         android:textSize="12sp"
         android:layout_alignBottom="@+id/editmail"
         android:layout_alignLeft="@+id/btnpass"
         android:layout_alignStart="@+id/btnpass" />
 
-    <Button
-        android:id="@+id/btnuser"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="80sp"
-        android:layout_height="35sp"
-        android:layout_above="@+id/editcontrasenya"
-        android:layout_alignEnd="@+id/linia_config"
-        android:layout_alignRight="@+id/linia_config"
-        android:elevation="3dp"
-        android:onClick="cuser"
-        android:text="Cambiar"
-        android:textAllCaps="false"
-        android:textSize="12sp" />
 
     <Button
         android:id="@+id/btngustos"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="80sp"
         android:layout_height="35sp"
-        android:elevation="3dp"
-        android:onClick="cgustos"
-        android:text="Cambiar"
-        android:textAllCaps="false"
-        android:textSize="9sp"
         android:layout_alignBaseline="@+id/editgustos"
         android:layout_alignBottom="@+id/editgustos"
-        android:layout_toRightOf="@+id/editf2"
-        android:layout_toEndOf="@+id/editf2" />
+        android:layout_marginLeft="290dp"
+        android:elevation="3dp"
+        android:onClick="cgustos"
+        android:text="@string/Cambiar"
+        android:textAllCaps="false"
+        android:textSize="12sp" />
 
     <TextView
         android:id="@+id/gustos_musicales"
@@ -233,13 +202,12 @@
         android:id="@+id/editmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/text_gustos"
-        android:layout_alignEnd="@+id/edituser"
-        android:layout_alignLeft="@+id/edituser"
-        android:layout_alignRight="@+id/edituser"
-        android:layout_alignStart="@+id/edituser"
         android:textSize="16sp"
-        android:layout_below="@+id/editcontrasenya" />
+        android:layout_marginTop="190dp"
+        android:layout_alignRight="@+id/editcontrasenya"
+        android:layout_alignEnd="@+id/editcontrasenya"
+        android:layout_alignLeft="@+id/editcontrasenya"
+        android:layout_alignStart="@+id/editcontrasenya" />
 
     <EditText
         android:id="@+id/editgustos"
@@ -250,20 +218,12 @@
         android:layout_alignBaseline="@+id/gustos_musicales"
         android:layout_alignBottom="@+id/gustos_musicales"
         android:layout_toRightOf="@+id/text_gustos"
-        android:layout_toEndOf="@+id/text_gustos"
         android:layout_marginLeft="10dp"
-        android:layout_marginStart="10dp" />
+        android:layout_marginStart="10dp"
+        android:layout_alignRight="@+id/editmail"
+        android:layout_alignEnd="@+id/editmail" />
 
-    <EditText
-        android:id="@+id/edituser"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/text_contrasenya"
-        android:layout_alignEnd="@+id/btn_subirfoto"
-        android:layout_alignRight="@+id/btn_subirfoto"
-        android:layout_alignStart="@+id/btn_subirfoto"
-        android:selectAllOnFocus="false"
-        android:textSize="16sp" />
+
 
     <EditText
         android:id="@+id/editf1"

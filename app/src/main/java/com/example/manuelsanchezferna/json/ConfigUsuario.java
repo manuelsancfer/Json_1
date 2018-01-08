@@ -29,7 +29,7 @@ import org.json.JSONObject;
 
 public class ConfigUsuario extends AppCompatActivity {
 
-    private EditText user, email, pass, gustos, f1, f2, f3, f4;
+    private EditText email, pass, gustos, f1, f2, f3, f4;
     private ToggleButton priva;
 
 /* TODO: Arreglar al cambiar lo de aquí si justo damos atrás al perfil no se actualiza el perfil
@@ -40,7 +40,6 @@ public class ConfigUsuario extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_config_usuario);
 
-        user = (EditText) findViewById(R.id.edituser);
         email = (EditText) findViewById(R.id.editmail);
         pass = (EditText) findViewById(R.id.editcontrasenya);
         gustos = (EditText) findViewById(R.id.editgustos);
