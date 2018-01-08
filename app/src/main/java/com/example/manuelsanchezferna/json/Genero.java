@@ -1,5 +1,6 @@
 package com.example.manuelsanchezferna.json;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
@@ -35,12 +36,12 @@ public class Genero extends AppCompatActivity {
             adapterRapMetal, adapterFusion, adapterScreamo;
 
 
-    private String[] videosRock= new String[10];
-    private String[] videosBlues= new String[10];
-    private String[] videosHipHop= new String[10];
-    private String[] videosRapMetal= new String[10];
-    private String[] videosFusion= new String[10];
-    private String[] videosScreamo= new String[10];
+    private String[] videosRock;
+    private String[] videosBlues;
+    private String[] videosHipHop;
+    private String[] videosRapMetal;
+    private String[] videosFusion;
+    private String[] videosScreamo;
 
     private List<VideoInfo> RockList = new ArrayList<VideoInfo>();
     private List<VideoInfo> BluesList = new ArrayList<VideoInfo>();
@@ -49,23 +50,27 @@ public class Genero extends AppCompatActivity {
     private List<VideoInfo> FusionList = new ArrayList<VideoInfo>();
     private List<VideoInfo> ScreamoList = new ArrayList<VideoInfo>();
 
+    private ProgressDialog pDialog1, pDialog2, pDialog3, pDialog4, pDialog5, pDialog6;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_genero);
 
-
-        JRock("https://unguled-flash.000webhostapp.com/Consultas/consultageneros.php?genre=Rock");
         JBlues("https://unguled-flash.000webhostapp.com/Consultas/consultageneros.php?genre=Blues");
         JHipHop("https://unguled-flash.000webhostapp.com/Consultas/consultageneros.php?genre=Hip%20Hop");
         JRapMetal("https://unguled-flash.000webhostapp.com/Consultas/consultageneros.php?genre=Rap%20Metal");
         JFusion("https://unguled-flash.000webhostapp.com/Consultas/consultageneros.php?genre=Fusion");
         JScreamo("https://unguled-flash.000webhostapp.com/Consultas/consultageneros.php?genre=Screamo");
+        JRock("https://unguled-flash.000webhostapp.com/Consultas/consultageneros.php?genre=Rock");
 
         createSpinner();
     }
 
     private void JRock(String url){
+        pDialog1 = new ProgressDialog(this);
+        pDialog1.setMessage("Loading...");
+        pDialog1.show();
 
         JsonObjectRequest jsObjRequest = new JsonObjectRequest
                 (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
@@ -76,6 +81,7 @@ public class Genero extends AppCompatActivity {
                         ConsultaVideos c = gson.fromJson(response.toString(),ConsultaVideos.class);
 
                         if(c.getSuccess()==1) {
+                            videosRock= new String[c.getVideos().size()];
                             for (int i = 0; i < c.getVideos().size(); i++) {
 
                                 videosRock[i] = c.getVideos().get(i).getUrl();
@@ -86,6 +92,7 @@ public class Genero extends AppCompatActivity {
                             }
 
                             RockRecyclerVid();
+                            pDialog1.hide();
                         }
                         else {
 
@@ -123,15 +130,22 @@ public class Genero extends AppCompatActivity {
     }
 
     private void JBlues(String url){
+        pDialog2 = new ProgressDialog(this);
+        pDialog2.setMessage("Loading...");
+        pDialog2.show();
+
         JsonObjectRequest jsObjRequest = new JsonObjectRequest
                 (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
+
+
                         Gson gson = new Gson();
 
                         ConsultaVideos c = gson.fromJson(response.toString(),ConsultaVideos.class);
 
                         if(c.getSuccess()==1) {
+                            videosBlues= new String[c.getVideos().size()];
                             for (int i = 0; i < c.getVideos().size(); i++) {
 
                                 videosBlues[i] = c.getVideos().get(i).getUrl();
@@ -142,6 +156,7 @@ public class Genero extends AppCompatActivity {
                             }
 
                             BluesRecyclerVid();
+                            pDialog2.hide();
                         }
                         else {
 
@@ -179,6 +194,11 @@ public class Genero extends AppCompatActivity {
     }
 
     private void JHipHop(String url){
+
+        pDialog3 = new ProgressDialog(this);
+        pDialog3.setMessage("Loading...");
+        pDialog3.show();
+
         JsonObjectRequest jsObjRequest = new JsonObjectRequest
                 (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
                     @Override
@@ -188,6 +208,7 @@ public class Genero extends AppCompatActivity {
                         ConsultaVideos c = gson.fromJson(response.toString(),ConsultaVideos.class);
 
                         if(c.getSuccess()==1) {
+                            videosHipHop= new String[c.getVideos().size()];
                             for (int i = 0; i < c.getVideos().size(); i++) {
 
                                 videosHipHop[i] = c.getVideos().get(i).getUrl();
@@ -198,6 +219,7 @@ public class Genero extends AppCompatActivity {
                             }
 
                             HipHopRecyclerVid();
+                            pDialog3.hide();
                         }
                         else {
 
@@ -235,6 +257,11 @@ public class Genero extends AppCompatActivity {
     }
 
     private void JRapMetal(String url){
+
+        pDialog4 = new ProgressDialog(this);
+        pDialog4.setMessage("Loading...");
+        pDialog4.show();
+
         JsonObjectRequest jsObjRequest = new JsonObjectRequest
                 (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
                     @Override
@@ -244,6 +271,7 @@ public class Genero extends AppCompatActivity {
                         ConsultaVideos c = gson.fromJson(response.toString(),ConsultaVideos.class);
 
                         if(c.getSuccess()==1) {
+                            videosRapMetal= new String[c.getVideos().size()];
                             for (int i = 0; i < c.getVideos().size(); i++) {
 
                                 videosRapMetal[i] = c.getVideos().get(i).getUrl();
@@ -254,6 +282,7 @@ public class Genero extends AppCompatActivity {
                             }
 
                             RapMetalRecyclerVid();
+                            pDialog4.hide();
                         }
                         else {
 
@@ -291,6 +320,11 @@ public class Genero extends AppCompatActivity {
     }
 
     private void JFusion(String url){
+
+        pDialog5 = new ProgressDialog(this);
+        pDialog5.setMessage("Loading...");
+        pDialog5.show();
+
         JsonObjectRequest jsObjRequest = new JsonObjectRequest
                 (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
                     @Override
@@ -300,6 +334,7 @@ public class Genero extends AppCompatActivity {
                         ConsultaVideos c = gson.fromJson(response.toString(),ConsultaVideos.class);
 
                         if(c.getSuccess()==1) {
+                            videosFusion= new String[c.getVideos().size()];
                             for (int i = 0; i < c.getVideos().size(); i++) {
 
                                 videosFusion[i] = c.getVideos().get(i).getUrl();
@@ -310,6 +345,7 @@ public class Genero extends AppCompatActivity {
                             }
 
                             FusionRecyclerVid();
+                            pDialog5.hide();
                         }
                         else {
 
@@ -347,6 +383,11 @@ public class Genero extends AppCompatActivity {
     }
 
     private void JScreamo(String url){
+
+        pDialog6 = new ProgressDialog(this);
+        pDialog6.setMessage("Loading...");
+        pDialog6.show();
+
         JsonObjectRequest jsObjRequest = new JsonObjectRequest
                 (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
                     @Override
@@ -356,6 +397,7 @@ public class Genero extends AppCompatActivity {
                         ConsultaVideos c = gson.fromJson(response.toString(),ConsultaVideos.class);
 
                         if(c.getSuccess()==1) {
+                            videosScreamo= new String[c.getVideos().size()];
                             for (int i = 0; i < c.getVideos().size(); i++) {
 
                                 videosScreamo[i] = c.getVideos().get(i).getUrl();
@@ -366,6 +408,7 @@ public class Genero extends AppCompatActivity {
                             }
 
                             ScreamoRecyclerVid();
+                            pDialog6.hide();
                         }
                         else {
 
