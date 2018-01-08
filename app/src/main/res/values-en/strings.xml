@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Json</string>
+    <string name="Amigos">FRIENDS</string>
+    <string name="Cambiar">Change</string>
+    <string name="Contrasenya">Password:</string>
+    <string name="Descripcion_del_artista">Description of the artist</string>
+    <string name="Email">Email:</string>
+    <string name="FAVORITOS">FAVORITES</string>
+    <string name="Favoritos">Favorites:</string>
+    <string name="Foto_perfil">Profile picture:</string>
+    <string name="Gustos_musicales">Musical tastes</string>
+    <string name="Mis_videos">My videos</string>
+    <string name="Privado">Private</string>
+    <string name="Publico">Public</string>
+    <string name="Puntuacion">Score</string>
+    <string name="Seguidores">FOLLOWERS</string>
+    <string name="Siguiendo">FOLLOWING</string>
+    <string name="Subir_foto">Upload photo</string>
+    <string name="TOP_VIDEOS">TOP VIDEOS</string>
+    <string name="Usuario">User:</string>
+    <string name="VIDEOS">VIDEOS</string>
+    <string name="VIDEOS_FAVORITOS">FAVORITE VIDEOS</string>
+    <string name="configuracion_de_perfil">Profile configuration</string>
+</resources>
