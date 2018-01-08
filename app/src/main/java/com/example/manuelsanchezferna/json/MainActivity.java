@@ -67,8 +67,6 @@ public class MainActivity extends AppCompatActivity {
 
         createSpinner();
 
-        Toast.makeText(this,"Funciona", Toast.LENGTH_LONG).show();
-
     }
 
     private void JvideosRecyclerVid(String url) {
@@ -95,8 +93,8 @@ public class MainActivity extends AppCompatActivity {
                         else {
 
                             Toast.makeText(getApplicationContext(),
-                                    response.toString(), Toast.LENGTH_LONG).show();
-                            Log.i("app","makeJsonRequest: onResponse - no vaaaaaaaaa");
+                                    getResources().getString(R.string.i_videos),
+                                    Toast.LENGTH_LONG).show();
 
                         }
                     }
@@ -104,7 +102,9 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        textView.setText("Error: " + error.toString());
+                        Toast.makeText(getApplicationContext(),
+                                getResources().getString(R.string.i_json),
+                                Toast.LENGTH_LONG).show();
                         Log.i("app","makeJsonObj: onErrorResponse List2");
                     }
                 });
@@ -148,14 +148,18 @@ public class MainActivity extends AppCompatActivity {
                         else {
                             Toast.makeText(getApplicationContext(),
                                     response.toString(), Toast.LENGTH_LONG).show();
-                            Log.i("app","makeJsonRequest: onResponse - no vaaaaaaaaa");
+                            Toast.makeText(getApplicationContext(),
+                                    getResources().getString(R.string.i_videos),
+                                    Toast.LENGTH_LONG).show();
                         }
                     }
                 }, new Response.ErrorListener() {
 
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        textView.setText("Error: " + error.toString());
+                        Toast.makeText(getApplicationContext(),
+                                getResources().getString(R.string.i_json),
+                                Toast.LENGTH_LONG).show();
                         Log.i("app","makeJsonObj: onErrorResponse List2");
                     }
                 });
@@ -233,46 +237,6 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
     }
-
-    private void makeJsonRequest(String url) {
-        Log.i("app","makeJsonRequest");
-
-
-        JsonObjectRequest jsObjRequest = new JsonObjectRequest
-                (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        Log.i("app","makeJsonRequest: onResponse main");
-
-                        Gson gson = new Gson();
-                        Log.i("app","makeJsonRequest: onResponse - newGson");
-
-                        ConsultaUsers c = gson.fromJson(response.toString(),ConsultaUsers.class);
-
-                        if(c.getSuccess()==1) {
-                            textView.setText(c.getUsers().get(0).getUser());
-                            Toast.makeText(getApplicationContext(),
-                                    "funciona", Toast.LENGTH_LONG).show();
-                        }
-                        else {
-                            /*Toast.makeText(getApplicationContext(),
-                                    response.toString(), Toast.LENGTH_LONG).show();*/
-
-                        }
-                   }
-                }, new Response.ErrorListener() {
-
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        textView.setText("Error: " + error.toString());
-                        Log.i("app","makeJsonObj: onErrorResponse List");
-                    }
-                });
-
-
-        Volley.newRequestQueue(this).add(jsObjRequest);
-    }
-
 
     //onClick del boto topvideos que redirecciona al seu propi Activity
     public void topvideosActivity(){

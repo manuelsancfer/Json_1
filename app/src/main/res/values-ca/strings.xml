@@ -49,4 +49,23 @@
         <item>Categories</item>
         <item>Agenda</item>
     </string-array>
+    <string name="a_contrasenya">La contrasenya s\'ha canviat amb èxit</string>
+    <string name="a_email">E-mail canviat amb èxit</string>
+    <string name="a_gustos">Gustos musicals canviats amb èxit</string>
+    <string name="i_foto">Error carregant la foto de perfil. El servidor no està actiu a hores d\'ara, intenteu més tard</string>
+    <string name="i_json">El servidor està actualment fora de servei, intenteu més tard</string>
+    <string name="i_contrasenya">No s ha pogut canviar la contrasenya, el servidor no està actiu
+     intente-ho més tard</string>
+    <string name="e_contrasenya">No s ha pogut canviar la contrasenya, ha de tenir entre 8 i 14 caràcters</string>
+    <string name="i_email">No s ha pogut canviar-se el correu electrònic, el servidor no està actiu
+     intente-ho més tard</string>
+    <string name="i_gustos">No s han pogut canviar els gustos, el servidor no està actiu
+     intenteu més tard</string>
+    <string name="i_priv">No s ha pogut canviar la privacitat, el servidor no està actiu
+     intenteu més tard</string>
+    <string name="a_priv">Privacitat canviada amb èxit</string>
+    <string name="i_videos">El servidor està actualment fora de servei, no es poden carregar els vídeos.
+         Intente-ho més tard</string>
+
+
 </resources>

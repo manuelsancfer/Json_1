@@ -17,7 +17,6 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.VideoView;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -47,10 +46,6 @@ public class Perfil extends AppCompatActivity {
     private String[] vidt = new String[4];
     private String[] vidv = new String[4];
 
-
-    VideoView videoView;
-    TextView textView;
-    int count = 0;
 
 
     @Override
@@ -107,18 +102,21 @@ public class Perfil extends AppCompatActivity {
 
                             Log.i("Perfil","makeJsonRequest: onResponse - NOT Success");
                             Toast.makeText(getApplicationContext(),
-                                    response.toString(), Toast.LENGTH_LONG).show();
+                                    getResources().getString(R.string.i_json),
+                                    Toast.LENGTH_LONG).show();
                         }
                     }
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Log.i("Perfil","makeJsonObj: onErrorResponse - no funciona volley");
+                        Toast.makeText(getApplicationContext(),
+                                getResources().getString(R.string.i_json),
+                                Toast.LENGTH_LONG).show();
                     }
                 });
 
         Volley.newRequestQueue(this).add(jsObjRequest);
-        Log.i("Perfil","volley");
     }
 
     private void makeJsonNumSeguidos(String url){
@@ -144,13 +142,17 @@ public class Perfil extends AppCompatActivity {
                         else{
                             Log.i("Perfil","makeJsonRequest: onResponse - NOT Success");
                             Toast.makeText(getApplicationContext(),
-                                    response.toString(), Toast.LENGTH_LONG).show();
+                                    getResources().getString(R.string.i_json),
+                                    Toast.LENGTH_LONG).show();
                         }
                     }
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Log.i("Perfil","makeJsonObj: onErrorResponse - no funciona volley");
+                        Toast.makeText(getApplicationContext(),
+                                getResources().getString(R.string.i_json),
+                                Toast.LENGTH_LONG).show();
                     }
                 });
 
@@ -202,20 +204,22 @@ public class Perfil extends AppCompatActivity {
                 else{
                     Log.i("Perfil","makeJsonRequest: onResponse - NOT Success");
                     Toast.makeText(getApplicationContext(),
-                                    response.toString(), Toast.LENGTH_LONG).show();
+                            getResources().getString(R.string.i_videos),
+                            Toast.LENGTH_LONG).show();
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.i("Perfil","makeJsonObj: onErrorResponse - no funciona volley");
+                Toast.makeText(getApplicationContext(),
+                        getResources().getString(R.string.i_json),
+                        Toast.LENGTH_LONG).show();
             }
         });
 
         Volley.newRequestQueue(this).add(jsObjRequest);
-        Log.i("Perfil","volley");
     }
-
 
     private void videosRecyclerVid() {
 
@@ -234,7 +238,6 @@ public class Perfil extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
     }
-
 
     private void createSpinner() {
 
@@ -288,8 +291,7 @@ public class Perfil extends AppCompatActivity {
         }
     }
 
-    private ProgressDialog pDialogImage; // Lo tenéis que declarar como atributo de la clase
-
+    private ProgressDialog pDialogImage;
 
     private void makeImageRequest(String url) {
         pDialogImage = new ProgressDialog(this);
@@ -310,9 +312,11 @@ public class Perfil extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Log.i("Perfil","Error foto perfil");
                         fotoperfil.setImageResource(R.mipmap.ic_launcher);
                         pDialogImage.hide();
+                        Toast.makeText(getApplicationContext(),
+                                getResources().getString(R.string.i_foto),
+                                Toast.LENGTH_LONG).show();
                     }
                 }
         );

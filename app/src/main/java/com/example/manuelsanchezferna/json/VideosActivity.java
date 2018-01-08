@@ -7,14 +7,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.GridView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -47,13 +44,10 @@ public class VideosActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.videos);
 
-        Toast.makeText(this,"Funciona", Toast.LENGTH_LONG).show();
-
         videosGridVid("https://unguled-flash.000webhostapp.com/Consultas/consultavideos.php");
 
     createSpinner();
     }
-
 
     private void videosGridVid(String url) {
         pDialogImage = new ProgressDialog(this);
@@ -81,8 +75,8 @@ public class VideosActivity extends AppCompatActivity {
                         else {
 
                             Toast.makeText(getApplicationContext(),
-                                    response.toString(), Toast.LENGTH_LONG).show();
-                            Log.i("app","makeJsonRequest: onResponse - no vaaaaaaaaa");
+                                    getResources().getString(R.string.i_videos),
+                                    Toast.LENGTH_LONG).show();
 
                         }
                     }
@@ -91,6 +85,9 @@ public class VideosActivity extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Log.i("app","makeJsonObj: onErrorResponse List2");
+                        Toast.makeText(getApplicationContext(),
+                                getResources().getString(R.string.i_json),
+                                Toast.LENGTH_LONG).show();
                     }
                 });
         Volley.newRequestQueue(this).add(jsObjRequest);
@@ -166,6 +163,5 @@ public class VideosActivity extends AppCompatActivity {
             startActivity(intent);
         }
     }
-
 
 }

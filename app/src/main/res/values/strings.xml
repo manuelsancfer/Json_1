@@ -21,6 +21,24 @@
     <string name="FAVORITOS">FAVORITOS</string>
     <string name="Mis_videos">Mis vídeos</string>
     <string name="VIDEOS_FAVORITOS">VÍDEOS FAVORITOS</string>
+    <string name="i_contrasenya">No ha podido cambiarse la contraseña, el servidor no está activo
+    intentelo más tarde</string>
+    <string name="e_contrasenya">No ha podido cambiarse la contraseña, debe contener entre 8 y 14 carácteres</string>
+    <string name="a_contrasenya">La contraseña se ha cambiado con éxito</string>
+    <string name="a_email">Email cambiado con éxito</string>
+    <string name="i_email">No ha podido cambiarse el email, el servidor no está activo
+    intentelo más tarde</string>
+    <string name="i_gustos">No han podido cambiarse los gustos, el servidor no está activo
+    intentelo más tarde</string>
+    <string name="i_priv">No ha podido cambiarse la privacidad, el servidor no está activo
+    intentelo más tarde</string>
+    <string name="i_json">El servidor está actualmente fuera de servicio, intentelo más tarde</string>
+    <string name="a_gustos">Gustos musicales cambiados con éxito</string>
+    <string name="a_priv">Privacidad cambiada con éxito</string>
+    <string name="i_videos">El servidor está actualmente fuera de servicio, no se pueden cargar los vídeos.
+        Intentelo más tarde</string>
+    <string name="i_foto">Error cargando la foto de perfil. El servidor no está activo en estos momentos, intentelo más tarde</string>
+
 
     <string-array name="desplegable">
         <item>Principal</item>

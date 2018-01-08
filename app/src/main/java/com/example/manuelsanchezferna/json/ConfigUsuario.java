@@ -1,20 +1,14 @@
 package com.example.manuelsanchezferna.json;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
@@ -59,13 +53,9 @@ public class ConfigUsuario extends AppCompatActivity {
 
     }
 
-
-
     public void cpass(View view) {
 
-
         String user = "cristina";
-
 
         if(pass.length()>7 && pass.length()<15) {
             String url =
@@ -86,28 +76,31 @@ public class ConfigUsuario extends AppCompatActivity {
                             if (c.getSuccess() == 1) {
                                 Log.i("Configuracion", "makeJsonRequest: onResponse - get Success");
                                 Toast.makeText(getApplicationContext(),
-                                        "Contraseña cambiada con éxito", Toast.LENGTH_LONG).show();
+                                        getResources().getString(R.string.a_contrasenya),
+                                        Toast.LENGTH_LONG).show();
                             } else {
                                 Log.i("Configuracion", "makeJsonRequest: onResponse - NOT Success");
                                 Toast.makeText(getApplicationContext(),
-                                        "No ha podido cambiarse la contraseña",
+                                        getResources().getString(R.string.i_contrasenya),
                                         Toast.LENGTH_LONG).show();
                             }
                         }
                     }, new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
-                            Log.i("Configuración", "makeJsonObj: onErrorResponse - no funciona volley");
+                            Log.i("Configuracion", "makeJsonRequest: onResponse - get Success");
+                            Toast.makeText(getApplicationContext(),"eo: "+
+                                    getResources().getString(R.string.i_json),
+                                    Toast.LENGTH_LONG).show();
                         }
                     });
 
             Volley.newRequestQueue(this).add(jsObjRequest);
-            Log.i("Configuración", "volley");
         }
 
         else {
             Toast.makeText(getApplicationContext(),
-                    "No ha podido cambirse la contraseña, debe contener entre 8 y 14 carácteres",
+                    getResources().getString(R.string.e_contrasenya),
                     Toast.LENGTH_LONG).show();
         }
     }
@@ -134,18 +127,21 @@ public class ConfigUsuario extends AppCompatActivity {
                             if (c.getSuccess() == 1) {
                                 Log.i("Configuracion", "makeJsonRequest: onResponse - get Success");
                                 Toast.makeText(getApplicationContext(),
-                                        "Email cambiado con éxito", Toast.LENGTH_LONG).show();
+                                        getResources().getString(R.string.a_email),
+                                        Toast.LENGTH_LONG).show();
                             } else {
                                 Log.i("Configuracion", "makeJsonRequest: onResponse - NOT Success");
                                 Toast.makeText(getApplicationContext(),
-                                        "No ha podido cambiarse el email",
+                                        getResources().getString(R.string.i_email),
                                         Toast.LENGTH_LONG).show();
                             }
                         }
                     }, new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
-                            Log.i("Configuración", "makeJsonObj: onErrorResponse - boton email");
+                            Toast.makeText(getApplicationContext(),
+                                    getResources().getString(R.string.i_json),
+                                    Toast.LENGTH_LONG).show();
                         }
                     });
 
@@ -176,18 +172,21 @@ public class ConfigUsuario extends AppCompatActivity {
                         if (c.getSuccess() == 1) {
                             Log.i("Configuracion", "makeJsonRequest: onResponse - get Success");
                             Toast.makeText(getApplicationContext(),
-                                    "Gustos musicales cambiados con éxito", Toast.LENGTH_LONG).show();
+                                    getResources().getString(R.string.a_gustos),
+                                    Toast.LENGTH_LONG).show();
                         } else {
                             Log.i("Configuracion", "makeJsonRequest: onResponse - NOT Success");
                             Toast.makeText(getApplicationContext(),
-                                    "No han podido cambiarse los gustos musicales",
+                                    getResources().getString(R.string.i_gustos),
                                     Toast.LENGTH_LONG).show();
                         }
                     }
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Log.i("Configuración", "makeJsonObj: onErrorResponse - boton gustos");
+                        Toast.makeText(getApplicationContext(),
+                                getResources().getString(R.string.i_json),
+                                Toast.LENGTH_LONG).show();
                     }
                 });
 
@@ -224,11 +223,12 @@ public class ConfigUsuario extends AppCompatActivity {
                         if (c.getSuccess() == 1) {
                             Log.i("Configuracion", "makeJsonRequest: onResponse - get Success");
                             Toast.makeText(getApplicationContext(),
-                                    "Privacidad cambiada con éxito", Toast.LENGTH_LONG).show();
+                                    getResources().getString(R.string.a_priv),
+                                    Toast.LENGTH_LONG).show();
                         } else {
                             Log.i("Configuracion", "makeJsonRequest: onResponse - NOT Success");
                             Toast.makeText(getApplicationContext(),
-                                    "No ha podido cambiarse la privacidad",
+                                    getResources().getString(R.string.i_priv),
                                     Toast.LENGTH_LONG).show();
                         }
                     }
@@ -236,6 +236,9 @@ public class ConfigUsuario extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Log.i("Configuración", "makeJsonObj: onErrorResponse - boton privacidad");
+                        Toast.makeText(getApplicationContext(),
+                                getResources().getString(R.string.i_json),
+                                Toast.LENGTH_LONG).show();
                     }
                 });
 
@@ -264,7 +267,8 @@ public class ConfigUsuario extends AppCompatActivity {
                         }
                         else {
                             Toast.makeText(getApplicationContext(),
-                                    response.toString(), Toast.LENGTH_LONG).show();
+                                    getResources().getString(R.string.i_priv),
+                                    Toast.LENGTH_LONG).show();
                             Log.i("app","makeJsonRequest: onResponse - no funciona");
 
                         }
@@ -274,6 +278,9 @@ public class ConfigUsuario extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Log.i("app","makeJsonObj: onErrorResponse List2");
+                        Toast.makeText(getApplicationContext(),
+                                getResources().getString(R.string.i_json),
+                                Toast.LENGTH_LONG).show();
                     }
                 });
         Volley.newRequestQueue(this).add(jsObjRequest);

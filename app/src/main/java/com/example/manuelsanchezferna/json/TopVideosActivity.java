@@ -43,8 +43,6 @@ public class TopVideosActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.topvideos);
 
-        Toast.makeText(this,"Funciona", Toast.LENGTH_LONG).show();
-
         videosGridVid("https://unguled-flash.000webhostapp.com/Consultas/topvideos.php");
 
         createSpinner();
@@ -77,7 +75,9 @@ public class TopVideosActivity extends AppCompatActivity {
 
                             Toast.makeText(getApplicationContext(),
                                     response.toString(), Toast.LENGTH_LONG).show();
-                            Log.i("app","makeJsonRequest: onResponse - no vaaaaaaaaa");
+                            Toast.makeText(getApplicationContext(),
+                                    getResources().getString(R.string.i_videos),
+                                    Toast.LENGTH_LONG).show();
 
                         }
                     }
@@ -86,6 +86,9 @@ public class TopVideosActivity extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Log.i("app","makeJsonObj: onErrorResponse List2");
+                        Toast.makeText(getApplicationContext(),
+                                getResources().getString(R.string.i_json),
+                                Toast.LENGTH_LONG).show();
                     }
                 });
         Volley.newRequestQueue(this).add(jsObjRequest);
