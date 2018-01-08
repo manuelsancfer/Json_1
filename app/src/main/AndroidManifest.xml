@@ -22,7 +22,8 @@
         <activity android:name=".ConfigUsuario" />
         <activity android:name=".PerfilArtista" />
         <activity android:name=".TopVideosActivity" />
-        <activity android:name=".VideosActivity"></activity>
+        <activity android:name=".VideosActivity" />
+        <activity android:name=".Categorias"></activity>
     </application>
 
 </manifest>

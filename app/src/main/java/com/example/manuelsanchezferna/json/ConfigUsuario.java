@@ -335,6 +335,8 @@ public class ConfigUsuario extends AppCompatActivity {
 
         if (pos == 4){
             //Categorías
+            Intent intent = new Intent(this,Categorias.class);
+            startActivity(intent);
         }
 
         if (pos == 5){

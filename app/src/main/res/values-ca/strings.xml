@@ -66,6 +66,11 @@
     <string name="a_priv">Privacitat canviada amb èxit</string>
     <string name="i_videos">El servidor està actualment fora de servei, no es poden carregar els vídeos.
          Intente-ho més tard</string>
+    <string name="CATEGORÍAS">CATEGORIES</string>
+    <string name="ROCK">ROCK</string>
+    <string name="HipHop">HIP HOP</string>
+    <string name="RAPMETAL">RAP METAL</string>
+    <string name="FUSION">FUSIÓ</string>
 
 
 </resources>

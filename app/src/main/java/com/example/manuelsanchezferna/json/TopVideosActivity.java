@@ -153,6 +153,8 @@ public class TopVideosActivity extends AppCompatActivity {
 
         if(pos == 3){
             //Categorías
+            Intent intent = new Intent(this,Categorias.class);
+            startActivity(intent);
         }
 
         if (pos == 4){

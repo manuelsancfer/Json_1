@@ -38,6 +38,12 @@
     <string name="i_videos">El servidor está actualmente fuera de servicio, no se pueden cargar los vídeos.
         Intentelo más tarde</string>
     <string name="i_foto">Error cargando la foto de perfil. El servidor no está activo en estos momentos, intentelo más tarde</string>
+    <string name="CATEGORÍAS">CATEGORÍAS</string>
+    <string name="ROCK">ROCK</string>
+    <string name="HipHop">HIP HOP</string>
+    <string name="FUSION">FUSIÓN</string>
+    <string name="SCREAMO">SCREAMO</string>
+    <string name="RAPMETAL">RAP METAL</string>
 
 
     <string-array name="desplegable">
@@ -54,6 +60,15 @@
         <item>Principal</item>
         <item>Listas de reproducción</item>
         <item>Categorías</item>
+        <item>Agenda</item>
+        <item>Configuración</item>
+    </string-array>
+
+    <string-array name="desplegable4">
+        <item>Categorías</item>
+        <item>Principal</item>
+        <item>Perfil</item>
+        <item>Listas de reproducción</item>
         <item>Agenda</item>
         <item>Configuración</item>
     </string-array>

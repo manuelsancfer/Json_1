@@ -39,4 +39,9 @@
     <string name="a_priv">Privacy changed successfully</string>
     <string name="i_foto">Error loading the profile picture. The server is not active at this time,
         try it later</string>
+    <string name="CATEGORÍAS">CATEGORIES</string>
+    <string name="ROCK">ROCK</string>
+    <string name="HipHop">HIP HOP</string>
+    <string name="RAPMETAL">RAP METAL</string>
+    <string name="FUSION">FUSION</string>
 </resources>
