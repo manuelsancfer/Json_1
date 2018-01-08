@@ -46,6 +46,7 @@ public class Perfil extends AppCompatActivity {
     private String[] vidt = new String[4];
     private String[] vidv = new String[4];
 
+    private  TextView btn;
 
 
     @Override
@@ -59,6 +60,7 @@ public class Perfil extends AppCompatActivity {
         numamigos =(TextView) findViewById(R.id.numamigos);
         numsiguiendo = (TextView) findViewById(R.id.numseguidos);
         fotoperfil = (ImageView) findViewById(R.id.imagen_perfil);
+        btn = (TextView) findViewById(R.id.title);
 
 
         String usuario = "cristina";
@@ -325,6 +327,8 @@ public class Perfil extends AppCompatActivity {
         Volley.newRequestQueue(this).add(imageReq);
         Log.i("Perfil","Error imagen imagen bien");
     }
+
+
 }
 
 
