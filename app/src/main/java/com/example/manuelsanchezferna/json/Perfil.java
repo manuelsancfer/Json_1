@@ -48,9 +48,10 @@ public class Perfil extends AppCompatActivity {
 
     private  TextView btn;
 
-
+    public static String KEY_NOM = "KEY_NOM";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.perfil_usuari);
 
@@ -63,7 +64,8 @@ public class Perfil extends AppCompatActivity {
         btn = (TextView) findViewById(R.id.title);
 
 
-        String usuario = "cristina";
+        String usuario="cristina";
+
         makeJsonUser("https://unguled-flash.000webhostapp.com/Consultas/consultaperfilpropio.php?user="
                 +usuario);
         makeJsonNumAmigos("https://unguled-flash.000webhostapp.com/Consultas/ConsultaAmigos.php?user="
@@ -71,8 +73,10 @@ public class Perfil extends AppCompatActivity {
         makeJsonNumSeguidos("https://unguled-flash.000webhostapp.com/Consultas/ConsultaSeguidoresU.php?user="
                 +usuario);
 
+
         createSpinner();
     }
+
 
 
     private void makeJsonNumAmigos(String url){
