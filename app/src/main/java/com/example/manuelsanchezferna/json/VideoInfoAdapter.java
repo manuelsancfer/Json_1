@@ -1,7 +1,9 @@
 package com.example.manuelsanchezferna.json;
 
 import android.content.Context;
+import android.content.Intent;
 import android.text.method.ScrollingMovementMethod;
+import android.widget.Button;
 import android.widget.MediaController;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -37,6 +39,19 @@ class VideoInfoAdapter extends RecyclerView.Adapter<VideoInfoAdapter.ViewHolder>
 
     @Override
     public void onBindViewHolder(VideoInfoAdapter.ViewHolder holder, int position) {
+        holder.artista.setText(videoInfoList.get(position).getArtista());
+
+        holder.artista.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context,PerfilArtista.class);
+                // @Jordi: aqui et cal utilitzar el context per a poder engegar l'activitat
+                // startActivity(intent);
+                context.startActivity(intent);
+                // @Jordi: suposo que també abans d'engegar l'activitat li hauràs de passar l'artista, no?
+            }
+        });
+
         holder.title.setText(videoInfoList.get(position).getTitle());
         try {
             // Start the MediaController
@@ -61,9 +76,11 @@ class VideoInfoAdapter extends RecyclerView.Adapter<VideoInfoAdapter.ViewHolder>
     public class ViewHolder extends RecyclerView.ViewHolder {
         private TextView title;
         private VideoView videoview;
+        private Button artista;
 
         public ViewHolder(View itemView) {
             super(itemView);
+            artista = (Button) itemView.findViewById(R.id.btn_artista);
             title = (TextView) itemView.findViewById(R.id.title);
             title.setMovementMethod(new ScrollingMovementMethod());
             videoview = (VideoView) itemView.findViewById(R.id.videoView);

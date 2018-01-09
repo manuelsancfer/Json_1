@@ -10,11 +10,17 @@ class VideoInfo {
 
     private String title;
     private Uri videoUri;
+    private String artista;
 
-    public VideoInfo(String title, Uri videoUri) {
+    public VideoInfo(String artista, String title, Uri videoUri) {
+        this.artista = artista;
         this.title = title;
         this.videoUri = videoUri;
     }
+
+    public String getArtista() { return artista; }
+
+    public void setArtista(String artista) { this.artista = artista; }
 
     public String getTitle() {
         return title;
