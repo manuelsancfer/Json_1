@@ -24,6 +24,7 @@ class VideoInfoAdapter extends RecyclerView.Adapter<VideoInfoAdapter.ViewHolder>
 
     private List<VideoInfo> videoInfoList;
     private Context context;
+    private String Cancion, Artista;
 
     public VideoInfoAdapter(Context context, List<VideoInfo> videoInfoList) {
         this.context = context;
@@ -38,21 +39,29 @@ class VideoInfoAdapter extends RecyclerView.Adapter<VideoInfoAdapter.ViewHolder>
     }
 
     @Override
-    public void onBindViewHolder(VideoInfoAdapter.ViewHolder holder, int position) {
-        holder.artista.setText(videoInfoList.get(position).getArtista());
+    public void onBindViewHolder(VideoInfoAdapter.ViewHolder holder, final int position) {
+        holder.cancion.setText(videoInfoList.get(position).getCancion());
+        holder.cancion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent2 = new Intent(context,Video.class);
+                //intent2.putExtra(Cancion, videoInfoList.get(position).getCancion());
+                context.startActivity(intent2);
+            }
+        });
 
+        holder.artista.setText(videoInfoList.get(position).getArtista());
         holder.artista.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context,PerfilArtista.class);
-                // @Jordi: aqui et cal utilitzar el context per a poder engegar l'activitat
-                // startActivity(intent);
+                //intent.putExtra(Artista,videoInfoList.get(position).getArtista());
                 context.startActivity(intent);
                 // @Jordi: suposo que també abans d'engegar l'activitat li hauràs de passar l'artista, no?
             }
         });
 
-        holder.title.setText(videoInfoList.get(position).getTitle());
+        //holder.puntuacion.setText(String.valueOf(videoInfoList.get(position).getPuntuacion()));
         try {
             // Start the MediaController
             MediaController mediacontroller = new MediaController(context);
@@ -74,15 +83,16 @@ class VideoInfoAdapter extends RecyclerView.Adapter<VideoInfoAdapter.ViewHolder>
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView title;
+        private TextView puntuacion;
         private VideoView videoview;
-        private Button artista;
+        private Button artista, cancion;
 
         public ViewHolder(View itemView) {
             super(itemView);
             artista = (Button) itemView.findViewById(R.id.btn_artista);
-            title = (TextView) itemView.findViewById(R.id.title);
-            title.setMovementMethod(new ScrollingMovementMethod());
+            cancion = (Button) itemView.findViewById(R.id.btn_cancion);
+            //puntuacion = (TextView) itemView.findViewById(R.id.puntuacion);
+            //puntuacion.setMovementMethod(new ScrollingMovementMethod());
             videoview = (VideoView) itemView.findViewById(R.id.videoView);
         }
     }

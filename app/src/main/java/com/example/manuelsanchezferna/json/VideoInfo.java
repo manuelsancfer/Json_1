@@ -8,27 +8,23 @@ import android.net.Uri;
 
 class VideoInfo {
 
-    private String title;
     private Uri videoUri;
-    private String artista;
+    private String artista,cancion;
 
-    public VideoInfo(String artista, String title, Uri videoUri) {
+    public VideoInfo(String artista, String cancion, Uri videoUri) {
         this.artista = artista;
-        this.title = title;
+        this.cancion = cancion;
         this.videoUri = videoUri;
     }
+
+    public String getCancion(){ return cancion; }
+
+    public void setCancion(String cancion){ this.cancion = cancion; }
 
     public String getArtista() { return artista; }
 
     public void setArtista(String artista) { this.artista = artista; }
 
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
 
     public Uri getVideoUri() {
         return videoUri;
