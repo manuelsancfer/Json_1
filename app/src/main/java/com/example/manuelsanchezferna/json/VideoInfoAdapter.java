@@ -24,7 +24,6 @@ class VideoInfoAdapter extends RecyclerView.Adapter<VideoInfoAdapter.ViewHolder>
 
     private List<VideoInfo> videoInfoList;
     private Context context;
-    private String Cancion, Artista;
 
     public VideoInfoAdapter(Context context, List<VideoInfo> videoInfoList) {
         this.context = context;
@@ -45,7 +44,7 @@ class VideoInfoAdapter extends RecyclerView.Adapter<VideoInfoAdapter.ViewHolder>
             @Override
             public void onClick(View view) {
                 Intent intent2 = new Intent(context,Video.class);
-                //intent2.putExtra(Cancion, videoInfoList.get(position).getCancion());
+                intent2.putExtra("KEY_CANCION_NAME", videoInfoList.get(position).getCancion());
                 context.startActivity(intent2);
             }
         });
@@ -55,13 +54,11 @@ class VideoInfoAdapter extends RecyclerView.Adapter<VideoInfoAdapter.ViewHolder>
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context,PerfilArtista.class);
-                //intent.putExtra(Artista,videoInfoList.get(position).getArtista());
+                intent.putExtra("KEY_ARTISTA_NAME",videoInfoList.get(position).getArtista());
                 context.startActivity(intent);
-                // @Jordi: suposo que també abans d'engegar l'activitat li hauràs de passar l'artista, no?
             }
         });
 
-        //holder.puntuacion.setText(String.valueOf(videoInfoList.get(position).getPuntuacion()));
         try {
             // Start the MediaController
             MediaController mediacontroller = new MediaController(context);

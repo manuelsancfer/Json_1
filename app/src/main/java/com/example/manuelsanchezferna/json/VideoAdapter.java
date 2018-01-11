@@ -38,18 +38,6 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(VideoAdapter.ViewHolder holder, int position) {
 
-        holder.artista2.setText(videoList.get(position).getArtista());
-        holder.artista2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(context2,PerfilArtista.class);
-                context2.startActivity(intent);
-                // @Jordi: suposo que també abans d'engegar l'activitat li hauràs de passar l'artista, no?
-            }
-        });
-
-        holder.titulo.setText(videoList.get(position).getCancion());
-
         try {
             // Start the MediaController
             MediaController mediacontroller = new MediaController(context2);
@@ -69,15 +57,11 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
     public int getItemCount() { return videoList.size(); }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView titulo;
         private VideoView videoview;
-        private Button artista2;
 
         public ViewHolder(View itemView2) {
             super(itemView2);
 
-            artista2 = (Button) itemView2.findViewById(R.id.btn_artista2);
-            titulo = (TextView) itemView2.findViewById(R.id.texto_cancion);
             videoview = (VideoView) itemView2.findViewById(R.id.video);
         }
     }

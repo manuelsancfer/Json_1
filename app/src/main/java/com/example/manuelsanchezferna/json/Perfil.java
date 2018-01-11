@@ -48,7 +48,6 @@ public class Perfil extends AppCompatActivity {
 
     private  TextView btn;
 
-    public static String KEY_NOM = "KEY_NOM";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -63,15 +62,15 @@ public class Perfil extends AppCompatActivity {
         fotoperfil = (ImageView) findViewById(R.id.imagen_perfil);
         btn = (TextView) findViewById(R.id.title);
 
-
-        String usuario="cristina";
+        Intent intent = getIntent();
+        String usuarioName = intent.getStringExtra("KEY_USUARIO");
 
         makeJsonUser("https://unguled-flash.000webhostapp.com/Consultas/consultaperfilpropio.php?user="
-                +usuario);
+                +usuarioName);
         makeJsonNumAmigos("https://unguled-flash.000webhostapp.com/Consultas/ConsultaAmigos.php?user="
-                +usuario);
+                +usuarioName);
         makeJsonNumSeguidos("https://unguled-flash.000webhostapp.com/Consultas/ConsultaSeguidoresU.php?user="
-                +usuario);
+                +usuarioName);
 
 
         createSpinner();

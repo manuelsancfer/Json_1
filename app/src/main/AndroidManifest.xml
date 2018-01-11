@@ -38,7 +38,9 @@
         <activity
             android:name=".Genero"
             android:screenOrientation="sensorPortrait" />
-        <activity android:name=".Video"></activity>
+        <activity
+            android:name=".Video"
+            android:screenOrientation="landscape"></activity>
     </application>
 
 </manifest>

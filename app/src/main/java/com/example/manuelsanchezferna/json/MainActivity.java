@@ -216,6 +216,7 @@ public class MainActivity extends AppCompatActivity {
         if (pos == 1){
             //Perfil propio usuario
             Intent intent = new Intent(this,Perfil.class);
+            intent.putExtra("KEY_USUARIO", "cristina");
             startActivity(intent);
         }
 
