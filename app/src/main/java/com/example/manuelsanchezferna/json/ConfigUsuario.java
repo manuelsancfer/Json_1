@@ -1,13 +1,23 @@
 package com.example.manuelsanchezferna.json;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.media.Image;
+import android.net.Uri;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
+import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 import android.widget.ToggleButton;
@@ -21,10 +31,15 @@ import com.google.gson.Gson;
 
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
+
 public class ConfigUsuario extends AppCompatActivity {
 
     private EditText email, pass, gustos, f1, f2, f3, f4;
     private ToggleButton priva;
+    private ImageView photo;
+    private Button image;
+    private Bitmap photobmp;;
 
 /* TODO: Arreglar al cambiar lo de aquí si justo damos atrás al perfil no se actualiza el perfil
 (si volvemos a darle a perfil si se actualiza)*/
@@ -42,6 +57,10 @@ public class ConfigUsuario extends AppCompatActivity {
         f3 = (EditText) findViewById(R.id.editf3);
         f4 = (EditText) findViewById(R.id.editf4);
         priva = (ToggleButton) findViewById(R.id.btn_public);
+        image = (Button) findViewById(R.id.btn_subirfoto);
+        photo = (ImageView) findViewById(R.id.photo);
+
+
 
 
         //TODO: favoritos
@@ -343,4 +362,49 @@ public class ConfigUsuario extends AppCompatActivity {
             //Agenda
         }
     }
+
+    public void clickimage(View view) {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent, "Complete la acción usando..."), 1);
+    }
+
+    public void buttoni(View view) {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        photobmp.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        byte[] imageBytes = baos.toByteArray();
+        String encodedImage = Base64.encodeToString(imageBytes, Base64.DEFAULT);
+        //Se ejecuta en segundo plano para no colgar la aplicacion
+        new MyAsyncTask(ConfigUsuario.this).execute(encodedImage);
+    }
+
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 1 && resultCode == RESULT_OK) {
+            Uri selectedImageUri = data.getData();
+            String aaa = getRealPathFromURI(selectedImageUri);
+            photobmp = BitmapFactory.decodeFile(aaa);
+            photo.setImageBitmap(photobmp);
+        }
+    }
+
+
+    public String getRealPathFromURI(Uri contentUri) {
+        Cursor cursor = null;
+        try {
+            String[] proj = { MediaStore.Images.Media.DATA };
+            cursor = getApplicationContext().getContentResolver().query(contentUri,  proj, null, null, null);
+            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+            cursor.moveToFirst();
+            return cursor.getString(column_index);
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
+        }
+    }
+
 }

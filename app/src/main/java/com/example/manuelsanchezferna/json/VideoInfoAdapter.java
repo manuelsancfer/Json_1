@@ -66,8 +66,10 @@ class VideoInfoAdapter extends RecyclerView.Adapter<VideoInfoAdapter.ViewHolder>
             // Start the MediaController
             MediaController mediacontroller = new MediaController(context);
             mediacontroller.setAnchorView(holder.videoview);
+            
             holder.videoview.setMediaController(mediacontroller);
             holder.videoview.setVideoURI(videoInfoList.get(position).getVideoUri());
+
 
         } catch (Exception e) {
             Log.e("Error", e.getMessage());
