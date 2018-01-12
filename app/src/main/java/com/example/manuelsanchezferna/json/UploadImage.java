@@ -23,7 +23,7 @@ import org.json.JSONObject;
 public class UploadImage {
 
 
-    private final String HTTP_EVENT="https://unguled-flash.000webhostapp.com/Consultas/uploadimage.php";
+    private final String HTTP_EVENT="https://unguled-flash.000webhostapp.com/Consultas/uploadimage.php?user=bernat";
 
 
     public Boolean uploadPhoto(String encodedImage) throws ClientProtocolException, IOException, JSONException

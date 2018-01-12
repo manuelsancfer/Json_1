@@ -65,7 +65,7 @@ public class Perfil extends AppCompatActivity {
         Intent intent = getIntent();
         String usuarioName = intent.getStringExtra("KEY_USUARIO");
 
-        makeJsonUser("https://unguled-flash.000webhostapp.com/Consultas/consultaperfilartista.php?user="
+        makeJsonUser("https://unguled-flash.000webhostapp.com/Consultas/consultaperfilpropio.php?user="
                 +usuarioName);
         makeJsonNumAmigos("https://unguled-flash.000webhostapp.com/Consultas/ConsultaAmigos.php?user="
                 +usuarioName);
@@ -228,10 +228,10 @@ public class Perfil extends AppCompatActivity {
 
     private void videosRecyclerVid() {
 
-        videoList.add(new VideoInfo(vidt[0],vidv[0], Uri.parse(vidf[0%vidf.length])));
-        videoList.add(new VideoInfo(vidt[1],vidv[1], Uri.parse(vidf[1%vidf.length])));
-        videoList.add(new VideoInfo(vidt[2],vidv[2], Uri.parse(vidf[2%vidf.length])));
-        videoList.add(new VideoInfo(vidt[3],vidv[3], Uri.parse(vidf[3%vidf.length])));
+        videoList.add(new VideoInfo(vidv[0],vidt[0], Uri.parse(vidf[0%vidf.length])));
+        videoList.add(new VideoInfo(vidv[1],vidt[1], Uri.parse(vidf[1%vidf.length])));
+        videoList.add(new VideoInfo(vidv[2],vidt[2], Uri.parse(vidf[2%vidf.length])));
+        videoList.add(new VideoInfo(vidv[3],vidt[3], Uri.parse(vidf[3%vidf.length])));
 
 
         recyclerView = (RecyclerView) findViewById(R.id.RecylerViewFavoritos);

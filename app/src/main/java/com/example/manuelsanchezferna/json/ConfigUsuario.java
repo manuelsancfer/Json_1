@@ -32,6 +32,8 @@ import com.google.gson.Gson;
 import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 
 public class ConfigUsuario extends AppCompatActivity {
 
@@ -385,8 +387,15 @@ public class ConfigUsuario extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == 1 && resultCode == RESULT_OK) {
             Uri selectedImageUri = data.getData();
-            String aaa = getRealPathFromURI(selectedImageUri);
-            photobmp = BitmapFactory.decodeFile(aaa);
+//            String aaa = getRealPathFromURI(selectedImageUri);
+            InputStream inputStream;
+            try {
+                inputStream = this.getContentResolver().openInputStream(data.getData());
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+                return;
+            }
+            photobmp = BitmapFactory.decodeStream(inputStream);
             photo.setImageBitmap(photobmp);
         }
     }

@@ -57,9 +57,9 @@ public class PerfilArtista extends AppCompatActivity {
         user = (TextView) findViewById(R.id.username_artista);
         email = (TextView) findViewById(R.id.emailArtista);
         descripcion = (TextView) findViewById(R.id.descripcion);
-        numamigos =(TextView) findViewById(R.id.amigos1);
-        numsiguiendo = (TextView) findViewById(R.id.siguiendo1);
-        numseguidores = (TextView) findViewById(R.id.seguidores);
+        numamigos =(TextView) findViewById(R.id.numamigos);
+        numsiguiendo = (TextView) findViewById(R.id.numsiguiendo);
+        numseguidores = (TextView) findViewById(R.id.numseguidores);
         fotoperfil = (ImageView) findViewById(R.id.imagen_perfilArtista);
         score = (TextView) findViewById(R.id.puntuacion);
 
@@ -73,14 +73,14 @@ public class PerfilArtista extends AppCompatActivity {
         makeVideo("https://unguled-flash.000webhostapp.com/Consultas/consultamisvideos.php?user="
             +artistName);
 
-//        makeJsonNumAmigos("https://unguled-flash.000webhostapp.com/Consultas/ConsultaAmigos.php?user="
-//                +artistName);
-//        makeJsonNumSeguidos("https://unguled-flash.000webhostapp.com/Consultas/ConsultaSeguidoresU.php?user="
-//                +artistName);
+        makeJsonNumAmigos("https://unguled-flash.000webhostapp.com/Consultas/ConsultaAmigos.php?user="
+                +artistName);
+        makeJsonNumSeguidos("https://unguled-flash.000webhostapp.com/Consultas/ConsultaSeguidoresU.php?user="
+                +artistName);
 //        makeJsonNumSeguidores("https://unguled-flash.000webhostapp.com/Consultas/ConsultaSeguidoresU.php?user="
 //                +artistName); //s'ha de fer la consulta
 
-        //createSpinner();
+        createSpinner();
     }
 
     private void makeVideo(String url){
@@ -306,6 +306,59 @@ public class PerfilArtista extends AppCompatActivity {
 
     }
 
+    private void createSpinner() {
+
+        Spinner spinner = (Spinner) findViewById(R.id.spinner2);
+
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter<CharSequence> adapterS = ArrayAdapter.createFromResource(this,
+                R.array.desplegable2,android.R.layout.simple_spinner_item);
+
+        // Specify the layout to use when the list of choices appears
+        adapterS.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        // Apply the adapter to the spinner
+        spinner.setAdapter(adapterS);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                Seleccio(i);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                Log.i("app","onNothing");
+            }
+        });
+    }
+
+    private void Seleccio(int pos) {
+
+        if(pos == 1){
+            Intent intent = new Intent(this,MainActivity.class);
+            startActivity(intent);
+        }
+
+        if(pos == 2){
+            //Lista rep
+        }
+
+        if(pos == 3){
+            //Categorías
+            Intent intent = new Intent(this,Genero.class);
+            startActivity(intent);
+        }
+
+        if (pos == 4){
+            //Agenda
+        }
+
+        if (pos == 5){
+            //Configuración
+            Intent intent = new Intent(this,ConfigUsuario.class);
+            startActivity(intent);
+        }
+    }
 
     private ProgressDialog pDialogImage;
 

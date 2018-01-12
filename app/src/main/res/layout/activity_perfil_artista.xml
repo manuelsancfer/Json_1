@@ -161,20 +161,42 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/linia1"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:text="@string/Seguidores"
         android:textSize="16sp"
         android:textStyle="bold" />
 
     <TextView
+        android:id="@+id/numseguidores"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="255dp"
+        android:textSize="18sp"
+        android:textStyle="bold"
+         />
+
+    <TextView
         android:id="@+id/siguiendo1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/linia1"
-        android:layout_marginLeft="170dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginLeft="28dp"
         android:text="@string/Siguiendo"
         android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_alignBaseline="@+id/amigos1"
+        android:layout_alignBottom="@+id/amigos1"
+        android:layout_toRightOf="@+id/btn_puntuacion"
+        android:layout_toEndOf="@+id/btn_puntuacion"
+        android:layout_marginStart="28dp" />
+
+    <TextView
+        android:id="@+id/numsiguiendo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="208dp"
+        android:layout_marginTop="255dp"
+        android:textSize="18sp"
         android:textStyle="bold" />
 
     <TextView
@@ -183,9 +205,17 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/linia1"
         android:layout_marginLeft="300dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:text="@string/Amigos"
         android:textSize="16sp"
+        android:textStyle="bold" />
+    <TextView
+        android:id="@+id/numamigos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="326dp"
+        android:layout_marginTop="255dp"
+        android:textSize="18sp"
         android:textStyle="bold" />
 
 
