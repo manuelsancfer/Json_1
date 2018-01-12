@@ -201,6 +201,7 @@ public class Perfil extends AppCompatActivity {
                     vidt[2] = c.getUsers().get(0).getT3();
                     vidt[3] = c.getUsers().get(0).getT4();
 
+
                     videosRecyclerVid();
 
                     makeImageRequest(c.getUsers().get(0).getFoto_perfil());

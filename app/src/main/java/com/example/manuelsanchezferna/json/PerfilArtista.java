@@ -77,8 +77,8 @@ public class PerfilArtista extends AppCompatActivity {
                 +artistName);
         makeJsonNumSeguidos("https://unguled-flash.000webhostapp.com/Consultas/ConsultaSeguidoresU.php?user="
                 +artistName);
-//        makeJsonNumSeguidores("https://unguled-flash.000webhostapp.com/Consultas/ConsultaSeguidoresU.php?user="
-//                +artistName); //s'ha de fer la consulta
+        makeJsonNumSeguidores("https://unguled-flash.000webhostapp.com/Consultas/ConsultaSeguidos.php?user="
+                +artistName);   //url nombre de ConsultaSeguidoresU y ConsultaSeguidos están bien pasados
 
         createSpinner();
     }
@@ -99,7 +99,7 @@ public class PerfilArtista extends AppCompatActivity {
                                 videosURLs[i] = c.getVideos().get(i).getUrl();
                                 videoList2.add(new VideoInfo(c.getVideos().get(i).getName().toString(),
                                         c.getVideos().get(i).getTittle().toString()+" - "
-                                                +c.getVideos().get(0).getScore(),
+                                                +c.getVideos().get(i).getScore(),
                                         Uri.parse(videosURLs[i%videosURLs.length])));
                             }
 
@@ -222,7 +222,7 @@ public class PerfilArtista extends AppCompatActivity {
 
         Volley.newRequestQueue(this).add(jsObjRequest);
         Log.i("Perfil","volley");
-    }
+    } //SIGUIENDO
 
     private void makeJsonUser(String url2) {
         Log.i("Perfil","makeJsonUser");
@@ -287,7 +287,44 @@ public class PerfilArtista extends AppCompatActivity {
         Volley.newRequestQueue(this).add(jsObjRequest);
     }
 
-    private void makeJsonNumSeguidores(String url){}
+    private void makeJsonNumSeguidores(String url){ //SEGUIDORES
+        Log.i("PerfilArtista","makeJsonUser");
+
+        JsonObjectRequest jsObjRequest = new JsonObjectRequest
+                (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.i("PerfilArtista", "onResponse");
+
+                        Gson gson = new Gson();
+
+                        ConsultaNumSeguidos c = gson.fromJson(response.toString(), ConsultaNumSeguidos.class);
+
+
+                        if (c.getSuccess() == 1) {
+                            numseguidores.setText(Integer.toString(c.getNumSeguidos().get(0).getSeguidos()));
+
+                        }
+                        else{
+                            Log.i("Perfil","makeJsonRequest: onResponse - NOT Success");
+                            Toast.makeText(getApplicationContext(),
+                                    getResources().getString(R.string.i_json),
+                                    Toast.LENGTH_LONG).show();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.i("Perfil","makeJsonObj: onErrorResponse - no funciona volley");
+                        Toast.makeText(getApplicationContext(),
+                                getResources().getString(R.string.i_json),
+                                Toast.LENGTH_LONG).show();
+                    }
+                });
+
+        Volley.newRequestQueue(this).add(jsObjRequest);
+        Log.i("Perfil","volley");
+    }
 
     private void favoritosRecyclerVid() {
 
