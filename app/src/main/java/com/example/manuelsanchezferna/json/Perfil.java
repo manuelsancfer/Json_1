@@ -65,7 +65,7 @@ public class Perfil extends AppCompatActivity {
         Intent intent = getIntent();
         String usuarioName = intent.getStringExtra("KEY_USUARIO");
 
-        makeJsonUser("https://unguled-flash.000webhostapp.com/Consultas/consultaperfilpropio.php?user="
+        makeJsonUser("https://unguled-flash.000webhostapp.com/Consultas/consultaperfilartista.php?user="
                 +usuarioName);
         makeJsonNumAmigos("https://unguled-flash.000webhostapp.com/Consultas/ConsultaAmigos.php?user="
                 +usuarioName);

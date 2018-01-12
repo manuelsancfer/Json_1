@@ -34,11 +34,13 @@ import java.util.List;
 public class PerfilArtista extends AppCompatActivity {
 
     private ImageView fotoperfil;
-    private TextView user, email, descripcion, numamigos, numsiguiendo,numseguidores;
+    private TextView user, email, descripcion, numamigos, numsiguiendo,numseguidores, score;
 
-    private RecyclerView recyclerFav,recyclerVideos;
+    private RecyclerView recyclerViewMis, recyclerFav;
     private VideoInfoAdapter adapter1,adapter2;
     private List<VideoInfo> videoList = new ArrayList<VideoInfo>();
+    private List<VideoInfo> videoList2 = new ArrayList<VideoInfo>();
+
 
     private String[] vidf =  new String[4];
     private String[] vidt = new String[4];
@@ -59,29 +61,29 @@ public class PerfilArtista extends AppCompatActivity {
         numsiguiendo = (TextView) findViewById(R.id.siguiendo1);
         numseguidores = (TextView) findViewById(R.id.seguidores);
         fotoperfil = (ImageView) findViewById(R.id.imagen_perfilArtista);
+        score = (TextView) findViewById(R.id.puntuacion);
 
         Intent intent1 = getIntent();
         String artistName = intent1.getStringExtra("KEY_ARTISTA_NAME");
 
-        //Toast.makeText(getApplicationContext(),artistName, Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(),artistName, Toast.LENGTH_LONG).show();
 
-        makeJsonVideos("https://unguled-flash.000webhostapp.com/Consultas/ConsultaSeguidoresU.php?user="
-                +artistName);
+       makeJsonUser("https://unguled-flash.000webhostapp.com/Consultas/consultaperfilartista.php?user="
+               +artistName);
+        makeVideo("https://unguled-flash.000webhostapp.com/Consultas/consultamisvideos.php?user="
+            +artistName);
 
-        makeJsonUser("https://unguled-flash.000webhostapp.com/Consultas/consultaperfilpropio.php?user="
-                +artistName);
-        makeJsonNumAmigos("https://unguled-flash.000webhostapp.com/Consultas/ConsultaAmigos.php?user="
-                +artistName);
-        makeJsonNumSeguidos("https://unguled-flash.000webhostapp.com/Consultas/ConsultaSeguidoresU.php?user="
-                +artistName);
-        makeJsonNumSeguidores("https://unguled-flash.000webhostapp.com/Consultas/ConsultaSeguidoresU.php?user="
-                +artistName); //s'ha de fer la consulta
+//        makeJsonNumAmigos("https://unguled-flash.000webhostapp.com/Consultas/ConsultaAmigos.php?user="
+//                +artistName);
+//        makeJsonNumSeguidos("https://unguled-flash.000webhostapp.com/Consultas/ConsultaSeguidoresU.php?user="
+//                +artistName);
+//        makeJsonNumSeguidores("https://unguled-flash.000webhostapp.com/Consultas/ConsultaSeguidoresU.php?user="
+//                +artistName); //s'ha de fer la consulta
 
         //createSpinner();
     }
 
-    //consulta para 'Mis videos' del artista
-    private void makeJsonVideos(String url){
+    private void makeVideo(String url){
         JsonObjectRequest jsObjRequest = new JsonObjectRequest
                 (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
                     @Override
@@ -89,23 +91,26 @@ public class PerfilArtista extends AppCompatActivity {
                         Gson gson = new Gson();
 
                         ConsultaVideos c = gson.fromJson(response.toString(),ConsultaVideos.class);
+                        Log.i("holaa", "holaaa"+c.getVideos().size());
 
                         if(c.getSuccess()==1) {
-                            for (int i = 0; i < 10; i++) {
+                            for (int i = 0; i < c.getVideos().size(); i++) {
+                                Log.i("holaa", "holaaa funciona2"+ c.getVideos().get(i).getUrl());
                                 videosURLs[i] = c.getVideos().get(i).getUrl();
-                                videoList.add(new VideoInfo(c.getVideos().get(i).getName().toString(),
+                                videoList2.add(new VideoInfo(c.getVideos().get(i).getName().toString(),
                                         c.getVideos().get(i).getTittle().toString()+" - "
                                                 +c.getVideos().get(0).getScore(),
                                         Uri.parse(videosURLs[i%videosURLs.length])));
                             }
 
-                            videosRecyclerVid();
+                            misvideosRecyclerVid();
                         }
                         else {
 
                             Toast.makeText(getApplicationContext(),
                                     getResources().getString(R.string.i_videos),
                                     Toast.LENGTH_LONG).show();
+                            Log.i("holaa", "holaa fallo");
 
                         }
                     }
@@ -116,19 +121,22 @@ public class PerfilArtista extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(),
                                 getResources().getString(R.string.i_json),
                                 Toast.LENGTH_LONG).show();
-                        Log.i("app","makeJsonObj: onErrorResponse List2");
+                        Log.i("app","makeJsonObj: onErrorResponse List22");
                     }
                 });
         Volley.newRequestQueue(this).add(jsObjRequest);
+
     }
 
-    private void videosRecyclerVid(){
-        recyclerVideos = (RecyclerView) findViewById(R.id.RecylerMisVideos2);
-        adapter2 = new VideoInfoAdapter(this,videoList);
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL,false);
-        recyclerVideos.setLayoutManager(mLayoutManager);
-        recyclerVideos.setItemAnimator(new DefaultItemAnimator());
-        recyclerVideos.setAdapter(adapter2);
+    private void misvideosRecyclerVid(){
+        recyclerViewMis = (RecyclerView) findViewById(R.id.RecylerMisVideos2);
+        adapter2 = new VideoInfoAdapter(this,videoList2);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.HORIZONTAL,false);
+        recyclerViewMis.setHasFixedSize(true);
+        recyclerViewMis.setLayoutManager(mLayoutManager);
+        recyclerViewMis.setItemAnimator(new DefaultItemAnimator());
+        recyclerViewMis.setAdapter(adapter2);
+
     }
 
     private void makeJsonNumAmigos(String url){
@@ -227,14 +235,16 @@ public class PerfilArtista extends AppCompatActivity {
 
                         Gson gson = new Gson();
 
-                        ConsultaUserPropi c = gson.fromJson(response.toString(),ConsultaUserPropi.class);
+                        ConsultaArtista c = gson.fromJson(response.toString(),ConsultaArtista.class);
 
                         if(c.getSuccess()==1){
                             Log.i("Perfil","makeJsonRequest: onResponse - get Success");
 
                             user.setText(c.getUsers().get(0).getUser());
                             email.setText(c.getUsers().get(0).getEmail());
-                            descripcion.setText(c.getUsers().get(0).getGustos_musicales());
+                            descripcion.setText(c.getUsers().get(0).getDescripcion());
+                            score.setText(Float.toString(c.getUsers().get(0).getScore()));
+
 
 
                             vidf[0] = c.getUsers().get(0).getF1();
