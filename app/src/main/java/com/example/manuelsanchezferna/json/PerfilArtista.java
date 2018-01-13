@@ -46,6 +46,7 @@ public class PerfilArtista extends AppCompatActivity {
     private String[] vidf =  new String[4];
     private String[] vidt = new String[4];
     private String[] vidv = new String[4];
+    private float[] vids = new float[4];
 
     private String[] videosURLs= new String[10];
     private String[] videosURLsTop= new String[10];
@@ -74,8 +75,6 @@ public class PerfilArtista extends AppCompatActivity {
 
         Intent intent1 = getIntent();
         artistName = intent1.getStringExtra("KEY_ARTISTA_NAME");
-
-        Toast.makeText(getApplicationContext(),artistName, Toast.LENGTH_LONG).show();
 
        makeJsonUser("https://unguled-flash.000webhostapp.com/Consultas/consultaperfilartista.php?user="
                +artistName);
@@ -143,8 +142,8 @@ public class PerfilArtista extends AppCompatActivity {
                                 Log.i("holaa", "holaaa funciona2"+ c.getVideos().get(i).getUrl());
                                 videosURLs[i] = c.getVideos().get(i).getUrl();
                                 videoList2.add(new VideoInfo(c.getVideos().get(i).getName().toString(),
-                                        c.getVideos().get(i).getTittle().toString()+" - "
-                                                +c.getVideos().get(i).getScore(),
+                                        c.getVideos().get(i).getTittle().toString(),
+                                        c.getVideos().get(i).getScore(),
                                         Uri.parse(videosURLs[i%videosURLs.length])));
                             }
 
@@ -181,7 +180,6 @@ public class PerfilArtista extends AppCompatActivity {
         recyclerViewMis.setLayoutManager(mLayoutManager);
         recyclerViewMis.setItemAnimator(new DefaultItemAnimator());
         recyclerViewMis.setAdapter(adapter2);
-
     }
 
     private void makeJsonNumAmigos(String url){
@@ -290,8 +288,6 @@ public class PerfilArtista extends AppCompatActivity {
                             descripcion.setText(c.getUsers().get(0).getDescripcion());
                             score.setText(Float.toString(c.getUsers().get(0).getScore()));
 
-
-
                             vidf[0] = c.getUsers().get(0).getF1();
                             vidf[1] = c.getUsers().get(0).getF2();
                             vidf[2] = c.getUsers().get(0).getF3();
@@ -306,6 +302,11 @@ public class PerfilArtista extends AppCompatActivity {
                             vidt[1] = c.getUsers().get(0).getT2();
                             vidt[2] = c.getUsers().get(0).getT3();
                             vidt[3] = c.getUsers().get(0).getT4();
+
+                            /*vids[0] = c.getUsers().get(0).getS1();
+                            vids[1] = c.getUsers().get(0).getS2();
+                            vids[2] = c.getUsers().get(0).getS3();
+                            vids[3] = c.getUsers().get(0).getS4();*/
 
                             favoritosRecyclerVid();
 
@@ -373,10 +374,10 @@ public class PerfilArtista extends AppCompatActivity {
 
     private void favoritosRecyclerVid() {
 
-        videoList.add(new VideoInfo(vidt[0],vidv[0], Uri.parse(vidf[0%vidf.length])));
-        videoList.add(new VideoInfo(vidt[1],vidv[1], Uri.parse(vidf[1%vidf.length])));
-        videoList.add(new VideoInfo(vidt[2],vidv[2], Uri.parse(vidf[2%vidf.length])));
-        videoList.add(new VideoInfo(vidt[3],vidv[3], Uri.parse(vidf[3%vidf.length])));
+        /*videoList.add(new VideoInfo(vidv[0],vidt[0], vids[0],Uri.parse(vidf[0%vidf.length])));
+        videoList.add(new VideoInfo(vidv[1],vidt[1], vids[1], Uri.parse(vidf[1%vidf.length])));
+        videoList.add(new VideoInfo(vidv[2],vidt[2], vids[2],Uri.parse(vidf[2%vidf.length])));
+        videoList.add(new VideoInfo(vidv[3],vidt[3], vids[3], Uri.parse(vidf[3%vidf.length])));*/
 
 
         recyclerFav = (RecyclerView) findViewById(R.id.RecylerFavoritos1);
@@ -418,6 +419,7 @@ public class PerfilArtista extends AppCompatActivity {
 
         if(pos == 1){
             Intent intent = new Intent(this,MainActivity.class);
+            intent.putExtra("KEY_USUARIO", "cristina");
             startActivity(intent);
         }
 
@@ -513,7 +515,7 @@ public class PerfilArtista extends AppCompatActivity {
                         if (c.getSuccess() == 1) {
                             Log.i("Configuracion", "makeJsonRequest: onResponse - get Success");
 
-                            if(estado==true) {
+                            /*if(estado==true) {
                                 Toast.makeText(getApplicationContext(),
                                         getResources().getString(R.string.a_follow) +" "+ artistName,
                                         Toast.LENGTH_SHORT).show();
@@ -528,7 +530,7 @@ public class PerfilArtista extends AppCompatActivity {
                             Log.i("Configuracion", "makeJsonRequest: onResponse - NOT Success");
                             Toast.makeText(getApplicationContext(),
                                     getResources().getString(R.string.i_follow),
-                                    Toast.LENGTH_LONG).show();
+                                    Toast.LENGTH_LONG).show();*/
                         }
                     }
                 }, new Response.ErrorListener() {

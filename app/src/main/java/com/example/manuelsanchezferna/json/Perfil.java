@@ -45,7 +45,7 @@ public class Perfil extends AppCompatActivity {
     private String[] vidf =  new String[4];
     private String[] vidt = new String[4];
     private String[] vidv = new String[4];
-
+    private float[] vids = new float[4];
     private  TextView btn;
 
     @Override
@@ -201,6 +201,10 @@ public class Perfil extends AppCompatActivity {
                     vidt[2] = c.getUsers().get(0).getT3();
                     vidt[3] = c.getUsers().get(0).getT4();
 
+                    vids[0] = c.getUsers().get(0).getS1();
+                    vids[1] = c.getUsers().get(0).getS2();
+                    vids[2] = c.getUsers().get(0).getS3();
+                    vids[3] = c.getUsers().get(0).getS4();
 
                     videosRecyclerVid();
 
@@ -229,10 +233,10 @@ public class Perfil extends AppCompatActivity {
 
     private void videosRecyclerVid() {
 
-        videoList.add(new VideoInfo(vidv[0],vidt[0], Uri.parse(vidf[0%vidf.length])));
-        videoList.add(new VideoInfo(vidv[1],vidt[1], Uri.parse(vidf[1%vidf.length])));
-        videoList.add(new VideoInfo(vidv[2],vidt[2], Uri.parse(vidf[2%vidf.length])));
-        videoList.add(new VideoInfo(vidv[3],vidt[3], Uri.parse(vidf[3%vidf.length])));
+        videoList.add(new VideoInfo(vidv[0],vidt[0],vids[0],Uri.parse(vidf[0%vidf.length])));
+        videoList.add(new VideoInfo(vidv[1],vidt[1],vids[1],Uri.parse(vidf[1%vidf.length])));
+        videoList.add(new VideoInfo(vidv[2],vidt[2],vids[2], Uri.parse(vidf[2%vidf.length])));
+        videoList.add(new VideoInfo(vidv[3],vidt[3],vids[3],Uri.parse(vidf[3%vidf.length])));
 
 
         recyclerView = (RecyclerView) findViewById(R.id.RecylerViewFavoritos);
