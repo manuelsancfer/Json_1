@@ -82,4 +82,9 @@
     </string-array>
     <string name="GENEROS">GÉNEROS</string>
     <string name="BLUES">BLUES</string>
+    <string name="Follow">Follow</string>
+    <string name="Unfollow">Unfollow</string>
+    <string name="a_follow">Has comenzado a seguir a</string>
+    <string name="a_unfollow">Has dejado de seguir a</string>
+    <string name="i_follow">No ha podido seguir/dejar de seguir por problemas en el servidor</string>
 </resources>

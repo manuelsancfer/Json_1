@@ -73,6 +73,8 @@
     <string name="GENEROS">GENÈRES</string>
     <string name="SCREAMO"></string>
     <string name="BLUES">BLUES</string>
+    <string name="Follow">Follow</string>
+    <string name="Unfollow">Unfollow</string>
 
 
 </resources>

@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -49,6 +50,13 @@ public class PerfilArtista extends AppCompatActivity {
     private String[] videosURLs= new String[10];
     private String[] videosURLsTop= new String[10];
 
+    private ToggleButton priva;
+    private String urlf;
+    private boolean estado;
+
+    String artistName;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,9 +70,10 @@ public class PerfilArtista extends AppCompatActivity {
         numseguidores = (TextView) findViewById(R.id.numseguidores);
         fotoperfil = (ImageView) findViewById(R.id.imagen_perfilArtista);
         score = (TextView) findViewById(R.id.puntuacion);
+        priva = (ToggleButton) findViewById(R.id.btn_follow);
 
         Intent intent1 = getIntent();
-        String artistName = intent1.getStringExtra("KEY_ARTISTA_NAME");
+        artistName = intent1.getStringExtra("KEY_ARTISTA_NAME");
 
         Toast.makeText(getApplicationContext(),artistName, Toast.LENGTH_LONG).show();
 
@@ -80,7 +89,43 @@ public class PerfilArtista extends AppCompatActivity {
         makeJsonNumSeguidores("https://unguled-flash.000webhostapp.com/Consultas/ConsultaSeguidos.php?user="
                 +artistName);   //url nombre de ConsultaSeguidoresU y ConsultaSeguidos están bien pasados
 
+
+        follow();   //un artista que sigue usuario cristina es por ejemplo zoo
+
         createSpinner();
+    }
+
+    private void follow(){
+        String usuario ="cristina";
+
+        String url =
+                "https://unguled-flash.000webhostapp.com/Consultas/update_follow.php?user="+usuario
+                        +"&follow="+artistName;
+
+        JsonObjectRequest jsObjRequest = new JsonObjectRequest
+                (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.i("Configuración", "onResponseBotonGustos");
+
+                        Gson gson = new Gson();
+
+                        ConsultaFollow c = gson.fromJson(response.toString(),ConsultaFollow.class);
+
+                        if (c.getSuccess() == 1) {
+                            Log.i("funciona o que", "eeeeeeeo");
+                            priva.setChecked(true);
+                        }
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        priva.setChecked(false);
+                    }
+                });
+
+        Volley.newRequestQueue(this).add(jsObjRequest);
+        Log.i("Configuración", "volley");
     }
 
     private void makeVideo(String url){
@@ -428,5 +473,76 @@ public class PerfilArtista extends AppCompatActivity {
         );
         Volley.newRequestQueue(this).add(imageReq);
         Log.i("PerfilArtista","Error imagen imagen bien");
+    }
+
+    public void cfollow(View view) {
+        String user = "cristina";
+
+
+        if(priva.isChecked()){
+            urlf= "https://unguled-flash.000webhostapp.com/Consultas/follow.php?user="
+                            +user+"&follow="+artistName;
+            estado = true;
+            int num = Integer.parseInt(numseguidores.getText().toString())+1;
+            numseguidores.setText(Integer.toString(num));
+
+        }
+
+        else {
+            urlf = "https://unguled-flash.000webhostapp.com/Consultas/unfollow.php?user="
+                    + user + "&follow=" + artistName;
+            estado = false;
+            int num = Integer.parseInt(numseguidores.getText().toString())-1;
+            numseguidores.setText(Integer.toString(num));
+        }
+
+
+
+
+        JsonObjectRequest jsObjRequest = new JsonObjectRequest
+                (Request.Method.GET, urlf, null, new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.i("Configuración", "onResponseBotonGustos");
+
+                        Gson gson = new Gson();
+
+                        ConsultaResponse c = gson.fromJson(response.toString(), ConsultaUserPropi.class);
+
+
+                        if (c.getSuccess() == 1) {
+                            Log.i("Configuracion", "makeJsonRequest: onResponse - get Success");
+
+                            if(estado==true) {
+                                Toast.makeText(getApplicationContext(),
+                                        getResources().getString(R.string.a_follow) +" "+ artistName,
+                                        Toast.LENGTH_SHORT).show();
+
+                            }
+                            else{
+                                Toast.makeText(getApplicationContext(),
+                                        getResources().getString(R.string.a_unfollow) +" "+ artistName,
+                                        Toast.LENGTH_SHORT).show();
+                            }
+                        } else {
+                            Log.i("Configuracion", "makeJsonRequest: onResponse - NOT Success");
+                            Toast.makeText(getApplicationContext(),
+                                    getResources().getString(R.string.i_follow),
+                                    Toast.LENGTH_LONG).show();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.i("Configuración", "makeJsonObj: onErrorResponse - boton privacidad");
+                        Toast.makeText(getApplicationContext(),
+                                getResources().getString(R.string.i_json),
+                                Toast.LENGTH_LONG).show();
+                    }
+                });
+
+        Volley.newRequestQueue(this).add(jsObjRequest);
+        Log.i("Configuración", "volley");
+
     }
 }

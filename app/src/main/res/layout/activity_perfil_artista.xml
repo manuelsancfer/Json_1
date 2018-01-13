@@ -118,12 +118,13 @@
         style="@style/Base.Widget.AppCompat.Button.Colored"
         android:layout_width="80sp"
         android:layout_height="35sp"
-        android:layout_below="@+id/descripcion"
-        android:textAllCaps="false"
-        android:textOff="Follow"
-        android:textOn="Unfollow"
         android:layout_alignLeft="@+id/descripcion"
-        android:layout_marginTop="20dp" />
+        android:layout_below="@+id/descripcion"
+        android:onClick="cfollow"
+        android:layout_marginTop="20dp"
+        android:textAllCaps="false"
+        android:textOff="@string/Follow"
+        android:textOn="@string/Unfollow" />
 
     <Button
         android:id="@+id/btn_opciones"

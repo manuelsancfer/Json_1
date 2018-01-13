@@ -62,11 +62,6 @@ public class ConfigUsuario extends AppCompatActivity {
         image = (Button) findViewById(R.id.btn_subirfoto);
         photo = (ImageView) findViewById(R.id.photo);
 
-
-
-
-        //TODO: favoritos
-
         String usuario = "cristina";
         makeJsonPriva("https://unguled-flash.000webhostapp.com/Consultas/consultaperfilpropio.php?user="
                 +usuario);
@@ -380,8 +375,6 @@ public class ConfigUsuario extends AppCompatActivity {
         //Se ejecuta en segundo plano para no colgar la aplicacion
         new MyAsyncTask(ConfigUsuario.this).execute(encodedImage);
     }
-
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
