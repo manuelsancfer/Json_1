@@ -106,7 +106,6 @@ public class MyAsyncTask extends AsyncTask <String,Void,Boolean> {
                     });
 
             Volley.newRequestQueue(this.context).add(jsObjRequest);
-            updateimage();
         }
         else
         {
@@ -131,6 +130,8 @@ public class MyAsyncTask extends AsyncTask <String,Void,Boolean> {
 
                     }
                 }, new Response.ErrorListener() {
+
+
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Log.i("Update imagen", "No se ha convertido");
@@ -140,7 +141,4 @@ public class MyAsyncTask extends AsyncTask <String,Void,Boolean> {
         Volley.newRequestQueue(this.context).add(jsObjRequest);
     }
 
-    private void updateimage(){
-
-    }
 }

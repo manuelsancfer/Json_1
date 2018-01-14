@@ -147,8 +147,6 @@ public class MainActivity extends AppCompatActivity {
                         }
                         else {
                             Toast.makeText(getApplicationContext(),
-                                    response.toString(), Toast.LENGTH_LONG).show();
-                            Toast.makeText(getApplicationContext(),
                                     getResources().getString(R.string.i_videos),
                                     Toast.LENGTH_LONG).show();
                         }

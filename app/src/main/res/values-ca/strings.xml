@@ -63,14 +63,14 @@
     <string name="a_gustos">Gustos musicals canviats amb èxit</string>
     <string name="i_foto">Error carregant la foto de perfil. El servidor no està actiu a hores d\'ara, intenteu més tard</string>
     <string name="i_json">El servidor està actualment fora de servei, intenteu més tard</string>
-    <string name="i_contrasenya">No s ha pogut canviar la contrasenya, el servidor no està actiu
+    <string name="i_contrasenya">No s\'ha pogut canviar la contrasenya, el servidor no està actiu
      intente-ho més tard</string>
-    <string name="e_contrasenya">No s ha pogut canviar la contrasenya, ha de tenir entre 8 i 14 caràcters</string>
-    <string name="i_email">No s ha pogut canviar-se el correu electrònic, el servidor no està actiu
+    <string name="e_contrasenya">No\'s ha pogut canviar la contrasenya, ha de tenir entre 8 i 14 caràcters</string>
+    <string name="i_email">No s\'ha pogut canviar-se el correu electrònic, el servidor no està actiu
      intente-ho més tard</string>
-    <string name="i_gustos">No s han pogut canviar els gustos, el servidor no està actiu
+    <string name="i_gustos">No s\'han pogut canviar els gustos, el servidor no està actiu
      intenteu més tard</string>
-    <string name="i_priv">No s ha pogut canviar la privacitat, el servidor no està actiu
+    <string name="i_priv">No s\'ha pogut canviar la privacitat, el servidor no està actiu
      intenteu més tard</string>
     <string name="a_priv">Privacitat canviada amb èxit</string>
     <string name="i_videos">El servidor està actualment fora de servei, no es poden carregar els vídeos.
@@ -84,9 +84,11 @@
     <string name="BLUES">BLUES</string>
     <string name="Follow">Follow</string>
     <string name="Unfollow">Unfollow</string>
-    <string name="a_follow">You have to started to follow</string>
+    <string name="a_follow">Has començat a seguir a</string>
     <string name="a_unfollow">Has deixat de seguir a</string>
     <string name="i_follow">No ha pogut seguir / deixar de seguir per problemes al servidor</string>
+    <string name="i_atras">Ho sentim, no pot tornar enrere des d\'aquí</string>
+    <string name="i_fotonull">Heu de seleccionar una foto per poder continuar</string>
 
 
 </resources>

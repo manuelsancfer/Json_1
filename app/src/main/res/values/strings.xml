@@ -88,4 +88,5 @@
     <string name="a_unfollow">Has dejado de seguir a</string>
     <string name="i_follow">No ha podido seguir/dejar de seguir por problemas en el servidor</string>
     <string name="i_atras">Lo sentimos, no puede volver atrás desde aquí</string>
+    <string name="i_fotonull">Debe seleccionar una foto para poder continuar</string>
 </resources>

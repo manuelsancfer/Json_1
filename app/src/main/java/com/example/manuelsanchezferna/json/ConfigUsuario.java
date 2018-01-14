@@ -38,7 +38,6 @@ public class ConfigUsuario extends AppCompatActivity {
     private EditText email, pass, gustos, f1, f2, f3, f4;
     private ToggleButton priva;
     private ImageView photo;
-    private Button image;
     private Bitmap photobmp;
 
     private int count=0;
@@ -61,7 +60,6 @@ public class ConfigUsuario extends AppCompatActivity {
         f3 = (EditText) findViewById(R.id.editf3);
         f4 = (EditText) findViewById(R.id.editf4);
         priva = (ToggleButton) findViewById(R.id.btn_public);
-        image = (Button) findViewById(R.id.btn_subirfoto);
         photo = (ImageView) findViewById(R.id.photo);
 
         makeJsonPriva("https://unguled-flash.000webhostapp.com/Consultas/consultaperfilpropio.php?user="
@@ -94,7 +92,7 @@ public class ConfigUsuario extends AppCompatActivity {
                                 Log.i("Configuracion", "makeJsonRequest: onResponse - get Success");
                                 Toast.makeText(getApplicationContext(),
                                         getResources().getString(R.string.a_contrasenya),
-                                        Toast.LENGTH_LONG).show();
+                                        Toast.LENGTH_SHORT).show();
                             } else {
                                 Log.i("Configuracion", "makeJsonRequest: onResponse - NOT Success");
                                 Toast.makeText(getApplicationContext(),
@@ -143,7 +141,7 @@ public class ConfigUsuario extends AppCompatActivity {
                             Log.i("Configuracion", "makeJsonRequest: onResponse - get Success");
                             Toast.makeText(getApplicationContext(),
                                     getResources().getString(R.string.a_email),
-                                    Toast.LENGTH_LONG).show();
+                                    Toast.LENGTH_SHORT).show();
                         } else {
                             Log.i("Configuracion", "makeJsonRequest: onResponse - NOT Success");
                             Toast.makeText(getApplicationContext(),
@@ -188,7 +186,7 @@ public class ConfigUsuario extends AppCompatActivity {
                             Log.i("Configuracion", "makeJsonRequest: onResponse - get Success");
                             Toast.makeText(getApplicationContext(),
                                     getResources().getString(R.string.a_gustos),
-                                    Toast.LENGTH_LONG).show();
+                                    Toast.LENGTH_SHORT).show();
                         } else {
                             Log.i("Configuracion", "makeJsonRequest: onResponse - NOT Success");
                             Toast.makeText(getApplicationContext(),
@@ -239,7 +237,7 @@ public class ConfigUsuario extends AppCompatActivity {
                             Log.i("Configuracion", "makeJsonRequest: onResponse - get Success");
                             Toast.makeText(getApplicationContext(),
                                     getResources().getString(R.string.a_priv),
-                                    Toast.LENGTH_LONG).show();
+                                    Toast.LENGTH_SHORT).show();
                         } else {
                             Log.i("Configuracion", "makeJsonRequest: onResponse - NOT Success");
                             Toast.makeText(getApplicationContext(),
@@ -369,11 +367,18 @@ public class ConfigUsuario extends AppCompatActivity {
 
     public void buttoni(View view) {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        photobmp.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-        byte[] imageBytes = baos.toByteArray();
-        String encodedImage = Base64.encodeToString(imageBytes, Base64.DEFAULT);
-        //Se ejecuta en segundo plano para no colgar la aplicacion
-        new MyAsyncTask(ConfigUsuario.this, usuario).execute(encodedImage);
+        if (photobmp != null) {
+            photobmp.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+            byte[] imageBytes = baos.toByteArray();
+            String encodedImage = Base64.encodeToString(imageBytes, Base64.DEFAULT);
+            //Se ejecuta en segundo plano para no colgar la aplicacion
+            new MyAsyncTask(ConfigUsuario.this, usuario).execute(encodedImage);
+        }
+        else{
+            Toast.makeText(getApplicationContext(),
+                    getResources().getString(R.string.i_fotonull),
+                    Toast.LENGTH_LONG).show();
+        }
 
     }
 
