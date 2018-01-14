@@ -10,11 +10,12 @@ class VideoInfo {
 
     private Uri videoUri;
     private String artista,cancion;
+    private float puntuacion;
 
-
-    public VideoInfo(String artista, String cancion, Uri videoUri) {
+    public VideoInfo(String artista, String cancion, float puntuacion, Uri videoUri) {
         this.artista = artista;
         this.cancion = cancion;
+        this.puntuacion = puntuacion;
         this.videoUri = videoUri;
     }
 
@@ -22,6 +23,9 @@ class VideoInfo {
 
     public void setCancion(String cancion){ this.cancion = cancion; }
 
+    public float getPuntuacion(){return puntuacion;}
+
+    public void setPuntuacion(float puntuacion) { this.puntuacion = puntuacion; }
 
     public String getArtista() { return artista; }
 

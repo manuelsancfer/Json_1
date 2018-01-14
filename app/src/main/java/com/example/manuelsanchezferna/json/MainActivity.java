@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
                             for (int i = 0; i < 10; i++) {
                                 videosURLs[i] = c.getVideos().get(i).getUrl();
                                 videoList.add(new VideoInfo(c.getVideos().get(i).getName().toString(),
-                                        c.getVideos().get(i).getTittle().toString()+ " - " +
+                                        c.getVideos().get(i).getTittle().toString(),
                                         c.getVideos().get(i).getScore(),
                                         Uri.parse(videosURLs[i%videosURLs.length])));
                             }
@@ -126,7 +126,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void JvideosRecyclerTop(String url) {
 
-
         JsonObjectRequest jsObjRequest = new JsonObjectRequest
                 (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
                     @Override
@@ -139,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
                             for (int i = 0; i < 10; i++) {
                                 videosURLsTop[i] = c.getVideos().get(i).getUrl();
                                 videoList2.add(new VideoInfo(c.getVideos().get(i).getName().toString(),
-                                        c.getVideos().get(i).getTittle().toString()+ " - " +
+                                        c.getVideos().get(i).getTittle().toString(),
                                         c.getVideos().get(i).getScore(),
                                         Uri.parse(videosURLsTop[i%videosURLsTop.length])));
                             }

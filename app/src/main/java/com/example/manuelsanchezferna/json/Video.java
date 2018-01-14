@@ -35,7 +35,7 @@ public class Video extends AppCompatActivity {
     private List<VideoInfo> videoList = new ArrayList<VideoInfo>();
     private String[] videosURLs= new String[2];
 
-    private String cancionName;
+    private String cancionName, titulo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +45,10 @@ public class Video extends AppCompatActivity {
         Intent intent1 = getIntent();
         cancionName = intent1.getStringExtra("KEY_CANCION_NAME");
 
-        makeJsonVid("https://unguled-flash.000webhostapp.com/Consultas/consultasolovideo?tittle=stand by");
+        //Toast.makeText(getApplicationContext(),cancionName, Toast.LENGTH_LONG).show();
+
+        makeJsonVid("https://unguled-flash.000webhostapp.com/Consultas/consultasolovideo.php?tittle="
+                +cancionName);
     }
 
     private void makeJsonVid(String url2) {
@@ -59,17 +62,21 @@ public class Video extends AppCompatActivity {
 
                         Gson gson = new Gson();
 
+                        Toast.makeText(getApplicationContext(),"hooolaaaa", Toast.LENGTH_LONG).show();
+
                         ConsultaVideos c = gson.fromJson(response.toString(),ConsultaVideos.class);
 
                         if(c.getSuccess()==1){
                             Log.i("Video","makeJsonRequest: onResponse - get Success");
                             videosURLs[0] = c.getVideos().get(0).getUrl();
+                            titulo = c.getVideos().get(0).getTittle().toString();
                             videoList.add(new VideoInfo(c.getVideos().get(0).getName().toString(),
-                                    c.getVideos().get(0).getTittle().toString()+ " - " +
+                                    c.getVideos().get(0).getTittle().toString(),
                                     c.getVideos().get(0).getScore(),
                                     Uri.parse(videosURLs[0%videosURLs.length])));
 
-                            Toast.makeText(getApplicationContext(), c.getVideos().get(0).getTittle().toString(),
+                            Toast.makeText(getApplicationContext(),
+                                    c.getVideos().get(0).getUrl().toString(),
                                     Toast.LENGTH_LONG).show();
 
                             videosRecyclerVid();
@@ -97,6 +104,7 @@ public class Video extends AppCompatActivity {
     private void videosRecyclerVid() {
 
         Uri uri = Uri.parse(videosURLs[0%videosURLs.length]);
+
         videoView = (VideoView) findViewById(R.id.RecyclerVideo);
         videoView.setMediaController(new MediaController(this));
         videoView.setVideoURI(uri);

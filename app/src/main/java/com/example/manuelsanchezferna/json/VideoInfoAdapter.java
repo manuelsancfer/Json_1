@@ -39,7 +39,7 @@ class VideoInfoAdapter extends RecyclerView.Adapter<VideoInfoAdapter.ViewHolder>
 
     @Override
     public void onBindViewHolder(VideoInfoAdapter.ViewHolder holder, final int position) {
-        holder.cancion.setText(videoInfoList.get(position).getCancion());
+        holder.cancion.setText(videoInfoList.get(position).getCancion() + " - " + videoInfoList.get(position).getPuntuacion());
         holder.cancion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
