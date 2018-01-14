@@ -45,14 +45,12 @@ public class Video extends AppCompatActivity {
         Intent intent1 = getIntent();
         cancionName = intent1.getStringExtra("KEY_CANCION_NAME");
 
-        //Toast.makeText(getApplicationContext(),cancionName, Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(),cancionName, Toast.LENGTH_LONG).show();
 
-        /*makeJsonVid("https://unguled-flash.000webhostapp.com/Consultas/consultasolovideo.php?tittle=" +
-                "Voy%20a%20celebrarlo");*/
+        cancionName = cancionName.replaceAll(" ","+");
 
         makeJsonVid("https://unguled-flash.000webhostapp.com/Consultas/consultasolovideo.php?tittle="
                 +cancionName);
-
 
     }
 
@@ -77,8 +75,6 @@ public class Video extends AppCompatActivity {
                                     c.getVideos().get(0).getTittle().toString(),
                                     c.getVideos().get(0).getScore(),
                                     Uri.parse(videosURLs[0%videosURLs.length])));
-
-                            Toast.makeText(getApplicationContext(),web, Toast.LENGTH_LONG).show();
 
                             videosRecyclerVid();
                         }

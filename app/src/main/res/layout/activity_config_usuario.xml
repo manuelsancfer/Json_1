@@ -279,10 +279,10 @@
         android:id="@+id/photo"
         android:layout_width="80dp"
         android:layout_height="65dp"
-        android:onClick="clickimage"
-        app:srcCompat="@mipmap/ic_ona"
         android:layout_above="@+id/editcontrasenya"
         android:layout_alignLeft="@+id/gustos_musicales"
-        android:layout_alignStart="@+id/gustos_musicales" />
+        android:layout_alignStart="@+id/gustos_musicales"
+        android:onClick="clickimage"
+        app:srcCompat="@mipmap/circulo_ona" />
 
 </RelativeLayout>

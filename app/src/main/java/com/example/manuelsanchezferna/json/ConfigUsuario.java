@@ -55,6 +55,8 @@ public class ConfigUsuario extends AppCompatActivity {
 /* TODO: Arreglar al cambiar lo de aquí si justo damos atrás al perfil no se actualiza el perfil
 (si volvemos a darle a perfil si se actualiza)*/
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,6 +70,7 @@ public class ConfigUsuario extends AppCompatActivity {
 
         Intent intent = getIntent();
         usuario = intent.getStringExtra("KEY_USUARIO");
+
 
         makeJsonPriva("https://unguled-flash.000webhostapp.com/Consultas/consultaperfilpropio.php?user="
                 + usuario);
