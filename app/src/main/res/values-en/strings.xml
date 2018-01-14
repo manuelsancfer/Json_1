@@ -88,4 +88,5 @@
     </string-array>
     <string name="i_atras">Sorry, you can\'t go back from here</string>
     <string name="i_fotonull">You must select a photo to continue</string>
+    <string name="i_song">There was a problem and the song selected could not be found. Try it again later.</string>
 </resources>

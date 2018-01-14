@@ -35,7 +35,7 @@ public class Video extends AppCompatActivity {
     private List<VideoInfo> videoList = new ArrayList<VideoInfo>();
     private String[] videosURLs= new String[2];
 
-    private String cancionName, titulo;
+    private String cancionName, web;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,37 +47,38 @@ public class Video extends AppCompatActivity {
 
         //Toast.makeText(getApplicationContext(),cancionName, Toast.LENGTH_LONG).show();
 
+        /*makeJsonVid("https://unguled-flash.000webhostapp.com/Consultas/consultasolovideo.php?tittle=" +
+                "Voy%20a%20celebrarlo");*/
+
         makeJsonVid("https://unguled-flash.000webhostapp.com/Consultas/consultasolovideo.php?tittle="
                 +cancionName);
+
+
     }
 
-    private void makeJsonVid(String url2) {
-        Log.i("Perfil","makeJsonUser");
+    private void makeJsonVid(String url) {
+        Log.i("VideoSolo","makeJsonVid");
 
         JsonObjectRequest jsObjRequest = new JsonObjectRequest
-                (Request.Method.GET, url2, null, new Response.Listener<JSONObject>() {
+                (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
                         Log.i("Video","onResponse");
 
                         Gson gson = new Gson();
 
-                        Toast.makeText(getApplicationContext(),"hooolaaaa", Toast.LENGTH_LONG).show();
-
                         ConsultaVideos c = gson.fromJson(response.toString(),ConsultaVideos.class);
 
                         if(c.getSuccess()==1){
                             Log.i("Video","makeJsonRequest: onResponse - get Success");
                             videosURLs[0] = c.getVideos().get(0).getUrl();
-                            titulo = c.getVideos().get(0).getTittle().toString();
+                            web = c.getVideos().get(0).getUrl().toString();
                             videoList.add(new VideoInfo(c.getVideos().get(0).getName().toString(),
                                     c.getVideos().get(0).getTittle().toString(),
                                     c.getVideos().get(0).getScore(),
                                     Uri.parse(videosURLs[0%videosURLs.length])));
 
-                            Toast.makeText(getApplicationContext(),
-                                    c.getVideos().get(0).getUrl().toString(),
-                                    Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(),web, Toast.LENGTH_LONG).show();
 
                             videosRecyclerVid();
                         }
@@ -93,7 +94,7 @@ public class Video extends AppCompatActivity {
                     public void onErrorResponse(VolleyError error) {
                         Log.i("Perfil","makeJsonObj: onErrorResponse - no funciona volley");
                         Toast.makeText(getApplicationContext(),
-                                getResources().getString(R.string.i_json),
+                                getResources().getString(R.string.i_song),
                                 Toast.LENGTH_LONG).show();
                     }
                 });
@@ -105,7 +106,7 @@ public class Video extends AppCompatActivity {
 
         Uri uri = Uri.parse(videosURLs[0%videosURLs.length]);
 
-        videoView = (VideoView) findViewById(R.id.RecyclerVideo);
+        videoView = (VideoView) findViewById(R.id.SoloVideo);
         videoView.setMediaController(new MediaController(this));
         videoView.setVideoURI(uri);
         videoView.requestFocus();

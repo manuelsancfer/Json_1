@@ -163,6 +163,7 @@ public class VideosActivity extends AppCompatActivity {
         if (pos == 5){
             //Configuración
             Intent intent = new Intent(this,ConfigUsuario.class);
+            intent.putExtra("KEY_USUARIO", "cristina");
             startActivity(intent);
         }
     }

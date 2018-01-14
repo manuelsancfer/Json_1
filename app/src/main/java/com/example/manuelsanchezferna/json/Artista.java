@@ -26,6 +26,11 @@ public class Artista {
     private String t2;
     private String t3;
     private String t4;
+    //score de videos
+    private float s1;
+    private float s2;
+    private float s3;
+    private float s4;
 
     @Override
     public String toString() {
@@ -187,4 +192,20 @@ public class Artista {
     public void setT4(String t4) {
         this.t4 = t4;
     }
+
+    public float getS1() { return s1;}
+
+    public void setS1(float s1) { this.s1 = s1;}
+
+    public float getS2() { return s2;}
+
+    public void setS2(float s2) { this.s2 = s2;}
+
+    public float getS3() { return s3;}
+
+    public void setS3(float s3) { this.s3 = s3;}
+
+    public float getS4() { return s4;}
+
+    public void setS4(float s4) { this.s4 = s4;}
 }

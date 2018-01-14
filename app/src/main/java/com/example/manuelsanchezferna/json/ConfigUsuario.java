@@ -42,7 +42,7 @@ public class ConfigUsuario extends AppCompatActivity {
 
     private int count=0;
 
-    private String usuario = "cristina";
+    private String usuario;
 
 /* TODO: Arreglar al cambiar lo de aquí si justo damos atrás al perfil no se actualiza el perfil
 (si volvemos a darle a perfil si se actualiza)*/
@@ -61,6 +61,9 @@ public class ConfigUsuario extends AppCompatActivity {
         f4 = (EditText) findViewById(R.id.editf4);
         priva = (ToggleButton) findViewById(R.id.btn_public);
         photo = (ImageView) findViewById(R.id.photo);
+
+        Intent intent = getIntent();
+        usuario = intent.getStringExtra("KEY_USUARIO");
 
         makeJsonPriva("https://unguled-flash.000webhostapp.com/Consultas/consultaperfilpropio.php?user="
                 + usuario);

@@ -89,6 +89,7 @@
     <string name="i_follow">No ha pogut seguir / deixar de seguir per problemes al servidor</string>
     <string name="i_atras">Ho sentim, no pot tornar enrere des d\'aquí</string>
     <string name="i_fotonull">Heu de seleccionar una foto per poder continuar</string>
+    <string name="i_song">Hi ha hagut un problema i no s\'ha pogut trobar la cançó seleccionada. Intenteu-ho més tard.</string>
 
 
 </resources>

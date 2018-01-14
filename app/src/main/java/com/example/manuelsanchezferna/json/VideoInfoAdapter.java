@@ -39,7 +39,8 @@ class VideoInfoAdapter extends RecyclerView.Adapter<VideoInfoAdapter.ViewHolder>
 
     @Override
     public void onBindViewHolder(VideoInfoAdapter.ViewHolder holder, final int position) {
-        holder.cancion.setText(videoInfoList.get(position).getCancion() + " - " + videoInfoList.get(position).getPuntuacion());
+        holder.cancion.setText(videoInfoList.get(position).getCancion() + " - " +
+                videoInfoList.get(position).getPuntuacion()); //passem a la activitat del video en gran
         holder.cancion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -82,7 +83,6 @@ class VideoInfoAdapter extends RecyclerView.Adapter<VideoInfoAdapter.ViewHolder>
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView puntuacion;
         private VideoView videoview;
         private Button artista, cancion;
 
@@ -90,8 +90,6 @@ class VideoInfoAdapter extends RecyclerView.Adapter<VideoInfoAdapter.ViewHolder>
             super(itemView);
             artista = (Button) itemView.findViewById(R.id.btn_artista);
             cancion = (Button) itemView.findViewById(R.id.btn_cancion);
-            //puntuacion = (TextView) itemView.findViewById(R.id.puntuacion);
-            //puntuacion.setMovementMethod(new ScrollingMovementMethod());
             videoview = (VideoView) itemView.findViewById(R.id.videoView);
         }
     }

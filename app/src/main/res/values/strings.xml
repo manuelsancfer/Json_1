@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Json</string>
+    <string name="app_name">MusicSocial</string>
     <string name="configuracion_de_perfil">Configuración perfil</string>
     <string name="Foto_perfil">Foto de perfil:</string>
     <string name="Usuario">Usuario:</string>
@@ -87,6 +87,7 @@
     <string name="a_follow">Has comenzado a seguir a</string>
     <string name="a_unfollow">Has dejado de seguir a</string>
     <string name="i_follow">No ha podido seguir/dejar de seguir por problemas en el servidor</string>
+    <string name="i_song">Ha habido un problema y no se ha podido encontrar la canción seleccionada. Inténtelo más tarde.</string>
     <string name="i_atras">Lo sentimos, no puede volver atrás desde aquí</string>
     <string name="i_fotonull">Debe seleccionar una foto para poder continuar</string>
 </resources>

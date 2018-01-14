@@ -45,8 +45,21 @@ public class Perfil extends AppCompatActivity {
     private String[] vidf =  new String[4];
     private String[] vidt = new String[4];
     private String[] vidv = new String[4];
+    private float[] vids = new float[4];
+
+    private String usuarioName;
+    private String g_musicales, mail,foto;
 
     private  TextView btn;
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        outState.putString("gustos_musicales", g_musicales);
+        outState.putString("email",mail);
+        outState.putString("foto_perfil",foto);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +76,15 @@ public class Perfil extends AppCompatActivity {
         btn = (TextView) findViewById(R.id.title);
 
         Intent intent = getIntent();
-        String usuarioName = intent.getStringExtra("KEY_USUARIO");
+        usuarioName = intent.getStringExtra("KEY_USUARIO");
+
+        if (savedInstanceState != null){
+            Bundle state = savedInstanceState;
+            gustos.setText(state.getString("gustos_musicales"));
+            email.setText(state.getString("mail"));
+            makeImageRequest(state.getString("foto_perfil"));
+        }
+
 
         makeJsonUser("https://unguled-flash.000webhostapp.com/Consultas/consultaperfilpropio.php?user="
                 +usuarioName);
@@ -185,6 +206,9 @@ public class Perfil extends AppCompatActivity {
                     email.setText(c.getUsers().get(0).getEmail());
                     gustos.setText(c.getUsers().get(0).getGustos_musicales());
 
+                    g_musicales = c.getUsers().get(0).getGustos_musicales();
+                    mail = c.getUsers().get(0).getEmail();
+
 
                     vidf[0] = c.getUsers().get(0).getF1();
                     vidf[1] = c.getUsers().get(0).getF2();
@@ -201,10 +225,15 @@ public class Perfil extends AppCompatActivity {
                     vidt[2] = c.getUsers().get(0).getT3();
                     vidt[3] = c.getUsers().get(0).getT4();
 
+                    vids[0] = c.getUsers().get(0).getS1();
+                    vids[1] = c.getUsers().get(0).getS2();
+                    vids[2] = c.getUsers().get(0).getS3();
+                    vids[3] = c.getUsers().get(0).getS4();
 
                     videosRecyclerVid();
 
                     makeImageRequest(c.getUsers().get(0).getFoto_perfil());
+                    foto = c.getUsers().get(0).getFoto_perfil();
 
                 }
                 else{
@@ -229,10 +258,10 @@ public class Perfil extends AppCompatActivity {
 
     private void videosRecyclerVid() {
 
-        /*videoList.add(new VideoInfo(vidv[0],vidt[0], Uri.parse(vidf[0%vidf.length])));
-        videoList.add(new VideoInfo(vidv[1],vidt[1], Uri.parse(vidf[1%vidf.length])));
-        videoList.add(new VideoInfo(vidv[2],vidt[2], Uri.parse(vidf[2%vidf.length])));
-        videoList.add(new VideoInfo(vidv[3],vidt[3], Uri.parse(vidf[3%vidf.length])));*/
+        videoList.add(new VideoInfo(vidv[0],vidt[0], vids[0], Uri.parse(vidf[0%vidf.length])));
+        videoList.add(new VideoInfo(vidv[1],vidt[1], vids[1], Uri.parse(vidf[1%vidf.length])));
+        videoList.add(new VideoInfo(vidv[2],vidt[2], vids[2], Uri.parse(vidf[2%vidf.length])));
+        videoList.add(new VideoInfo(vidv[3],vidt[3], vids[3], Uri.parse(vidf[3%vidf.length])));
 
 
         recyclerView = (RecyclerView) findViewById(R.id.RecylerViewFavoritos);
@@ -295,6 +324,7 @@ public class Perfil extends AppCompatActivity {
         if (pos == 5){
             //Configuración
             Intent intent = new Intent(this,ConfigUsuario.class);
+            intent.putExtra("KEY_USUARIO", usuarioName);
             startActivity(intent);
         }
     }
