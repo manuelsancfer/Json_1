@@ -185,9 +185,7 @@ public class User {
         return t3;
     }
 
-    public void setT3(String t3) {
-        this.t3 = t3;
-    }
+    public void setT3(String t3) { this.t3 = t3; }
 
     public String getT4() {
         return t4;
@@ -196,8 +194,6 @@ public class User {
     public void setT4(String t4) {
         this.t4 = t4;
     }
-
-
 
 
 

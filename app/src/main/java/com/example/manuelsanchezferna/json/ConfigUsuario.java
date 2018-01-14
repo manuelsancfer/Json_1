@@ -342,6 +342,7 @@ public class ConfigUsuario extends AppCompatActivity {
         if(pos == 2){
             //Perfil propio usuario
             Intent intent = new Intent(this,Perfil.class);
+            intent.putExtra("KEY_USUARIO", "cristina");
             startActivity(intent);
         }
 

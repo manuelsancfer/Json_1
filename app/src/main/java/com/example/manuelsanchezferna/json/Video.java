@@ -8,7 +8,9 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.widget.MediaController;
 import android.widget.Toast;
+import android.widget.VideoView;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -28,11 +30,12 @@ import java.util.List;
 
 public class Video extends AppCompatActivity {
 
-    private RecyclerView recyclerView;
-    private VideoAdapter videoAdapter;
-    private List<VideoInfo> videoList = new ArrayList<VideoInfo>();
+    private VideoView videoView;
 
-    private String[] videosURLs= new String[10];
+    private List<VideoInfo> videoList = new ArrayList<VideoInfo>();
+    private String[] videosURLs= new String[2];
+
+    private String cancionName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,23 +43,19 @@ public class Video extends AppCompatActivity {
         setContentView(R.layout.activity_video);
 
         Intent intent1 = getIntent();
-        String cancionName = intent1.getStringExtra("KEY_CANCION_NAME");
+        cancionName = intent1.getStringExtra("KEY_CANCION_NAME");
 
-        Toast.makeText(getApplicationContext(),cancionName, Toast.LENGTH_LONG).show();
-
-        //makeJsonUser con la KEY_CANCION_NAME (mirar VideoInfoAdapter para ver que retorna)
-
+        makeJsonVid("https://unguled-flash.000webhostapp.com/Consultas/consultasolovideo?tittle=stand by");
     }
 
-
-    private void makeJsonUser(String url2) {
+    private void makeJsonVid(String url2) {
         Log.i("Perfil","makeJsonUser");
 
         JsonObjectRequest jsObjRequest = new JsonObjectRequest
                 (Request.Method.GET, url2, null, new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        Log.i("Perfil","onResponse");
+                        Log.i("Video","onResponse");
 
                         Gson gson = new Gson();
 
@@ -64,16 +63,16 @@ public class Video extends AppCompatActivity {
 
                         if(c.getSuccess()==1){
                             Log.i("Video","makeJsonRequest: onResponse - get Success");
-
+                            videosURLs[0] = c.getVideos().get(0).getUrl();
                             videoList.add(new VideoInfo(c.getVideos().get(0).getName().toString(),
-                                    c.getVideos().get(0).getTittle().toString()+" - "
-                                            +c.getVideos().get(0).getScore(),
+                                    c.getVideos().get(0).getTittle().toString()+ " - " +
+                                    c.getVideos().get(0).getScore(),
                                     Uri.parse(videosURLs[0%videosURLs.length])));
 
+                            Toast.makeText(getApplicationContext(), c.getVideos().get(0).getTittle().toString(),
+                                    Toast.LENGTH_LONG).show();
+
                             videosRecyclerVid();
-
-
-
                         }
                         else{
                             Log.i("Perfil","makeJsonRequest: onResponse - NOT Success");
@@ -97,13 +96,12 @@ public class Video extends AppCompatActivity {
 
     private void videosRecyclerVid() {
 
-        recyclerView = (RecyclerView) findViewById(R.id.RecyclerVideo);
-        videoAdapter = new VideoAdapter(this, videoList);
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(videoAdapter);
+        Uri uri = Uri.parse(videosURLs[0%videosURLs.length]);
+        videoView = (VideoView) findViewById(R.id.RecyclerVideo);
+        videoView.setMediaController(new MediaController(this));
+        videoView.setVideoURI(uri);
+        videoView.requestFocus();
+        videoView.start();
     }
 
 
