@@ -36,16 +36,6 @@
         android:layout_above="@+id/editText" />
 
 
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
-
-
     <Button
         android:id="@+id/btn_topvideos"
         style="@android:style/Widget.Material.Button.Borderless.Colored"
@@ -67,11 +57,10 @@
     <View
         android:id="@+id/rectangle"
         android:layout_width="wrap_content"
-        android:layout_height="90sp"
+        android:layout_height="50sp"
         android:layout_alignBottom="@+id/search"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignTop="@+id/search"
         android:background="#f1f1f1"
         android:layout_alignRight="@+id/spinner"
         android:layout_alignEnd="@+id/spinner" />
@@ -106,27 +95,6 @@
         android:textSize="30sp"
         tools:layout_editor_absoluteX="60dp"
         tools:layout_editor_absoluteY="231dp" />
-
-    <ImageButton
-        android:id="@+id/search"
-        style="@android:style/Widget.Holo.Light.ImageButton"
-        android:layout_width="37sp"
-        android:layout_height="40sp"
-        android:layout_marginLeft="260dp"
-        android:layout_marginRight="30dp"
-        android:tint="@android:color/white"
-        app:srcCompat="@android:drawable/ic_menu_search"
-        android:layout_alignParentTop="true" />
-
-    <ImageButton
-        android:id="@+id/mensajes"
-        style="@android:style/Widget.Holo.Light.ImageButton"
-        android:layout_marginLeft="310dp"
-        android:layout_marginRight="30dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:tint="@android:color/background_light"
-        app:srcCompat="@android:drawable/stat_notify_chat" />
 
 
 </RelativeLayout>

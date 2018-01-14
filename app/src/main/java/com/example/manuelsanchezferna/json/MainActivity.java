@@ -26,7 +26,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    private TextView textView;
 
     private RecyclerView recyclerViewVid, recyclerViewTop;
     private VideoInfoAdapter adapter1, adapter2;
@@ -44,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
 
         Button top = (Button) findViewById(R.id.btn_topvideos);
         Button vid = (Button) findViewById(R.id.btn_videos);
-        //Button button = (Button) findViewById(R.id.button);
 
         top.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,7 +58,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        textView = (TextView)findViewById(R.id.editText);
 
         JvideosRecyclerVid("https://unguled-flash.000webhostapp.com/Consultas/consultavideos.php");
         JvideosRecyclerTop("https://unguled-flash.000webhostapp.com/Consultas/topvideos.php");
