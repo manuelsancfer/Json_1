@@ -375,6 +375,7 @@ public class ConfigUsuario extends AppCompatActivity {
         String encodedImage = Base64.encodeToString(imageBytes, Base64.DEFAULT);
         //Se ejecuta en segundo plano para no colgar la aplicacion
         new MyAsyncTask(ConfigUsuario.this).execute(encodedImage);
+
     }
 
     @Override
