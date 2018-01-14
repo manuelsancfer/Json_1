@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.icu.text.StringSearch;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +15,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
+import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -35,6 +37,8 @@ import org.json.JSONObject;
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 public class ConfigUsuario extends AppCompatActivity {
 
@@ -44,9 +48,9 @@ public class ConfigUsuario extends AppCompatActivity {
     private Bitmap photobmp;
 
     private int count=0;
-    private String[] ss1;
 
     private String usuario;
+    private ArrayAdapter <String> adapter2;
 
 /* TODO: Arreglar al cambiar lo de aquí si justo damos atrás al perfil no se actualiza el perfil
 (si volvemos a darle a perfil si se actualiza)*/
@@ -68,7 +72,6 @@ public class ConfigUsuario extends AppCompatActivity {
         makeJsonPriva("https://unguled-flash.000webhostapp.com/Consultas/consultaperfilpropio.php?user="
                 + usuario);
         createSpinner();
-
     }
 
     public void cpass(View view) {
@@ -383,115 +386,6 @@ public class ConfigUsuario extends AppCompatActivity {
                     Toast.LENGTH_LONG).show();
         }
 
-    }
-
-    private void videosRecyclerVid(){
-
-
-    }
-
-    private void JvideosRecyclerVid(String url) {
-
-        JsonObjectRequest jsObjRequest = new JsonObjectRequest
-                (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        Gson gson = new Gson();
-
-                        ConsultaVideos c = gson.fromJson(response.toString(),ConsultaVideos.class);
-                        ss1= new String[c.getVideos().size()];
-
-
-                        if(c.getSuccess()==1) {
-                            for (int i = 0; i < 10; i++) {
-                                ss1[i] = c.getVideos().get(i).getTittle()+"-"+
-                                        c.getVideos().get(i).getName();
-                            }
-
-                            videosRecyclerVid();
-                        }
-                        else {
-
-                            Toast.makeText(getApplicationContext(),
-                                    getResources().getString(R.string.i_videos),
-                                    Toast.LENGTH_LONG).show();
-
-                        }
-                    }
-                }, new Response.ErrorListener() {
-
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getApplicationContext(),
-                                getResources().getString(R.string.i_json),
-                                Toast.LENGTH_LONG).show();
-                        Log.i("app","makeJsonObj: onErrorResponse List2");
-                    }
-                });
-        Volley.newRequestQueue(this).add(jsObjRequest);
-
-    }
-
-    private void Sf1() {
-
-        Spinner spinner = (Spinner) findViewById(R.id.Sp1);
-
-        JvideosRecyclerVid("https://unguled-flash.000webhostapp.com/Consultas/consultavideos.php");
-
-
-        // Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter<CharSequence> adapterS = ArrayAdapter.createFromResource(this,
-                R.array.desplegable6, android.R.layout.simple_spinner_item);
-
-        // Specify the layout to use when the list of choices appears
-        adapterS.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        // Apply the adapter to the spinner
-        spinner.setAdapter(adapterS);
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                Seleccio(i);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-                Log.i("app", "onNothing");
-            }
-        });
-    }
-
-    private void Sel1(int pos) {
-
-        if (pos == 0) {
-
-        }
-
-        if (pos == 1) {
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-        }
-
-        if (pos == 2) {
-            //Perfil propio usuario
-            Intent intent = new Intent(this, Perfil.class);
-            intent.putExtra("KEY_USUARIO", "cristina");
-            startActivity(intent);
-        }
-
-        if (pos == 3) {
-            //Lista rep
-        }
-
-        if (pos == 4) {
-            //Categorías
-            Intent intent = new Intent(this, Genero.class);
-            startActivity(intent);
-        }
-
-        if (pos == 5) {
-            //Agenda
-        }
     }
 
     @Override
