@@ -4,14 +4,12 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.media.Image;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
-import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -41,7 +39,9 @@ public class ConfigUsuario extends AppCompatActivity {
     private ToggleButton priva;
     private ImageView photo;
     private Button image;
-    private Bitmap photobmp;;
+    private Bitmap photobmp;
+
+    private int count=0;
 
     private String usuario = "cristina";
 
@@ -65,7 +65,7 @@ public class ConfigUsuario extends AppCompatActivity {
         photo = (ImageView) findViewById(R.id.photo);
 
         makeJsonPriva("https://unguled-flash.000webhostapp.com/Consultas/consultaperfilpropio.php?user="
-                +usuario);
+                + usuario);
         createSpinner();
 
     }
@@ -74,7 +74,7 @@ public class ConfigUsuario extends AppCompatActivity {
 
         String user = "cristina";
 
-        if(pass.length()>7 && pass.length()<15) {
+        if (pass.length() > 7 && pass.length() < 15) {
             String url =
                     "https://unguled-flash.000webhostapp.com/Consultas/updateconfig_password.php?pass=" +
                             pass.getText() + "&user=" + user;
@@ -106,16 +106,14 @@ public class ConfigUsuario extends AppCompatActivity {
                         @Override
                         public void onErrorResponse(VolleyError error) {
                             Log.i("Configuracion", "makeJsonRequest: onResponse - get Success");
-                            Toast.makeText(getApplicationContext(),"eo: "+
-                                    getResources().getString(R.string.i_json),
+                            Toast.makeText(getApplicationContext(), "eo: " +
+                                            getResources().getString(R.string.i_json),
                                     Toast.LENGTH_LONG).show();
                         }
                     });
 
             Volley.newRequestQueue(this).add(jsObjRequest);
-        }
-
-        else {
+        } else {
             Toast.makeText(getApplicationContext(),
                     getResources().getString(R.string.e_contrasenya),
                     Toast.LENGTH_LONG).show();
@@ -126,44 +124,44 @@ public class ConfigUsuario extends AppCompatActivity {
 
         String user = "cristina";
 
-            String url =
-                    "https://unguled-flash.000webhostapp.com/Consultas/updateconfig_email.php?email="
-                            +email.getText()+"&user="+user;
+        String url =
+                "https://unguled-flash.000webhostapp.com/Consultas/updateconfig_email.php?email="
+                        + email.getText() + "&user=" + user;
 
-            JsonObjectRequest jsObjRequest = new JsonObjectRequest
-                    (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
-                        @Override
-                        public void onResponse(JSONObject response) {
-                            Log.i("Configuración", "onResponseBotonEmail");
+        JsonObjectRequest jsObjRequest = new JsonObjectRequest
+                (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.i("Configuración", "onResponseBotonEmail");
 
-                            Gson gson = new Gson();
+                        Gson gson = new Gson();
 
-                            ConsultaResponse c = gson.fromJson(response.toString(), ConsultaUserPropi.class);
+                        ConsultaResponse c = gson.fromJson(response.toString(), ConsultaUserPropi.class);
 
 
-                            if (c.getSuccess() == 1) {
-                                Log.i("Configuracion", "makeJsonRequest: onResponse - get Success");
-                                Toast.makeText(getApplicationContext(),
-                                        getResources().getString(R.string.a_email),
-                                        Toast.LENGTH_LONG).show();
-                            } else {
-                                Log.i("Configuracion", "makeJsonRequest: onResponse - NOT Success");
-                                Toast.makeText(getApplicationContext(),
-                                        getResources().getString(R.string.i_email),
-                                        Toast.LENGTH_LONG).show();
-                            }
-                        }
-                    }, new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
+                        if (c.getSuccess() == 1) {
+                            Log.i("Configuracion", "makeJsonRequest: onResponse - get Success");
                             Toast.makeText(getApplicationContext(),
-                                    getResources().getString(R.string.i_json),
+                                    getResources().getString(R.string.a_email),
+                                    Toast.LENGTH_LONG).show();
+                        } else {
+                            Log.i("Configuracion", "makeJsonRequest: onResponse - NOT Success");
+                            Toast.makeText(getApplicationContext(),
+                                    getResources().getString(R.string.i_email),
                                     Toast.LENGTH_LONG).show();
                         }
-                    });
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(),
+                                getResources().getString(R.string.i_json),
+                                Toast.LENGTH_LONG).show();
+                    }
+                });
 
-            Volley.newRequestQueue(this).add(jsObjRequest);
-            Log.i("Configuración", "volley");
+        Volley.newRequestQueue(this).add(jsObjRequest);
+        Log.i("Configuración", "volley");
 
     }
 
@@ -173,7 +171,7 @@ public class ConfigUsuario extends AppCompatActivity {
 
         String url =
                 "https://unguled-flash.000webhostapp.com/Consultas/updateconfig_gustosmusic.php?gustos="
-                        +gustos.getText()+"&user="+user;
+                        + gustos.getText() + "&user=" + user;
 
         JsonObjectRequest jsObjRequest = new JsonObjectRequest
                 (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
@@ -216,15 +214,15 @@ public class ConfigUsuario extends AppCompatActivity {
         String user = "cristina";
         int estado;
 
-        if(priva.isChecked()){
-            estado=1;
+        if (priva.isChecked()) {
+            estado = 1;
+        } else {
+            estado = 0;
         }
-
-        else{ estado = 0;}
 
         String url =
                 "https://unguled-flash.000webhostapp.com/Consultas/updateconfig_privacidad.php?priva="
-                       +estado+"&user="+user;
+                        + estado + "&user=" + user;
 
         JsonObjectRequest jsObjRequest = new JsonObjectRequest
                 (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
@@ -271,22 +269,20 @@ public class ConfigUsuario extends AppCompatActivity {
                     public void onResponse(JSONObject response) {
                         Gson gson = new Gson();
 
-                        ConsultaUserPropi c = gson.fromJson(response.toString(),ConsultaUserPropi.class);
+                        ConsultaUserPropi c = gson.fromJson(response.toString(), ConsultaUserPropi.class);
                         boolean estado = c.getUsers().get(0).isPublico();
 
-                        if(c.getSuccess()==1) {
-                            if(estado == true ){
+                        if (c.getSuccess() == 1) {
+                            if (estado == true) {
                                 priva.setChecked(false);
-                            }
-                            else{
+                            } else {
                                 priva.setChecked(true);
                             }
-                        }
-                        else {
+                        } else {
                             Toast.makeText(getApplicationContext(),
                                     getResources().getString(R.string.i_priv),
                                     Toast.LENGTH_LONG).show();
-                            Log.i("app","makeJsonRequest: onResponse - no funciona");
+                            Log.i("app", "makeJsonRequest: onResponse - no funciona");
 
                         }
                     }
@@ -294,7 +290,7 @@ public class ConfigUsuario extends AppCompatActivity {
 
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Log.i("app","makeJsonObj: onErrorResponse List2");
+                        Log.i("app", "makeJsonObj: onErrorResponse List2");
                         Toast.makeText(getApplicationContext(),
                                 getResources().getString(R.string.i_json),
                                 Toast.LENGTH_LONG).show();
@@ -311,7 +307,7 @@ public class ConfigUsuario extends AppCompatActivity {
 
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapterS = ArrayAdapter.createFromResource(this,
-                R.array.desplegable6,android.R.layout.simple_spinner_item);
+                R.array.desplegable6, android.R.layout.simple_spinner_item);
 
         // Specify the layout to use when the list of choices appears
         adapterS.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -325,39 +321,41 @@ public class ConfigUsuario extends AppCompatActivity {
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {Log.i("app","onNothing");}
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                Log.i("app", "onNothing");
+            }
         });
     }
 
     private void Seleccio(int pos) {
 
-        if (pos == 0){
+        if (pos == 0) {
 
         }
 
-        if (pos == 1){
-            Intent intent = new Intent(this,MainActivity.class);
+        if (pos == 1) {
+            Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         }
 
-        if(pos == 2){
+        if (pos == 2) {
             //Perfil propio usuario
-            Intent intent = new Intent(this,Perfil.class);
+            Intent intent = new Intent(this, Perfil.class);
             intent.putExtra("KEY_USUARIO", "cristina");
             startActivity(intent);
         }
 
-        if(pos == 3){
+        if (pos == 3) {
             //Lista rep
         }
 
-        if (pos == 4){
+        if (pos == 4) {
             //Categorías
-            Intent intent = new Intent(this,Genero.class);
+            Intent intent = new Intent(this, Genero.class);
             startActivity(intent);
         }
 
-        if (pos == 5){
+        if (pos == 5) {
             //Agenda
         }
     }
@@ -400,8 +398,8 @@ public class ConfigUsuario extends AppCompatActivity {
     public String getRealPathFromURI(Uri contentUri) {
         Cursor cursor = null;
         try {
-            String[] proj = { MediaStore.Images.Media.DATA };
-            cursor = getApplicationContext().getContentResolver().query(contentUri,  proj, null, null, null);
+            String[] proj = {MediaStore.Images.Media.DATA};
+            cursor = getApplicationContext().getContentResolver().query(contentUri, proj, null, null, null);
             int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
             cursor.moveToFirst();
             return cursor.getString(column_index);
@@ -412,4 +410,14 @@ public class ConfigUsuario extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onBackPressed() {
+
+        if (count<3) {
+            Toast.makeText(getApplicationContext(),
+                    getResources().getString(R.string.i_atras),
+                    Toast.LENGTH_SHORT).show();
+            count ++;
+        }
+    }
 }

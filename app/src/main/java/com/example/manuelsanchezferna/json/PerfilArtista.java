@@ -290,12 +290,12 @@ public class PerfilArtista extends AppCompatActivity {
                             vidf[0] = c.getUsers().get(0).getF1();
                             vidf[1] = c.getUsers().get(0).getF2();
                             vidf[2] = c.getUsers().get(0).getF3();
-                            vidf[3] = c.getUsers().get(0).getF3();
+                            vidf[3] = c.getUsers().get(0).getF4();
 
                             vidv[0] = c.getUsers().get(0).getV1();
                             vidv[1] = c.getUsers().get(0).getV2();
                             vidv[2] = c.getUsers().get(0).getV3();
-                            vidv[3] = c.getUsers().get(0).getF4();
+                            vidv[3] = c.getUsers().get(0).getV4();
 
                             vidt[0] = c.getUsers().get(0).getT1();
                             vidt[1] = c.getUsers().get(0).getT2();
@@ -468,7 +468,6 @@ public class PerfilArtista extends AppCompatActivity {
                 }
         );
         Volley.newRequestQueue(this).add(imageReq);
-        Log.i("PerfilArtista","Error imagen imagen bien");
     }
 
     public void cfollow(View view) {
@@ -492,9 +491,6 @@ public class PerfilArtista extends AppCompatActivity {
             numseguidores.setText(Integer.toString(num));
         }
 
-
-
-
         JsonObjectRequest jsObjRequest = new JsonObjectRequest
                 (Request.Method.GET, urlf, null, new Response.Listener<JSONObject>() {
                     @Override
@@ -509,7 +505,7 @@ public class PerfilArtista extends AppCompatActivity {
                         if (c.getSuccess() == 1) {
                             Log.i("Configuracion", "makeJsonRequest: onResponse - get Success");
 
-                            /*if(estado==true) {
+                            if(estado==true) {
                                 Toast.makeText(getApplicationContext(),
                                         getResources().getString(R.string.a_follow) +" "+ artistName,
                                         Toast.LENGTH_SHORT).show();
@@ -524,7 +520,7 @@ public class PerfilArtista extends AppCompatActivity {
                             Log.i("Configuracion", "makeJsonRequest: onResponse - NOT Success");
                             Toast.makeText(getApplicationContext(),
                                     getResources().getString(R.string.i_follow),
-                                    Toast.LENGTH_LONG).show();*/
+                                    Toast.LENGTH_LONG).show();
                         }
                     }
                 }, new Response.ErrorListener() {

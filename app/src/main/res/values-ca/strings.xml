@@ -27,7 +27,7 @@
         <item>Principal</item>
         <item>Perfil</item>
         <item>Llistes de reproducció</item>
-        <item>Categories</item>
+        <item>Gèneres</item>
         <item>Agenda</item>
         <item>Configuració</item>
     </string-array>
@@ -36,7 +36,16 @@
         <item>Perfil</item>
         <item>Principal</item>
         <item>Llistes de reproducció</item>
-        <item>Categories</item>
+        <item>Gèneres</item>
+        <item>Agenda</item>
+        <item>Configuració</item>
+    </string-array>
+
+    <string-array name="desplegable4">
+        <item>Gèneres</item>
+        <item>Principal</item>
+        <item>Perfil</item>
+        <item>Llistes de reproducció</item>
         <item>Agenda</item>
         <item>Configuració</item>
     </string-array>
@@ -46,7 +55,7 @@
         <item>Principal</item>
         <item>Perfil</item>
         <item>Llistes de reproducció</item>
-        <item>Categories</item>
+        <item>Gèneres</item>
         <item>Agenda</item>
     </string-array>
     <string name="a_contrasenya">La contrasenya s\'ha canviat amb èxit</string>
@@ -75,6 +84,9 @@
     <string name="BLUES">BLUES</string>
     <string name="Follow">Follow</string>
     <string name="Unfollow">Unfollow</string>
+    <string name="a_follow">You have to started to follow</string>
+    <string name="a_unfollow">Has deixat de seguir a</string>
+    <string name="i_follow">No ha pogut seguir / deixar de seguir per problemes al servidor</string>
 
 
 </resources>

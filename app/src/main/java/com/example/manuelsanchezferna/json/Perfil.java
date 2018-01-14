@@ -189,12 +189,12 @@ public class Perfil extends AppCompatActivity {
                     vidf[0] = c.getUsers().get(0).getF1();
                     vidf[1] = c.getUsers().get(0).getF2();
                     vidf[2] = c.getUsers().get(0).getF3();
-                    vidf[3] = c.getUsers().get(0).getF3();
+                    vidf[3] = c.getUsers().get(0).getF4();
 
                     vidv[0] = c.getUsers().get(0).getV1();
                     vidv[1] = c.getUsers().get(0).getV2();
                     vidv[2] = c.getUsers().get(0).getV3();
-                    vidv[3] = c.getUsers().get(0).getF4();
+                    vidv[3] = c.getUsers().get(0).getV4();
 
                     vidt[0] = c.getUsers().get(0).getT1();
                     vidt[1] = c.getUsers().get(0).getT2();

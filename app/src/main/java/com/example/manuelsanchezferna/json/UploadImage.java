@@ -20,15 +20,14 @@ import org.apache.http.protocol.HTTP;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+
 public class UploadImage {
 
-    String usuario = "cristina";
-    private final String HTTP_EVENT="https://unguled-flash.000webhostapp.com/images/uploadimage.php?user="
-            +usuario;
-
-
-    public Boolean uploadPhoto(String encodedImage) throws ClientProtocolException, IOException, JSONException
+    public Boolean uploadPhoto(String encodedImage, String usuario) throws ClientProtocolException, IOException, JSONException
     {
+       String HTTP_EVENT="https://unguled-flash.000webhostapp.com/images/uploadimage.php?user="
+                +usuario;
+
         HttpClient httpclient = new DefaultHttpClient();
         //url y tipo de contenido
         HttpPost httppost = new HttpPost(HTTP_EVENT);

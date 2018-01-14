@@ -47,4 +47,43 @@
     <string name="BLUES">BLUES</string>
     <string name="Follow">Follow</string>
     <string name="Unfollow">Unfollow</string>
+    <string name="a_follow">Has començat a seguir a</string>
+    <string name="a_unfollow">You have stopped following</string>
+    <string name="i_follow">Could not continue / stop following due to server problems</string>
+
+    <string-array name="desplegable">
+        <item>Principal</item>
+        <item>Profile</item>
+        <item>Playlists</item>
+        <item>Genres</item>
+        <item>Calendar</item>
+        <item>Configuration</item>
+    </string-array>
+
+    <string-array name="desplegable2">
+        <item>Profile</item>
+        <item>Principal</item>
+        <item>Playlists</item>
+        <item>Genres</item>
+        <item>Calendar</item>
+        <item>Configuration</item>
+    </string-array>
+
+    <string-array name="desplegable4">
+        <item>Genres</item>
+        <item>Principal</item>
+        <item>Profile</item>
+        <item>Playlists</item>
+        <item>Calendar</item>
+        <item>Configuration</item>
+    </string-array>
+
+    <string-array name="desplegable6">
+        <item>Configuration</item>
+        <item>Principal</item>
+        <item>Profile</item>
+        <item>Playlists</item>
+        <item>Genres</item>
+        <item>Calendar</item>
+    </string-array>
 </resources>

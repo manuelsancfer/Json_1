@@ -26,6 +26,8 @@ import com.google.gson.Gson;
  * Created by DjManko on 11/1/18.
  */
 
+
+
 public class MyAsyncTask extends AsyncTask <String,Void,Boolean> {
 
     private ProgressDialog progressDialog;
@@ -33,11 +35,12 @@ public class MyAsyncTask extends AsyncTask <String,Void,Boolean> {
     private Context context;
     private String usuario;
 
+
     /**Constructor de clase */
     public MyAsyncTask(Context context, String user) {
         this.context = context;
         builder = new AlertDialog.Builder(context);
-        usuario = user;
+        this.usuario = user;
     }
     /**
      * Antes de comenzar la tarea muestra el progressDialog
@@ -56,7 +59,7 @@ public class MyAsyncTask extends AsyncTask <String,Void,Boolean> {
         Boolean r = false;
         UploadImage apiRest = new UploadImage();
         try {
-            r = apiRest.uploadPhoto(params[0]);
+            r = apiRest.uploadPhoto(params[0], usuario);
         } catch (ClientProtocolException e) {
             e.printStackTrace();
         } catch (IOException e) {
