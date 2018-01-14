@@ -86,7 +86,24 @@
         <item>Genres</item>
         <item>Calendar</item>
     </string-array>
+    <string-array name="desplegableA">
+        <item>Artista</item>
+        <item>Principal</item>
+        <item>Profile</item>
+        <item>Playlists</item>
+        <item>Genres</item>
+        <item>Calendar</item>
+        <item>Configuration</item>
+    </string-array>
     <string name="i_atras">Sorry, you can\'t go back from here</string>
     <string name="i_fotonull">You must select a photo to continue</string>
+    <string-array name="addfav">
+        <item>Add to favourites</item>
+        <item>Favourite 1</item>
+        <item>Favourite 2</item>
+        <item>Favourite 3</item>
+        <item>Favourite 4</item>
+    </string-array>
+
     <string name="i_song">There was a problem and the song selected could not be found. Try it again later.</string>
 </resources>

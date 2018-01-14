@@ -419,7 +419,7 @@ public class PerfilArtista extends AppCompatActivity {
 
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapterS = ArrayAdapter.createFromResource(this,
-                R.array.desplegable2,android.R.layout.simple_spinner_item);
+                R.array.desplegableA,android.R.layout.simple_spinner_item);
 
         // Specify the layout to use when the list of choices appears
         adapterS.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -441,28 +441,35 @@ public class PerfilArtista extends AppCompatActivity {
 
     private void Seleccio(int pos) {
 
+        if (pos == 0){
+
+        }
 
         if(pos == 1){
-            Intent intent = new Intent(this,MainActivity.class);
+            //Main
+            Intent intent = new Intent(this,Perfil.class);
             intent.putExtra("KEY_USUARIO", "cristina");
             startActivity(intent);
         }
 
         if(pos == 2){
-            //Lista rep
+            //Perfil
+            Intent intent = new Intent(this,MainActivity.class);
+            intent.putExtra("KEY_USUARIO", "cristina");
+            startActivity(intent);
         }
 
-        if(pos == 3){
+        if(pos == 4){
             //Categorías
             Intent intent = new Intent(this,Genero.class);
             startActivity(intent);
         }
 
-        if (pos == 4){
+        if (pos == 5){
             //Agenda
         }
 
-        if (pos == 5){
+        if (pos == 6){
             //Configuración
             Intent intent = new Intent(this,ConfigUsuario.class);
             intent.putExtra("KEY_USUARIO", "cristina");

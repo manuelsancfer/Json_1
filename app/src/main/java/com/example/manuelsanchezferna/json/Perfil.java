@@ -97,8 +97,6 @@ public class Perfil extends AppCompatActivity {
         createSpinner();
     }
 
-
-
     private void makeJsonNumAmigos(String url){
 
         Log.i("Perfil","makeJsonUser");

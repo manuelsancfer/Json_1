@@ -80,6 +80,18 @@
         <item>Géneros</item>
         <item>Agenda</item>
     </string-array>
+
+
+    <string-array name="desplegableA">
+        <item>Artista</item>
+        <item>Principal</item>
+        <item>Perfil</item>
+        <item>Listas de reproducción</item>
+        <item>Géneros</item>
+        <item>Agenda</item>
+        <item>Configuración</item>
+    </string-array>
+
     <string name="GENEROS">GÉNEROS</string>
     <string name="BLUES">BLUES</string>
     <string name="Follow">Follow</string>
@@ -90,4 +102,12 @@
     <string name="i_song">Ha habido un problema y no se ha podido encontrar la canción seleccionada. Inténtelo más tarde.</string>
     <string name="i_atras">Lo sentimos, no puede volver atrás desde aquí</string>
     <string name="i_fotonull">Debe seleccionar una foto para poder continuar</string>
+
+    <string-array name="addfav">
+        <item>Añadir a favoritos</item>
+        <item>Favorito 1</item>
+        <item>Favorito 2</item>
+        <item>Favorito 3</item>
+        <item>Favorito 4</item>
+    </string-array>
 </resources>

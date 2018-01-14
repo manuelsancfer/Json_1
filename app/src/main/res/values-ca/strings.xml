@@ -58,6 +58,16 @@
         <item>Gèneres</item>
         <item>Agenda</item>
     </string-array>
+    <string-array name="desplegableA">
+        <item>Artista</item>
+        <item>Principal</item>
+        <item>Perfil</item>
+        <item>Llistes de reproducció</item>
+        <item>Gèneres</item>
+        <item>Agenda</item>
+        <item>Configuració</item>
+    </string-array>
+
     <string name="a_contrasenya">La contrasenya s\'ha canviat amb èxit</string>
     <string name="a_email">E-mail canviat amb èxit</string>
     <string name="a_gustos">Gustos musicals canviats amb èxit</string>
@@ -91,5 +101,12 @@
     <string name="i_fotonull">Heu de seleccionar una foto per poder continuar</string>
     <string name="i_song">Hi ha hagut un problema i no s\'ha pogut trobar la cançó seleccionada. Intenteu-ho més tard.</string>
 
+    <string-array name="addfav">
+        <item>Añadir a favorits</item>
+        <item>Favorit 1</item>
+        <item>Favorit 2</item>
+        <item>Favorit 3</item>
+        <item>Favorit 4</item>
+    </string-array>
 
 </resources>

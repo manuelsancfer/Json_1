@@ -40,7 +40,6 @@
             android:textSize="9dp"
             android:textStyle="italic"/>
 
-
     </LinearLayout>
     </ScrollView>
 

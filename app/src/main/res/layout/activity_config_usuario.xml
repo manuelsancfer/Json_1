@@ -105,10 +105,9 @@
         android:id="@+id/text_favoritos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/text_gustos"
-        android:layout_alignStart="@+id/text_gustos"
+        android:layout_marginLeft="50dp"
         android:layout_below="@+id/text_gustos"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="98dp"
         android:text="@string/Favoritos"
         android:textSize="16sp" />
 
@@ -126,14 +125,14 @@
         style="@style/Base.Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="23dp"
         android:onClick="cpriv"
         android:textAllCaps="false"
         android:textOff="@string/Privado"
         android:textOn="@string/Publico"
-        android:layout_below="@+id/editf3"
-        android:layout_alignLeft="@+id/text_favoritos"
-        android:layout_alignStart="@+id/text_favoritos" />
+        android:layout_below="@+id/editgustos"
+        android:layout_alignLeft="@+id/text_gustos"
+        android:layout_alignStart="@+id/text_gustos" />
 
     <Button
         android:id="@+id/btn_subirfoto"
@@ -225,53 +224,54 @@
         android:layout_alignRight="@+id/editmail"
         android:layout_alignEnd="@+id/editmail" />
 
+    <Spinner
+        android:id="@+id/Sp1"
+        android:layout_marginTop="62dp"
+        android:layout_width="120dp"
+        android:layout_height="32dp"
+        android:background="@android:drawable/btn_default"
+        android:layout_gravity="fill"
+        android:visibility="visible"
+        android:layout_below="@+id/btn_public"
+        android:layout_marginLeft="50dp">
+    </Spinner>
 
+    <Spinner
+        android:id="@+id/Sp2"
+        android:layout_marginTop="62dp"
+        android:layout_width="120dp"
+        android:layout_height="32dp"
+        android:background="@android:drawable/btn_default"
+        android:layout_gravity="fill"
+        android:visibility="visible"
+        android:layout_below="@+id/btn_public"
+        android:layout_marginLeft="220dp">
+    </Spinner>
 
-    <EditText
-        android:id="@+id/editf1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:textSize="16sp"
-        android:layout_below="@+id/text_favoritos"
-        android:layout_toRightOf="@+id/btn_public"
-        android:layout_toEndOf="@+id/btn_public" />
+    <Spinner
+        android:id="@+id/Sp3"
+        android:layout_marginTop="132dp"
+        android:layout_width="120dp"
+        android:layout_height="32dp"
+        android:background="@android:drawable/btn_default"
+        android:layout_gravity="fill"
+        android:visibility="visible"
+        android:layout_below="@+id/btn_public"
+        android:layout_marginLeft="50dp">
+    </Spinner>
 
-    <EditText
-        android:id="@+id/editf2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/editf1"
-        android:layout_alignBottom="@+id/editf1"
-        android:layout_toEndOf="@+id/editmail"
-        android:layout_toRightOf="@+id/editmail"
-        android:text="TextView"
-        android:textSize="16sp" />
+    <Spinner
+        android:id="@+id/Sp4"
+        android:layout_marginTop="132dp"
+        android:layout_width="120dp"
+        android:layout_height="32dp"
+        android:background="@android:drawable/btn_default"
+        android:layout_gravity="fill"
+        android:visibility="visible"
+        android:layout_below="@+id/btn_public"
+        android:layout_marginLeft="220dp">
+    </Spinner>
 
-    <EditText
-        android:id="@+id/editf3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/editf4"
-        android:layout_alignBottom="@+id/editf4"
-        android:layout_alignLeft="@+id/editf1"
-        android:layout_alignStart="@+id/editf1"
-        android:text="TextView"
-        android:textSize="16sp" />
-
-    <EditText
-        android:id="@+id/editf4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/editf2"
-        android:layout_alignLeft="@+id/editf2"
-        android:layout_alignRight="@+id/editf2"
-        android:layout_alignStart="@+id/editf2"
-        android:layout_below="@+id/editf2"
-        android:layout_marginTop="10dp"
-        android:ems="3"
-        android:text="TextView"
-        android:textSize="16sp" />
 
     <ImageView
         android:id="@+id/photo"
