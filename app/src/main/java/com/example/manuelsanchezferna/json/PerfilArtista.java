@@ -140,8 +140,8 @@ public class PerfilArtista extends AppCompatActivity {
                             for (int i = 0; i < c.getVideos().size(); i++) {
                                 Log.i("holaa", "holaaa funciona2"+ c.getVideos().get(i).getUrl());
                                 videosURLs[i] = c.getVideos().get(i).getUrl();
-                                videoList2.add(new VideoInfo(c.getVideos().get(i).getName().toString(),
-                                        c.getVideos().get(i).getTittle().toString() + " - " +
+                                videoList2.add(new VideoInfo(c.getVideos().get(i).getName(),
+                                        c.getVideos().get(i).getTittle() + " - " +
                                         c.getVideos().get(i).getScore(),
                                         Uri.parse(videosURLs[i%videosURLs.length])));
                             }

@@ -31,12 +31,13 @@ public class MyAsyncTask extends AsyncTask <String,Void,Boolean> {
     private ProgressDialog progressDialog;
     AlertDialog.Builder builder;
     private Context context;
-    private String usuario = "cristina";
+    private String usuario;
 
     /**Constructor de clase */
-    public MyAsyncTask(Context context) {
+    public MyAsyncTask(Context context, String user) {
         this.context = context;
         builder = new AlertDialog.Builder(context);
+        usuario = user;
     }
     /**
      * Antes de comenzar la tarea muestra el progressDialog
@@ -82,6 +83,27 @@ public class MyAsyncTask extends AsyncTask <String,Void,Boolean> {
                         }
                     }).create().show();
             txttojpg();
+            //updateimage();
+
+            String url="https://unguled-flash.000webhostapp.com/Consultas/updateconfig_foto.php?user="+usuario;
+            JsonObjectRequest jsObjRequest = new JsonObjectRequest
+                    (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            Log.i("Configuración", "updateee");
+
+                            Gson gson = new Gson();
+
+                        }
+                    }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Log.i("No se ha cargado", "no");
+                        }
+                    });
+
+            Volley.newRequestQueue(this.context).add(jsObjRequest);
+            updateimage();
         }
         else
         {
@@ -113,28 +135,9 @@ public class MyAsyncTask extends AsyncTask <String,Void,Boolean> {
                 });
 
         Volley.newRequestQueue(this.context).add(jsObjRequest);
-        updateimage();
     }
 
     private void updateimage(){
-        String url="https://unguled-flash.000webhostapp.com/Consultas/updateconfig_foto.php?user="+usuario;
-        JsonObjectRequest jsObjRequest = new JsonObjectRequest
-                (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        Log.i("Configuración", "onResponseBotonEmail");
 
-                        Gson gson = new Gson();
-
-                    }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.i("No se ha cargado", "no");
-                    }
-                });
-
-        Volley.newRequestQueue(this.context).add(jsObjRequest);
-        updateimage();
     }
 }

@@ -43,6 +43,8 @@ public class ConfigUsuario extends AppCompatActivity {
     private Button image;
     private Bitmap photobmp;;
 
+    private String usuario = "cristina";
+
 /* TODO: Arreglar al cambiar lo de aquí si justo damos atrás al perfil no se actualiza el perfil
 (si volvemos a darle a perfil si se actualiza)*/
 
@@ -62,7 +64,6 @@ public class ConfigUsuario extends AppCompatActivity {
         image = (Button) findViewById(R.id.btn_subirfoto);
         photo = (ImageView) findViewById(R.id.photo);
 
-        String usuario = "cristina";
         makeJsonPriva("https://unguled-flash.000webhostapp.com/Consultas/consultaperfilpropio.php?user="
                 +usuario);
         createSpinner();
@@ -374,7 +375,7 @@ public class ConfigUsuario extends AppCompatActivity {
         byte[] imageBytes = baos.toByteArray();
         String encodedImage = Base64.encodeToString(imageBytes, Base64.DEFAULT);
         //Se ejecuta en segundo plano para no colgar la aplicacion
-        new MyAsyncTask(ConfigUsuario.this).execute(encodedImage);
+        new MyAsyncTask(ConfigUsuario.this, usuario).execute(encodedImage);
 
     }
 
