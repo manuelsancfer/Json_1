@@ -36,6 +36,8 @@ public class VideosActivity extends AppCompatActivity {
 
     private String[] videosURLs= new String[10];
 
+    private String usuario;
+
     private ProgressDialog pDialogImage;
 
 
@@ -43,6 +45,9 @@ public class VideosActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.videos);
+
+        Intent intent = getIntent();
+        usuario = intent.getStringExtra("KEY_USUARIO");
 
         videosGridVid("https://unguled-flash.000webhostapp.com/Consultas/consultavideos.php");
 
@@ -142,7 +147,7 @@ public class VideosActivity extends AppCompatActivity {
         if (pos == 1){
             //Perfil propio usuario
             Intent intent = new Intent(this,Perfil.class);
-            intent.putExtra("KEY_USUARIO", "cristina");
+            intent.putExtra("KEY_USUARIO", usuario);
             startActivity(intent);
         }
 
@@ -153,6 +158,7 @@ public class VideosActivity extends AppCompatActivity {
         if(pos == 3){
             //Categorías
             Intent intent = new Intent(this,Genero.class);
+            intent.putExtra("KEY_USUARIO", usuario);
             startActivity(intent);
         }
 
@@ -163,7 +169,7 @@ public class VideosActivity extends AppCompatActivity {
         if (pos == 5){
             //Configuración
             Intent intent = new Intent(this,ConfigUsuario.class);
-            intent.putExtra("KEY_USUARIO", "cristina");
+            intent.putExtra("KEY_USUARIO", usuario);
             startActivity(intent);
         }
     }

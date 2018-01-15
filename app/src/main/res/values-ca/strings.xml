@@ -114,5 +114,8 @@
     <string name="crea">Crea un nou usuari</string>
     <string name="e_inicio">La contrasenya o l\\\'usuari està malament</string>
     <string name="e_pass">Les contrasenyes han de ser iguals</string>
+    <string name="CrearUsuario">Crear nou usuari</string>
+    <string name="e_passw">La constrasenya ha de tenir entre 8 i 14 caràcters</string>
+    <string name="title_activity_login">Iniciar sessió</string>
 
 </resources>

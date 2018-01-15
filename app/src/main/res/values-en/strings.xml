@@ -113,4 +113,7 @@
     <string name="crea">Create a new user</string>
     <string name="e_inicio">The password or the user is wrong</string>
     <string name="e_pass">Passwords must be the same</string>
+    <string name="CrearUsuario">Create new user</string>
+    <string name="e_passw">The password must have between 8 and 14 characters</string>
+    <string name="title_activity_login">Log in</string>
 </resources>

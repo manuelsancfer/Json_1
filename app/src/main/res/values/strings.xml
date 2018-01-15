@@ -110,10 +110,11 @@
         <item>Favorito 3</item>
         <item>Favorito 4</item>
     </string-array>
-    <string name="title_activity_login">Sign in</string>
+    <string name="title_activity_login">Iniciar sesión</string>
 
     <string name="INICIO">INICIO</string>
-    <string name="IniciarSesion">Iniciar Sesión</string>
+    <string name="IniciarSesion">Iniciar sesión</string>
+    <string name="CrearUsuario">Crear nuevo usuario</string>
     <string name="Vuelva">Repita la contraseña</string>
     <string name="crea">Crea un nuevo usuario</string>
     <string name="e_inicio">La contraseña o el usuario está mal</string>

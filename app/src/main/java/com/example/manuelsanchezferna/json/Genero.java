@@ -479,12 +479,13 @@ public class Genero extends AppCompatActivity {
 
         if(pos == 1){
             Intent intent = new Intent(this,MainActivity.class);
+            intent.putExtra("KEY_USUARIO", usuario);
             startActivity(intent);
         }
 
         if(pos == 2){
             Intent intent = new Intent(this,Perfil.class);
-            intent.putExtra("KEY_USUARIO", "cristina");
+            intent.putExtra("KEY_USUARIO", usuario);
             startActivity(intent);
         }
 
@@ -499,7 +500,7 @@ public class Genero extends AppCompatActivity {
         if (pos == 5){
             //Configuración
             Intent intent = new Intent(this,ConfigUsuario.class);
-            intent.putExtra("KEY_USUARIO", "cristina");
+            intent.putExtra("KEY_USUARIO", usuario);
             startActivity(intent);
         }
     }

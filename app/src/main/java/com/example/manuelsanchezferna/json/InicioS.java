@@ -34,7 +34,6 @@ public class InicioS extends AppCompatActivity {
         npass2 = (EditText) findViewById(R.id.npass2);
         nmail = (EditText) findViewById(R.id.nmail);
 
-
     }
 
 

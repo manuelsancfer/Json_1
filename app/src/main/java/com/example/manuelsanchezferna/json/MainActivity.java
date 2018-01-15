@@ -245,12 +245,14 @@ public class MainActivity extends AppCompatActivity {
     //onClick del boto topvideos que redirecciona al seu propi Activity
     public void topvideosActivity(){
         Intent intent = new Intent(this,TopVideosActivity.class);
+        intent.putExtra("KEY_USUARIO", usuario);
         startActivity(intent);
     }
 
     //onClick del boto videos que redirecciona al seu propi Activity
     public void videosActivity(){
         Intent intent = new Intent(this,VideosActivity.class);
+        intent.putExtra("KEY_USUARIO", usuario);
         startActivity(intent);
     }
 

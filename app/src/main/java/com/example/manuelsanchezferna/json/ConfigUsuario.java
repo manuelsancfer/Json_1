@@ -49,8 +49,9 @@ public class ConfigUsuario extends AppCompatActivity {
 
     private int count=0;
 
-    private String usuario;
+    private String usuario, foto;
     private ArrayAdapter <String> adapter2;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +66,7 @@ public class ConfigUsuario extends AppCompatActivity {
 
         Intent intent = getIntent();
         usuario = intent.getStringExtra("KEY_USUARIO");
+        foto = intent.getStringExtra("KEY_FOTO");
 
 
         makeJsonPriva("https://unguled-flash.000webhostapp.com/Consultas/consultaperfilpropio.php?user="
@@ -74,12 +76,10 @@ public class ConfigUsuario extends AppCompatActivity {
 
     public void cpass(View view) {
 
-        String user = "cristina";
-
         if (pass.length() > 7 && pass.length() < 15) {
             String url =
                     "https://unguled-flash.000webhostapp.com/Consultas/updateconfig_password.php?pass=" +
-                            pass.getText() + "&user=" + user;
+                            pass.getText() + "&user=" + usuario;
 
             JsonObjectRequest jsObjRequest = new JsonObjectRequest
                     (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
@@ -124,11 +124,9 @@ public class ConfigUsuario extends AppCompatActivity {
 
     public void cemail(View view) {
 
-        String user = "cristina";
-
         String url =
                 "https://unguled-flash.000webhostapp.com/Consultas/updateconfig_email.php?email="
-                        + email.getText() + "&user=" + user;
+                        + email.getText() + "&user=" + usuario;
 
         JsonObjectRequest jsObjRequest = new JsonObjectRequest
                 (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
@@ -169,11 +167,9 @@ public class ConfigUsuario extends AppCompatActivity {
 
     public void cgustos(View view) {
 
-        String user = "cristina";
-
         String url =
                 "https://unguled-flash.000webhostapp.com/Consultas/updateconfig_gustosmusic.php?gustos="
-                        + gustos.getText() + "&user=" + user;
+                        + gustos.getText() + "&user=" + usuario;
 
         JsonObjectRequest jsObjRequest = new JsonObjectRequest
                 (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
@@ -213,7 +209,6 @@ public class ConfigUsuario extends AppCompatActivity {
 
     public void cpriv(View view) {
 
-        String user = "cristina";
         int estado;
 
         if (priva.isChecked()) {
@@ -224,7 +219,7 @@ public class ConfigUsuario extends AppCompatActivity {
 
         String url =
                 "https://unguled-flash.000webhostapp.com/Consultas/updateconfig_privacidad.php?priva="
-                        + estado + "&user=" + user;
+                        + estado + "&user=" + usuario;
 
         JsonObjectRequest jsObjRequest = new JsonObjectRequest
                 (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
@@ -337,13 +332,14 @@ public class ConfigUsuario extends AppCompatActivity {
 
         if (pos == 1) {
             Intent intent = new Intent(this, MainActivity.class);
+            intent.putExtra("KEY_USUARIO", usuario);
             startActivity(intent);
         }
 
         if (pos == 2) {
             //Perfil propio usuario
             Intent intent = new Intent(this, Perfil.class);
-            intent.putExtra("KEY_USUARIO", "cristina");
+            intent.putExtra("KEY_USUARIO", usuario);
             startActivity(intent);
         }
 
@@ -354,6 +350,7 @@ public class ConfigUsuario extends AppCompatActivity {
         if (pos == 4) {
             //Categorías
             Intent intent = new Intent(this, Genero.class);
+            intent.putExtra("KEY_USUARIO", usuario);
             startActivity(intent);
         }
 
@@ -363,8 +360,10 @@ public class ConfigUsuario extends AppCompatActivity {
     }
 
     public void clickimage(View view) {
+
         Intent intent = new Intent();
-        intent.setType("image/*");
+        intent.setType(foto);
+        //intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(intent, "Complete la acción usando..."), 1);
     }

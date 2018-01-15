@@ -58,6 +58,7 @@ public class PerfilArtista extends AppCompatActivity {
     private String artistName;
     private String descrip, mail,puntuacion,foto;
 
+    private String usuario;
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
@@ -86,6 +87,7 @@ public class PerfilArtista extends AppCompatActivity {
 
         Intent intent1 = getIntent();
         artistName = intent1.getStringExtra("KEY_ARTISTA_NAME");
+        usuario = "cristina";
 
         if (savedInstanceState != null){
             Bundle state = savedInstanceState;
@@ -114,7 +116,6 @@ public class PerfilArtista extends AppCompatActivity {
     }
 
     private void follow(){
-        String usuario ="cristina";
 
         String url =
                 "https://unguled-flash.000webhostapp.com/Consultas/update_follow.php?user="+usuario
@@ -447,20 +448,21 @@ public class PerfilArtista extends AppCompatActivity {
         if(pos == 1){
             //Main
             Intent intent = new Intent(this,Perfil.class);
-            intent.putExtra("KEY_USUARIO", "cristina");
+            intent.putExtra("KEY_USUARIO", usuario);
             startActivity(intent);
         }
 
         if(pos == 2){
             //Perfil
             Intent intent = new Intent(this,MainActivity.class);
-            intent.putExtra("KEY_USUARIO", "cristina");
+            intent.putExtra("KEY_USUARIO", usuario);
             startActivity(intent);
         }
 
         if(pos == 4){
             //Categorías
             Intent intent = new Intent(this,Genero.class);
+            intent.putExtra("KEY_USUARIO", usuario);
             startActivity(intent);
         }
 
@@ -471,7 +473,7 @@ public class PerfilArtista extends AppCompatActivity {
         if (pos == 6){
             //Configuración
             Intent intent = new Intent(this,ConfigUsuario.class);
-            intent.putExtra("KEY_USUARIO", "cristina");
+            intent.putExtra("KEY_USUARIO", usuario);
             startActivity(intent);
         }
     }
@@ -509,12 +511,11 @@ public class PerfilArtista extends AppCompatActivity {
     }
 
     public void cfollow(View view) {
-        String user = "cristina";
 
 
         if(priva.isChecked()){
             urlf= "https://unguled-flash.000webhostapp.com/Consultas/follow.php?user="
-                            +user+"&follow="+artistName;
+                            +usuario+"&follow="+artistName;
             estado = true;
             int num = Integer.parseInt(numseguidores.getText().toString())+1;
             numseguidores.setText(Integer.toString(num));
@@ -523,7 +524,7 @@ public class PerfilArtista extends AppCompatActivity {
 
         else {
             urlf = "https://unguled-flash.000webhostapp.com/Consultas/unfollow.php?user="
-                    + user + "&follow=" + artistName;
+                    + usuario + "&follow=" + artistName;
             estado = false;
             int num = Integer.parseInt(numseguidores.getText().toString())-1;
             numseguidores.setText(Integer.toString(num));

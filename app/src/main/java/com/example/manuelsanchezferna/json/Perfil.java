@@ -300,6 +300,7 @@ public class Perfil extends AppCompatActivity {
 
         if(pos == 1){
             Intent intent = new Intent(this,MainActivity.class);
+            intent.putExtra("KEY_USUARIO", usuarioName);
             startActivity(intent);
         }
 
@@ -310,6 +311,7 @@ public class Perfil extends AppCompatActivity {
         if(pos == 3){
             //Categorías
             Intent intent = new Intent(this,Genero.class);
+            intent.putExtra("KEY_USUARIO", usuarioName);
             startActivity(intent);
         }
 
@@ -321,6 +323,7 @@ public class Perfil extends AppCompatActivity {
             //Configuración
             Intent intent = new Intent(this,ConfigUsuario.class);
             intent.putExtra("KEY_USUARIO", usuarioName);
+            intent.putExtra("KEY_FOTO",foto);
             startActivity(intent);
         }
     }
