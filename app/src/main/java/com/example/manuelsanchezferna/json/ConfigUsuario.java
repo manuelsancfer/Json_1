@@ -52,11 +52,6 @@ public class ConfigUsuario extends AppCompatActivity {
     private String usuario;
     private ArrayAdapter <String> adapter2;
 
-/* TODO: Arreglar al cambiar lo de aquí si justo damos atrás al perfil no se actualiza el perfil
-(si volvemos a darle a perfil si se actualiza)*/
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

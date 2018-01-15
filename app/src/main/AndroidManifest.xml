@@ -17,8 +17,10 @@
         android:supportsRtl="true"
         android:theme="@style/App">
         <activity
-            android:name=".MainActivity"
-            android:screenOrientation="sensorPortrait">
+            android:name=".InicioS"
+            android:screenOrientation="sensorPortrait"
+            android:configChanges="screenSize|orientation"
+            android:windowSoftInputMode="stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,11 +28,16 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".MainActivity"
+            android:screenOrientation="sensorPortrait" />
+        <activity
             android:name=".Perfil"
             android:screenOrientation="sensorPortrait" />
         <activity
             android:name=".ConfigUsuario"
-            android:screenOrientation="sensorPortrait" />
+            android:screenOrientation="sensorPortrait"
+            android:configChanges="screenSize|orientation"
+            android:windowSoftInputMode="stateHidden"/>
         <activity
             android:name=".PerfilArtista"
             android:screenOrientation="sensorPortrait" />
@@ -46,7 +53,6 @@
         <activity
             android:name=".Video"
             android:screenOrientation="landscape" />
-        <activity android:name=".Inicio"></activity>
     </application>
 
 </manifest>

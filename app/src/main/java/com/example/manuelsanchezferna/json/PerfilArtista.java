@@ -108,7 +108,7 @@ public class PerfilArtista extends AppCompatActivity {
                 +artistName);   //url nombre de ConsultaSeguidoresU y ConsultaSeguidos están bien pasados
 
 
-        follow();   //un artista que sigue usuario cristina es por ejemplo zoo
+        follow();
 
         createSpinner();
     }
@@ -131,7 +131,6 @@ public class PerfilArtista extends AppCompatActivity {
                         ConsultaFollow c = gson.fromJson(response.toString(),ConsultaFollow.class);
 
                         if (c.getSuccess() == 1) {
-                            Log.i("funciona o que", "eeeeeeeo");
                             priva.setChecked(true);
                         }
                     }

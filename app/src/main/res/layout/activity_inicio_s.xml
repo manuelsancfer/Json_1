@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ScrollView01"
+android:layout_width="fill_parent"
+android:layout_height="fill_parent" >
+
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.manuelsanchezferna.json.InicioS">
+
+    <TextView
+        android:id="@+id/inicio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/INICIO"
+        android:textSize="30sp"
+        android:layout_marginLeft="85dp"
+        android:layout_marginTop="60dp" />
+
+    <EditText
+        android:id="@+id/pass"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/crea"
+        android:layout_alignLeft="@+id/crea"
+        android:layout_alignStart="@+id/crea"
+        android:layout_marginBottom="23dp"
+        android:hint="@string/Contrasenya"
+        android:inputType="textPassword"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/usuario"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/crea"
+        android:layout_alignLeft="@+id/crea"
+        android:layout_alignStart="@+id/crea"
+        android:layout_marginBottom="69dp"
+        android:hint="@string/Usuario"
+        android:singleLine="false"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/btn_inicio"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignEnd="@+id/pass"
+        android:layout_alignRight="@+id/pass"
+        android:layout_below="@+id/pass"
+        android:onClick="iniciars"
+        android:text="@string/IniciarSesion" />
+
+    <TextView
+        android:id="@+id/crea"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="280dp"
+        android:text="@string/crea"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/nuser"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="355dp"
+        android:hint="@string/Usuario"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/npass"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="395dp"
+        android:hint="@string/Contrasenya"
+        android:inputType="textPassword"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/npass2"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="435dp"
+        android:hint="@string/Vuelva"
+        android:inputType="textPassword"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/nmail"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="475dp"
+        android:hint="@string/Email"
+        android:inputType="textEmailAddress"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/btn_nuevo"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignEnd="@+id/nmail"
+        android:layout_alignRight="@+id/nmail"
+        android:layout_below="@+id/nmail"
+        android:onClick="nuevouser"
+        android:text="@string/IniciarSesion" />
+
+
+</RelativeLayout>
+</ScrollView>

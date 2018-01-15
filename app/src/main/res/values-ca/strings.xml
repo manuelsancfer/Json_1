@@ -90,7 +90,6 @@
     <string name="RAPMETAL">RAP METAL</string>
     <string name="FUSION">FUSIÓ</string>
     <string name="GENEROS">GÈNERES</string>
-    <string name="SCREAMO"></string>
     <string name="BLUES">BLUES</string>
     <string name="Follow">Follow</string>
     <string name="Unfollow">Unfollow</string>
@@ -108,5 +107,12 @@
         <item>Favorit 3</item>
         <item>Favorit 4</item>
     </string-array>
+    <string name="INICIO">INICI</string>
+    <string name="IniciarSesion">Iniciar sessió</string>
+    <string name="SCREAMO">SCREAMO</string>
+    <string name="Vuelva">Repeat password</string>
+    <string name="crea">Crea un nou usuari</string>
+    <string name="e_inicio">La contrasenya o l\\\'usuari està malament</string>
+    <string name="e_pass">Les contrasenyes han de ser iguals</string>
 
 </resources>

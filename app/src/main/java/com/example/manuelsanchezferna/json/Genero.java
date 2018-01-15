@@ -50,12 +50,17 @@ public class Genero extends AppCompatActivity {
     private List<VideoInfo> FusionList = new ArrayList<VideoInfo>();
     private List<VideoInfo> ScreamoList = new ArrayList<VideoInfo>();
 
+    private String usuario;
+
     private ProgressDialog pDialog1, pDialog2, pDialog3, pDialog4, pDialog5, pDialog6;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_genero);
+
+        Intent intent = getIntent();
+        usuario = intent.getStringExtra("KEY_USUARIO");
 
         JBlues("https://unguled-flash.000webhostapp.com/Consultas/consultageneros.php?genre=Blues");
         JHipHop("https://unguled-flash.000webhostapp.com/Consultas/consultageneros.php?genre=Hip%20Hop");

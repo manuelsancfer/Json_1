@@ -181,6 +181,8 @@
         android:textSize="18sp"
         android:textStyle="bold" />
 
+
+
     <TextView
         android:id="@+id/amigos1"
         android:layout_width="wrap_content"
@@ -240,6 +242,13 @@
         android:layout_marginTop="5dp"
         android:layout_marginLeft="35dp"
         android:layout_below="@+id/mis_videos"/>
+    <TextView
+        android:id="@+id/espaciador"
+        android:layout_below="@+id/RecylerMisVideos2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        />
 
 </RelativeLayout>
 </ScrollView>

@@ -116,10 +116,8 @@ public class Perfil extends AppCompatActivity {
                         if (c.getSuccess() == 1) {
 
                             Log.i("Perfil", "makeJsonRequest: onResponse - get Success");
-                            Log.i("Perfil", "aham"+c.getNumAmigos().get(0).getAmigos());
                             numamigos.setText(Integer.toString(c.getNumAmigos().get(0).getAmigos()));
                             int sum = c.getNumAmigos().get(0).getAmigos();
-                            sum = sum+4;
 
                         }
                         else{
