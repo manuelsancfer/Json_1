@@ -87,7 +87,9 @@ public class PerfilArtista extends AppCompatActivity {
 
         Intent intent1 = getIntent();
         artistName = intent1.getStringExtra("KEY_ARTISTA_NAME");
-        usuario = "cristina";
+        Intent intent = getIntent();
+        usuario = intent.getStringExtra("KEY_USUARIO");
+        Log.i("holaquetal","hola "+usuario);
 
         if (savedInstanceState != null){
             Bundle state = savedInstanceState;
@@ -163,7 +165,7 @@ public class PerfilArtista extends AppCompatActivity {
                                 videoList2.add(new VideoInfo(c.getVideos().get(i).getName(),
                                         c.getVideos().get(i).getTittle(),
                                         c.getVideos().get(i).getScore(),
-                                        Uri.parse(videosURLs[i%videosURLs.length])));
+                                        Uri.parse(videosURLs[i%videosURLs.length]),usuario));
                             }
 
                             misvideosRecyclerVid();
@@ -398,10 +400,10 @@ public class PerfilArtista extends AppCompatActivity {
 
     private void favoritosRecyclerVid() {
 
-        videoList.add(new VideoInfo(vidv[0],vidt[0], vids[0], Uri.parse(vidf[0%vidf.length])));
-        videoList.add(new VideoInfo(vidv[1],vidt[1], vids[1], Uri.parse(vidf[1%vidf.length])));
-        videoList.add(new VideoInfo(vidv[2],vidt[2], vids[2], Uri.parse(vidf[2%vidf.length])));
-        videoList.add(new VideoInfo(vidv[3],vidt[3], vids[3], Uri.parse(vidf[3%vidf.length])));
+        videoList.add(new VideoInfo(vidv[0],vidt[0], vids[0], Uri.parse(vidf[0%vidf.length]),usuario));
+        videoList.add(new VideoInfo(vidv[1],vidt[1], vids[1], Uri.parse(vidf[1%vidf.length]),usuario));
+        videoList.add(new VideoInfo(vidv[2],vidt[2], vids[2], Uri.parse(vidf[2%vidf.length]),usuario));
+        videoList.add(new VideoInfo(vidv[3],vidt[3], vids[3], Uri.parse(vidf[3%vidf.length]),usuario));
 
 
         recyclerFav = (RecyclerView) findViewById(R.id.RecylerFavoritos1);

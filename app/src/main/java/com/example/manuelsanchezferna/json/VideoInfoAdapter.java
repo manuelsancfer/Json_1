@@ -18,6 +18,7 @@ import android.widget.VideoView;
 
 import java.util.List;
 
+
 /**
  * Created by Maria on 27/12/2017.
  * Adaptador línia de vídeos a la pantalla principal
@@ -27,6 +28,7 @@ class VideoInfoAdapter extends RecyclerView.Adapter<VideoInfoAdapter.ViewHolder>
 
     private List<VideoInfo> videoInfoList;
     private Context context;
+
 
     public VideoInfoAdapter(Context context, List<VideoInfo> videoInfoList) {
         this.context = context;
@@ -49,6 +51,7 @@ class VideoInfoAdapter extends RecyclerView.Adapter<VideoInfoAdapter.ViewHolder>
             public void onClick(View view) {
                 Intent intent2 = new Intent(context,Video.class);
                 intent2.putExtra("KEY_CANCION_NAME", videoInfoList.get(position).getCancion());
+                intent2.putExtra("KEY_USUARIO", videoInfoList.get(0).getUsuario());
                 context.startActivity(intent2);
             }
         });
@@ -59,6 +62,7 @@ class VideoInfoAdapter extends RecyclerView.Adapter<VideoInfoAdapter.ViewHolder>
             public void onClick(View view) {
                 Intent intent = new Intent(context,PerfilArtista.class);
                 intent.putExtra("KEY_ARTISTA_NAME",videoInfoList.get(position).getArtista());
+                intent.putExtra("KEY_USUARIO",  videoInfoList.get(0).getUsuario());
                 context.startActivity(intent);
             }
         });

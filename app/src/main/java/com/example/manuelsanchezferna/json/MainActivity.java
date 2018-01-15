@@ -37,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
 
     private String usuario;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
     private void JvideosRecyclerVid(String url) {
 
         JsonObjectRequest jsObjRequest = new JsonObjectRequest
@@ -86,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
                                 videoList.add(new VideoInfo(c.getVideos().get(i).getName().toString(),
                                         c.getVideos().get(i).getTittle().toString(),
                                         c.getVideos().get(i).getScore(),
-                                        Uri.parse(videosURLs[i%videosURLs.length])));
+                                        Uri.parse(videosURLs[i%videosURLs.length]),usuario));
                             }
 
                             videosRecyclerVid();
@@ -141,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
                                 videoList2.add(new VideoInfo(c.getVideos().get(i).getName().toString(),
                                         c.getVideos().get(i).getTittle().toString(),
                                         c.getVideos().get(i).getScore(),
-                                        Uri.parse(videosURLsTop[i%videosURLsTop.length])));
+                                        Uri.parse(videosURLsTop[i%videosURLsTop.length]), usuario));
                             }
                             videosRecyclerVidTop();
                         }

@@ -72,7 +72,7 @@ public class TopVideosActivity extends AppCompatActivity {
                                 videoList.add(new VideoInfo(c.getVideos().get(i).getName().toString(),
                                         c.getVideos().get(i).getTittle().toString(),
                                         c.getVideos().get(i).getScore(),
-                                        Uri.parse(videosURLs[i%videosURLs.length])));
+                                        Uri.parse(videosURLs[i%videosURLs.length]),usuario));
                             }
                             videos();
                         }

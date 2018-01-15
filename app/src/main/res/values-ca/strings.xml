@@ -60,8 +60,8 @@
     </string-array>
     <string-array name="desplegableA">
         <item>Artista</item>
-        <item>Principal</item>
         <item>Perfil</item>
+        <item>Principal</item>
         <item>Llistes de reproducció</item>
         <item>Gèneres</item>
         <item>Agenda</item>

@@ -88,8 +88,8 @@
     </string-array>
     <string-array name="desplegableA">
         <item>Artista</item>
-        <item>Principal</item>
         <item>Profile</item>
+        <item>Principal</item>
         <item>Playlists</item>
         <item>Genres</item>
         <item>Calendar</item>

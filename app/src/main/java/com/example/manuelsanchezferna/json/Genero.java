@@ -93,7 +93,7 @@ public class Genero extends AppCompatActivity {
                                 RockList.add(new VideoInfo(c.getVideos().get(i).getName().toString(),
                                         c.getVideos().get(i).getTittle().toString(),
                                         c.getVideos().get(0).getScore(),
-                                        Uri.parse(videosRock[i%videosRock.length])));
+                                        Uri.parse(videosRock[i%videosRock.length]), usuario));
                             }
 
                             RockRecyclerVid();
@@ -157,7 +157,7 @@ public class Genero extends AppCompatActivity {
                                 BluesList.add(new VideoInfo(c.getVideos().get(i).getName().toString(),
                                         c.getVideos().get(i).getTittle().toString(),
                                         c.getVideos().get(0).getScore(),
-                                        Uri.parse(videosBlues[i%videosBlues.length])));
+                                        Uri.parse(videosBlues[i%videosBlues.length]),usuario));
                             }
 
                             BluesRecyclerVid();
@@ -220,7 +220,7 @@ public class Genero extends AppCompatActivity {
                                 HipHopList.add(new VideoInfo(c.getVideos().get(i).getName().toString(),
                                         c.getVideos().get(i).getTittle().toString(),
                                         c.getVideos().get(0).getScore(),
-                                        Uri.parse(videosHipHop[i%videosHipHop.length])));
+                                        Uri.parse(videosHipHop[i%videosHipHop.length]),usuario));
                             }
 
                             HipHopRecyclerVid();
@@ -283,7 +283,7 @@ public class Genero extends AppCompatActivity {
                                 RapMetalList.add(new VideoInfo(c.getVideos().get(i).getName().toString(),
                                         c.getVideos().get(i).getTittle().toString(),
                                         c.getVideos().get(0).getScore(),
-                                        Uri.parse(videosRapMetal[i%videosRapMetal.length])));
+                                        Uri.parse(videosRapMetal[i%videosRapMetal.length]),usuario));
                             }
 
                             RapMetalRecyclerVid();
@@ -346,7 +346,7 @@ public class Genero extends AppCompatActivity {
                                 FusionList.add(new VideoInfo(c.getVideos().get(i).getName().toString(),
                                         c.getVideos().get(i).getTittle().toString(),
                                         c.getVideos().get(0).getScore(),
-                                        Uri.parse(videosFusion[i%videosFusion.length])));
+                                        Uri.parse(videosFusion[i%videosFusion.length]),usuario));
                             }
 
                             FusionRecyclerVid();
@@ -409,7 +409,7 @@ public class Genero extends AppCompatActivity {
                                 ScreamoList.add(new VideoInfo(c.getVideos().get(i).getName().toString(),
                                         c.getVideos().get(i).getTittle().toString(),
                                         c.getVideos().get(0).getScore(),
-                                        Uri.parse(videosScreamo[i%videosScreamo.length])));
+                                        Uri.parse(videosScreamo[i%videosScreamo.length]),usuario));
                             }
 
                             ScreamoRecyclerVid();

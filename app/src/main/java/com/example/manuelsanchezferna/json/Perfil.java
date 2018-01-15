@@ -254,10 +254,10 @@ public class Perfil extends AppCompatActivity {
 
     private void videosRecyclerVid() {
 
-        videoList.add(new VideoInfo(vidv[0],vidt[0], vids[0], Uri.parse(vidf[0%vidf.length])));
-        videoList.add(new VideoInfo(vidv[1],vidt[1], vids[1], Uri.parse(vidf[1%vidf.length])));
-        videoList.add(new VideoInfo(vidv[2],vidt[2], vids[2], Uri.parse(vidf[2%vidf.length])));
-        videoList.add(new VideoInfo(vidv[3],vidt[3], vids[3], Uri.parse(vidf[3%vidf.length])));
+        videoList.add(new VideoInfo(vidv[0],vidt[0], vids[0], Uri.parse(vidf[0%vidf.length]),usuarioName));
+        videoList.add(new VideoInfo(vidv[1],vidt[1], vids[1], Uri.parse(vidf[1%vidf.length]),usuarioName));
+        videoList.add(new VideoInfo(vidv[2],vidt[2], vids[2], Uri.parse(vidf[2%vidf.length]),usuarioName));
+        videoList.add(new VideoInfo(vidv[3],vidt[3], vids[3], Uri.parse(vidf[3%vidf.length]),usuarioName));
 
 
         recyclerView = (RecyclerView) findViewById(R.id.RecylerViewFavoritos);

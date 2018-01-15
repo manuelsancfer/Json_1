@@ -36,6 +36,7 @@ public class Video extends AppCompatActivity {
     private String[] videosURLs= new String[2];
 
     private String cancionName, web;
+    private String usuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +45,7 @@ public class Video extends AppCompatActivity {
 
         Intent intent1 = getIntent();
         cancionName = intent1.getStringExtra("KEY_CANCION_NAME");
+        usuario = intent1.getStringExtra("KEY_USUARIO");
 
         Toast.makeText(getApplicationContext(),cancionName, Toast.LENGTH_LONG).show();
 
@@ -74,7 +76,7 @@ public class Video extends AppCompatActivity {
                             videoList.add(new VideoInfo(c.getVideos().get(0).getName().toString(),
                                     c.getVideos().get(0).getTittle().toString(),
                                     c.getVideos().get(0).getScore(),
-                                    Uri.parse(videosURLs[0%videosURLs.length])));
+                                    Uri.parse(videosURLs[0%videosURLs.length]),usuario));
 
                             videosRecyclerVid();
                         }
